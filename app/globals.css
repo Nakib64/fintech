@@ -1,26 +1,342 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — Lumina Creative Studio Palette
+   ═══════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* ── Color Tokens ── */
+  --color-surface: #f9f9fd;
+  --color-surface-dim: #d9dade;
+  --color-surface-bright: #f9f9fd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f3f7;
+  --color-surface-container: #ededf1;
+  --color-surface-container-high: #e8e8ec;
+  --color-surface-container-highest: #e2e2e6;
+  --color-on-surface: #1a1c1f;
+  --color-on-surface-variant: #4b4455;
+  --color-inverse-surface: #2e3034;
+  --color-inverse-on-surface: #f0f0f4;
+  --color-outline: #7c7487;
+  --color-outline-variant: #cdc2d8;
+  --color-surface-tint: #7825ea;
+  --color-primary: #7015e2;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #8a3ffc;
+  --color-on-primary-container: #faf1ff;
+  --color-inverse-primary: #d4bbff;
+  --color-secondary: #665686;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d9c6fd;
+  --color-on-secondary-container: #60507f;
+  --color-tertiary: #6a3cb3;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #8357cd;
+  --color-on-tertiary-container: #faf1ff;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #ebdcff;
+  --color-primary-fixed-dim: #d4bbff;
+  --color-on-primary-fixed: #270058;
+  --color-on-primary-fixed-variant: #5d00c2;
+  --color-secondary-fixed: #eaddff;
+  --color-secondary-fixed-dim: #d1bdf5;
+  --color-on-secondary-fixed: #22123f;
+  --color-on-secondary-fixed-variant: #4e3f6d;
+  --color-tertiary-fixed: #ecdcff;
+  --color-tertiary-fixed-dim: #d5bbff;
+  --color-on-tertiary-fixed: #270058;
+  --color-on-tertiary-fixed-variant: #5929a1;
+  --color-background: #f9f9fd;
+  --color-on-background: #1a1c1f;
+  --color-surface-variant: #e2e2e6;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* ── Extended Brand Colors ── */
+  --color-ink-primary: #110c24;
+  --color-ink-muted: #6e6887;
+  --color-nocturnal-start: #160731;
+  --color-nocturnal-mid: #35136b;
+  --color-nocturnal-end: #6929c4;
+
+  /* ── Spacing ── */
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-mobile: 1rem;
+  --spacing-margin: 4rem;
+  --spacing-margin-mobile: 1.25rem;
+  --spacing-space-xs: 0.375rem;
+  --spacing-space-sm: 0.75rem;
+  --spacing-space-md: 1.25rem;
+  --spacing-space-lg: 2rem;
+  --spacing-space-xl: 3.5rem;
+
+  /* ── Border Radius ── */
+  --radius-sm: 0.5rem;
+  --radius-DEFAULT: 1rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  /* ── Font Family ── */
+  --font-sans: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", system-ui,
+    sans-serif;
+
+  /* ── Animations ── */
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-fade-in-up: fade-in-up 0.7s ease-out both;
+  --animate-fade-in-down: fade-in-down 0.6s ease-out both;
+  --animate-fade-in-left: fade-in-left 0.6s ease-out both;
+  --animate-fade-in-right: fade-in-right 0.6s ease-out both;
+  --animate-scale-in: scale-in 0.5s ease-out both;
+  --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-drawer-in: drawer-slide-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+
+  @keyframes drawer-slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.96);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes glow-pulse {
+
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
   }
 }
 
+/* ── Scrollbar Hidden ── */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+
+/* ── Intersection Observer Reveal Classes ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.reveal-fade.visible {
+  opacity: 1;
+}
+
+/* ── Stagger Delay Utilities ── */
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+.delay-600 {
+  transition-delay: 600ms;
+}
+
+.delay-700 {
+  transition-delay: 700ms;
+}
+
+.delay-800 {
+  transition-delay: 800ms;
 }

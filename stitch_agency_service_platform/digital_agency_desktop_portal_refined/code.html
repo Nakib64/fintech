@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="web_standard" name="shell-type">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+
+      main>:first-child {
+        margin-top: 0 !important;
+      }
+
+      main>:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script
+    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline": "#7c7487", "inverse-surface": "#2e3034", "secondary": "#665686", "tertiary": "#6a3cb3", "surface-variant": "#e2e2e6", "on-tertiary-container": "#faf1ff", "surface-dim": "#d9dade", "background": "#f9f9fd", "secondary-fixed": "#eaddff", "tertiary-container": "#8357cd", "on-tertiary-fixed-variant": "#5929a1", "on-primary-container": "#faf1ff", "surface-container-low": "#f3f3f7", "outline-variant": "#cdc2d8", "surface-tint": "#7825ea", "on-secondary-fixed": "#22123f", "on-secondary": "#ffffff", "surface-container-high": "#e8e8ec", "surface-container-highest": "#e2e2e6", "on-error": "#ffffff", "primary-fixed": "#ebdcff", "on-surface-variant": "#4b4455", "error-container": "#ffdad6", "secondary-fixed-dim": "#d1bdf5", "on-background": "#1a1c1f", "primary-fixed-dim": "#d4bbff", "surface-container-lowest": "#ffffff", "inverse-primary": "#d4bbff", "surface-bright": "#f9f9fd", "primary-container": "#8a3ffc", "inverse-on-surface": "#f0f0f4", "on-primary": "#ffffff", "on-surface": "#1a1c1f", "on-tertiary": "#ffffff", "surface-container": "#ededf1", "on-primary-fixed": "#270058", "on-primary-fixed-variant": "#5d00c2", "tertiary-fixed-dim": "#d5bbff", "error": "#ba1a1a", "tertiary-fixed": "#ecdcff", "on-tertiary-fixed": "#270058", "surface": "#f9f9fd", "secondary-container": "#d9c6fd", "on-error-container": "#93000a", "on-secondary-container": "#60507f", "primary": "#7015e2", "on-secondary-fixed-variant": "#4e3f6d" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-md": "1.25rem", "space-lg": "2rem", "space-sm": "0.75rem", "margin": "4rem", "gutter": "1.5rem", "space-xs": "0.375rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem", "space-xl": "3.5rem" }, "fontFamily": { "label-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "stat-counter": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "label-pill": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"] }, "fontSize": { "label-md": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-hero": ["56px", { "lineHeight": "68px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "stat-counter": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "display-hero-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-pill": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }] } } } };</script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#160430]/70 backdrop-blur-xl border-b border-white/10">
+    <div class="h-20 max-w-[1440px] mx-auto px-margin flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#7015e2] to-[#c084fc] flex items-center justify-center shadow-[0_0_16px_rgba(168,85,247,0.5)]">
+          <span class="material-symbols-outlined text-white text-[22px]">auto_awesome</span></div><span
+          class="font-headline-sm text-headline-sm font-bold tracking-tight text-white">AuraScale</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-white/80"><a href="#projects"
+          class="hover:text-white transition-colors">Projects</a><a href="#services"
+          class="hover:text-white transition-colors flex items-center gap-1">Services <span
+            class="material-symbols-outlined text-[16px]">expand_more</span></a><a href="#about"
+          class="hover:text-white transition-colors">About</a><a href="#pages"
+          class="hover:text-white transition-colors flex items-center gap-1">Pages <span
+            class="material-symbols-outlined text-[16px]">expand_more</span></a></nav>
+      <div class="flex items-center gap-4"><a href="#packages"
+          class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-white text-[14px] font-semibold border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all shadow-sm"><span
+            class="">Let's talk</span><span class="material-symbols-outlined text-[15px]">north_east</span></a></div>
+    </div>
+  </header>
+  <main class="w-full pt-20 bg-background">
+    <div class="flex flex-col w-full">
+      <section
+        class="relative w-full pt-16 bg-gradient-to-b from-[#180535] via-[#320e6d] to-[#4c169b] text-white overflow-hidden">
+        <div
+          class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-[#9333ea]/35 blur-[160px] pointer-events-none rounded-full">
+        </div>
+        <div class="absolute top-44 left-[10%] opacity-80 animate-pulse pointer-events-none hidden md:block"><svg
+            width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M12 0L14.2 9.8L24 12L14.2 14.2L12 24L9.8 14.2L0 12L9.8 9.8L12 0Z" fill="#d8b4fe"></path>
+          </svg></div>
+        <div class="absolute top-52 right-[12%] opacity-85 pointer-events-none hidden md:block"><svg width="42"
+            height="42" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#c084fc" stroke="#f3e8ff" stroke-width="1.5"
+              stroke-linejoin="round"></path>
+          </svg></div>
+        <div class="max-w-[1440px] mx-auto px-margin pt-12 pb-0 flex flex-col items-center text-center relative z-10">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <h1
+              class="text-[34px] sm:text-[50px] lg:text-[58px] font-extrabold tracking-tight leading-[1.12] text-white">
+              Innovating Your<br>Digital World With Us</h1>
+          </div>
+          <p class="max-w-2xl text-[15px] sm:text-[16px] text-white/80 leading-relaxed font-normal mb-8">Delaware
+            registered US agency providing end-to-end cinematic creative solutions, scalable content architecture, and
+            streamlined Stripe Checkout with enterprise SLA guarantees.</p><a href="#packages"
+            class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#9333ea] to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] text-white text-[15px] font-semibold shadow-[0_8px_30px_rgba(168,85,247,0.45)] transition-all transform hover:scale-[1.02] mb-14"><span
+              class="">Get Started</span><span class="material-symbols-outlined text-[17px]">north_east</span></a>
+          <div class="w-full max-w-[940px] relative z-20 -mb-28 sm:-mb-36 md:-mb-44 px-3">
+            <div
+              class="rounded-[28px] sm:rounded-[36px] p-2.5 sm:p-3.5 bg-gradient-to-br from-[#b060ff] via-[#8525e8] to-[#5914a8] shadow-[0_20px_60px_rgba(112,21,226,0.55),0_0_40px_rgba(192,132,252,0.4)]">
+              <div
+                class="rounded-[22px] sm:rounded-[28px] overflow-hidden bg-[#110526] relative aspect-[16/9] shadow-2xl">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhGxGOGb_xoT-3ShnQLv33_R-5S6w2k3xI0LFXrRpXRekt2LUhZ8KJw329_4q9wasBNVm1siCgcKxPNFiZhZVa6jl-OcfBCDPZhVtwhjm8oKWj46Fi-uxW0y2ePXjQBj54M68jLi2_NktGcVCnUOfXuHCF4F6rmVPyH7cALnOthWSHaLa8Voc_I0vpig1M78i2QrL5NBT4JedK-k53YCeRRUBsTY_Q6kNIs3dK-qht"
+                  alt="Agency Conference Presentation Showcase" class="w-full h-full object-cover object-center">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full overflow-hidden leading-none mt-16"><svg viewBox="0 0 1440 220" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block preserve-3d" style="margin-bottom:-1px;">
+            <path d="M0,90 C320,180 720,220 1080,150 C1240,118 1360,60 1440,30 L1440,220 L0,220 Z" fill="#f9f9fd">
+            </path>
+          </svg></div>
+      </section>
+      <!-- HERO SECTION WITH DEEP INDIGO/VIOLET CURVED STAGE -->
+
+      <!-- LOGO TRUST STRIP -->
+      <section class="w-full bg-background pt-32 sm:pt-44 md:pt-52 pb-12">
+        <div class="max-w-[1440px] mx-auto px-margin">
+          <p class="text-center font-label-pill text-label-pill text-on-surface-variant uppercase tracking-widest mb-6">
+            Integrated Across Global Tech &amp; Enterprise Platforms
+          </p>
+          <div
+            class="flex flex-wrap items-center justify-between gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[28px]">hub</span>
+              <span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">HubSpot</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface lowercase tracking-tighter">auping</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[24px]">star</span>
+              <span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">Heineken</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[26px]">radio_button_checked</span>
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface uppercase">EXPOMARK</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[26px]">change_history</span>
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface uppercase tracking-wide">AASTRA-NET</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- US LLC IDENTITY & CORPORATE TRUST BLOCK -->
+      <section class="w-full bg-surface-container-low py-space-xl">
+        <div class="max-w-[1440px] mx-auto px-margin">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Left: Verified Identity Card -->
+            <div class="lg:col-span-7 flex flex-col gap-6">
+              <h2 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                Institutional Trust. Registered US Delaware Legal Entity.
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                Vortex Digital Media LLC operates under strict United States corporate governance. International and
+                domestic clients receive formal master service agreements (MSA), W-9 tax forms, and automatic merchant
+                settlement invoices through Stripe.
+              </p>
+              <!-- 3 Mini Identity Pillars -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div
+                  class="bg-surface-container-lowest p-5 rounded-DEFAULT shadow-[0_4px_20px_-2px_rgba(27,11,56,0.05)]">
+                  <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-primary text-[20px]">assured_workload</span>
+                  </div>
+                  <span class="font-label-md text-label-md font-bold text-on-surface block">Delaware Division</span>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Entity File #7491028-DE. Good
+                    Standing Certified.</p>
+                </div>
+                <div
+                  class="bg-surface-container-lowest p-5 rounded-DEFAULT shadow-[0_4px_20px_-2px_rgba(27,11,56,0.05)]">
+                  <div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-secondary text-[20px]">receipt_long</span>
+                  </div>
+                  <span class="font-label-md text-label-md font-bold text-on-surface block">EIN &amp; W-9 Ready</span>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Federal EIN: 88-3928174. B2B
+                    compliant deduplication.</p>
+                </div>
+                <div
+                  class="bg-surface-container-lowest p-5 rounded-DEFAULT shadow-[0_4px_20px_-2px_rgba(27,11,56,0.05)]">
+                  <div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center mb-3">
+                    <span class="material-symbols-outlined text-tertiary text-[20px]">security</span>
+                  </div>
+                  <span class="font-label-md text-label-md font-bold text-on-surface block">PCI-DSS Tier 1</span>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">100% tokenized payments via Stripe
+                    infrastructure.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Official Contact & Verification Docket Card -->
+            <div
+              class="lg:col-span-5 bg-surface-container-lowest p-8 rounded-lg shadow-[0_12px_32px_-4px_rgba(27,11,56,0.08)] flex flex-col gap-6">
+              <div class="flex items-center justify-between pb-4 bg-surface-container-low/50 p-4 rounded-DEFAULT">
+                <div class="flex items-center gap-3">
+                  <span class="w-3 h-3 rounded-full bg-[#10b981]"></span>
+                  <span class="font-label-md text-label-md font-bold text-on-surface">Vortex Digital Media LLC</span>
+                </div>
+              </div>
+              <div class="space-y-4 font-body-sm text-body-sm">
+                <div class="flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">location_on</span>
+                  <div>
+                    <span class="font-bold text-on-surface block">Registered Commercial Office:</span>
+                    <span class="text-on-surface-variant">1209 North Orange Street, Wilmington, DE 19801, United
+                      States</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">phone_iphone</span>
+                  <div>
+                    <span class="font-bold text-on-surface block">Direct Agency Line:</span>
+                    <a class="text-primary hover:underline font-semibold" href="tel:+13025550198">+1 (302) 555-0198</a>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">mail</span>
+                  <div>
+                    <span class="font-bold text-on-surface block">Corporate Support &amp; SLA:</span>
+                    <span class="text-on-surface-variant">contracts@vortexdigitalmedia.us (9:00 AM – 6:00 PM EST)</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span
+                    class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">shield_with_heart</span>
+                  <div>
+                    <span class="font-bold text-on-surface block">Settlement Currency:</span>
+                    <span class="text-on-surface-variant">USD ($) Standard Settlement • Multi-currency card processing
+                      enabled</span>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="w-full py-3 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2"
+                onclick="document.getElementById('compliance-modal').classList.remove('hidden')">
+                <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                <span class="">View Full US Incorporation Certificate</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- PACKAGES & CORE SERVICES SECTION -->
+      <section class="w-full bg-background py-space-xl" id="packages">
+        <div class="max-w-[1440px] mx-auto px-margin flex flex-col gap-12">
+          <!-- Section Header -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="flex flex-col gap-2">
+              <h2 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                Transparent Retainer &amp; Production Packages
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                Choose a structured scope with predictable delivery milestones. Prices are modular and ready for custom
+                quotation adjustment directly through Stripe Invoice.
+              </p>
+            </div>
+            <div class="flex items-center gap-3 bg-surface-container-low p-1.5 rounded-full self-start">
+              <span
+                class="px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm">Monthly
+                Retainer</span>
+              <span class="px-4 py-1.5 rounded-full text-on-surface-variant font-label-md text-label-md">Fixed
+                Milestone</span>
+            </div>
+          </div>
+          <!-- 3 Service Package Cards -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- PACKAGE 1: VIDEO EDITING -->
+            <div
+              class="bg-surface-container-lowest rounded-lg p-8 shadow-[0_4px_20px_-2px_rgba(27,11,56,0.06)] flex flex-col justify-between hover:shadow-[0_12px_32px_-4px_rgba(27,11,56,0.12)] transition-all">
+              <div class="flex flex-col gap-6">
+                <div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center">
+                  <span class="material-symbols-outlined text-primary text-[28px]">movie</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">Video Editing</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+                    High-converting cinematic short-form and long-form storytelling optimized for YouTube, Instagram
+                    Reels, and TikTok viral retention.
+                  </p>
+                </div>
+                <!-- Price Tag -->
+                <div class="bg-surface-container-low p-4 rounded-DEFAULT">
+                  <div class="flex items-baseline gap-1">
+                    <span class="font-stat-counter text-stat-counter text-on-surface font-extrabold">$1,499</span>
+                    <span class="font-body-md text-body-md text-on-surface-variant">/ month</span>
+                  </div>
+                </div>
+                <!-- Deliverables -->
+                <ul class="space-y-3 font-body-sm text-body-sm text-on-surface">
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">8x 4K Long-form or 20x Short-form Reels/TikToks</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Custom Sound Design &amp; Licensed Audio Stems</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">2D/3D Motion Graphics &amp; Pro Color Grading</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">48-Hour Turnaround with 3 Revision Rounds</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-8 pt-6">
+                <button
+                  class="w-full py-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-tertiary transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  onclick="triggerCheckout('Video Editing Package', '$1,499/mo')">
+                  <span class="">Order Video Package</span>
+                  <span class="material-symbols-outlined text-[18px]">north_east</span>
+                </button>
+              </div>
+            </div>
+            <!-- PACKAGE 2: CONTENT WRITING & SCRIPTING (FEATURED) -->
+            <div
+              class="relative bg-gradient-to-b from-surface-container-lowest to-surface-container-low rounded-lg p-8 shadow-[0_12px_36px_-4px_rgba(138,63,252,0.18)] flex flex-col justify-between">
+              <div class="flex flex-col gap-6">
+                <div class="w-14 h-14 rounded-2xl bg-secondary-fixed flex items-center justify-center">
+                  <span class="material-symbols-outlined text-secondary text-[28px]">edit_note</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">Content Writing &amp; Scripting
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+                    Psychology-backed scripts, long-form thought leadership, and conversion copy crafted to build
+                    founder authority and brand revenue.
+                  </p>
+                </div>
+                <!-- Price Tag -->
+                <div class="bg-surface-container p-4 rounded-DEFAULT">
+                  <div class="flex items-baseline gap-1">
+                    <span class="font-stat-counter text-stat-counter text-on-surface font-extrabold">$999</span>
+                    <span class="font-body-md text-body-md text-on-surface-variant">/ month</span>
+                  </div>
+                </div>
+                <!-- Deliverables -->
+                <ul class="space-y-3 font-body-sm text-body-sm text-on-surface">
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">12x High-retention Viral YouTube &amp; Reel Scripts</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">4x Deep-dive SEO Articles (1,500+ words)</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Weekly Executive Email Newsletters &amp; Brand Copy</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Full Industry Fact-checking &amp; Trend Research</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-8 pt-6">
+                <button
+                  class="w-full py-3.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(138,63,252,0.35)]"
+                  onclick="triggerCheckout('Content Writing &amp; Scripting', '$999/mo')">
+                  <span class="">Order Scripting Package</span>
+                  <span class="material-symbols-outlined text-[18px]">north_east</span>
+                </button>
+              </div>
+            </div>
+            <!-- PACKAGE 3: SOCIAL MEDIA MANAGEMENT -->
+            <div
+              class="bg-surface-container-lowest rounded-lg p-8 shadow-[0_4px_20px_-2px_rgba(27,11,56,0.06)] flex flex-col justify-between hover:shadow-[0_12px_32px_-4px_rgba(27,11,56,0.12)] transition-all">
+              <div class="flex flex-col gap-6">
+                <div class="w-14 h-14 rounded-2xl bg-tertiary-fixed flex items-center justify-center">
+                  <span class="material-symbols-outlined text-tertiary text-[28px]">trending_up</span>
+                </div>
+                <div>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">Social Media Management</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+                    Omnichannel execution across Instagram, LinkedIn, X, and YouTube with proactive community nurturing
+                    and measurable ROI tracking.
+                  </p>
+                </div>
+                <!-- Price Tag -->
+                <div class="bg-surface-container-low p-4 rounded-DEFAULT">
+                  <div class="flex items-baseline gap-1">
+                    <span class="font-stat-counter text-stat-counter text-on-surface font-extrabold">$1,899</span>
+                    <span class="font-body-md text-body-md text-on-surface-variant">/ month</span>
+                  </div>
+                </div>
+                <!-- Deliverables -->
+                <ul class="space-y-3 font-body-sm text-body-sm text-on-surface">
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Multi-channel Strategy (IG, LinkedIn, X, YouTube)</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Integrated Content Calendar &amp; Daily Auto-scheduling</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Daily Inbound Community Engagement &amp; DM Triage</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                    <span class="">Monthly Growth Analytics &amp; Conversion Reporting</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-8 pt-6">
+                <button
+                  class="w-full py-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-tertiary transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  onclick="triggerCheckout('Social Media Management Package', '$1,899/mo')">
+                  <span class="">Order Management Package</span>
+                  <span class="material-symbols-outlined text-[18px]">north_east</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- FINTECH PAYMENT ARCHITECTURE & SECURITY SECTION -->
+      <section class="w-full bg-[#1b0b38] text-on-primary py-space-xl relative overflow-hidden">
+        <!-- Ambient back glow -->
+        <div
+          class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 blur-[140px] pointer-events-none rounded-full">
+        </div>
+        <div class="max-w-[1440px] mx-auto px-margin relative flex flex-col gap-12">
+          <!-- Section Top -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h2 class="font-headline-xl text-headline-xl text-on-primary tracking-tight">
+                Institutional Fintech Payment Rails &amp; Merchant Shield
+              </h2>
+              <p class="font-body-md text-body-md text-secondary-fixed max-w-xl mt-2">
+                Zero friction international settlements. Full support for US ACH Direct Debit, Corporate Credit Cards,
+                Apple Pay, and upcoming modular enterprise integrations.
+              </p>
+            </div>
+          </div>
+          <!-- Payment Gateways & Mock Terminal Display -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Gateway Integration Status -->
+            <div class="lg:col-span-6 flex flex-col gap-6">
+              <!-- Active Stripe Rail -->
+              <div class="p-6 rounded-DEFAULT bg-surface-container-lowest/10 backdrop-blur-md flex flex-col gap-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+                      <span class="material-symbols-outlined text-on-primary text-[20px]">payments</span>
+                    </div>
+                    <div>
+                      <h4 class="font-headline-sm text-headline-sm text-on-primary">Stripe Connect &amp; Checkout</h4>
+                      <span class="font-label-pill text-label-pill text-primary-fixed">Primary Settlement Engine • 3D
+                        Secure 2.0</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="font-body-sm text-body-sm text-secondary-fixed">
+                  Encrypted end-to-end tokenization. Supports Visa, Mastercard, AMEX, Discover, Apple Pay, Google Pay,
+                  and SEPA/ACH.
+                </p>
+              </div>
+              <!-- Upcoming PayPal Commerce Rail -->
+              <div class="p-6 rounded-DEFAULT bg-surface-container-lowest/5 backdrop-blur-sm flex flex-col gap-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-surface-container-highest/20 flex items-center justify-center">
+                      <span
+                        class="material-symbols-outlined text-secondary-fixed text-[20px]">account_balance_wallet</span>
+                    </div>
+                    <div>
+                      <h4 class="font-headline-sm text-headline-sm text-on-primary">PayPal Commerce Architecture</h4>
+                      <span class="font-label-pill text-label-pill text-secondary-fixed">Modular REST API
+                        Integration</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="font-body-sm text-body-sm text-secondary-fixed opacity-80">
+                  Contractual staging complete. Multi-currency wallet payout modules wired for instantaneous enablement
+                  upon client request.
+                </p>
+              </div>
+              <!-- Guarantee Badges -->
+              <div class="grid grid-cols-2 gap-4 pt-2">
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary-fixed text-[24px]">verified_user</span>
+                  <span class="font-body-sm text-body-sm text-on-primary font-medium">PCI DSS Level 1 Compliant</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary-fixed text-[24px]">published_with_changes</span>
+                  <span class="font-body-sm text-body-sm text-on-primary font-medium">14-Day Money Back Guarantee</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Interactive Stripe Test Mode UI Terminal Box -->
+            <div
+              class="lg:col-span-6 bg-surface-container-lowest text-on-surface p-8 rounded-lg shadow-[0_24px_60px_-8px_rgba(105,41,196,0.3)]">
+              <div class="flex items-center justify-between pb-4 bg-surface-container-low p-3.5 rounded-DEFAULT mb-6">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary text-[20px]">lock</span>
+                  <span class="font-label-md text-label-md font-bold">Stripe Verified Sandbox Checkout</span>
+                </div>
+              </div>
+              <!-- Mock Checkout Form -->
+              <form class="space-y-4" onsubmit="handleMockSubmit(event)">
+                <div>
+                  <label
+                    class="block font-label-pill text-label-pill uppercase text-on-surface-variant font-bold mb-1">Selected
+                    Retainer</label>
+                  <input
+                    class="w-full h-12 px-4 rounded-full bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none cursor-default"
+                    id="demo-selected-package" readonly="" type="text" value="Video Editing Package ($1,499/mo)">
+                </div>
+                <div>
+                  <label
+                    class="block font-label-pill text-label-pill uppercase text-on-surface-variant font-bold mb-1">Customer
+                    / Organization Email</label>
+                  <input
+                    class="w-full h-12 px-4 rounded-full bg-surface-container-low font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:outline-none transition-all"
+                    placeholder="billing@yourbrand.com" required="" type="email">
+                </div>
+                <div>
+                  <label
+                    class="block font-label-pill text-label-pill uppercase text-on-surface-variant font-bold mb-1">Test
+                    Card Information</label>
+                  <div
+                    class="w-full h-12 px-4 rounded-full bg-surface-container-low flex items-center justify-between font-mono text-body-md text-on-surface">
+                    <span class="">4242 •••• •••• 4242</span>
+                    <span class="text-on-surface-variant">12/28 • CVC 123</span>
+                  </div>
+                </div>
+                <button
+                  class="w-full py-4 rounded-full bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all flex items-center justify-center gap-2 shadow-md mt-4"
+                  id="mock-checkout-btn" type="submit">
+                  <span class="material-symbols-outlined text-[18px]">lock</span>
+                  <span class="">Execute Sandbox Test Payment ($1,499)</span>
+                </button>
+                <div
+                  class="hidden p-3 rounded-DEFAULT bg-[#d1fae5] text-[#065f46] text-center font-label-md text-label-md"
+                  id="checkout-notification">
+                  ✓ Test Transaction Successful! Simulated Stripe Webhook received for Vortex Digital Media LLC.
+                </div>
+                <p class="text-center font-label-pill text-label-pill text-on-surface-variant mt-2">
+                  No real charge will be incurred. Operates on Stripe standard test rails under DE-7491028.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CASE STUDY & PRODUCTION SHOWCASE -->
+      <section class="w-full bg-background py-space-xl">
+        <div class="max-w-[1440px] mx-auto px-margin flex flex-col gap-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <div
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed mb-2">
+                <span class="font-label-pill text-label-pill uppercase font-bold">Production Proof</span>
+              </div>
+              <h2 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                High Velocity Creative Operations in Action
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                From script-writing to post-production and distribution, observe how our United States creative cell
+                scales international brand channels.
+              </p>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span
+                  class="font-stat-counter text-stat-counter text-primary font-extrabold leading-none block">32K+</span>
+                <span class="font-label-pill text-label-pill uppercase text-on-surface-variant">Realized
+                  Deliverables</span>
+              </div>
+              <div class="text-right pl-4">
+                <span
+                  class="font-stat-counter text-stat-counter text-on-surface font-extrabold leading-none block">100%</span>
+                <span class="font-label-pill text-label-pill uppercase text-on-surface-variant">On-Time SLA
+                  Record</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bento Grid Visual Showcase -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Bento Big 1 -->
+            <div
+              class="md:col-span-7 bg-surface-container-lowest rounded-lg p-6 shadow-sm flex flex-col justify-between">
+              <div class="aspect-[16/10] rounded-DEFAULT overflow-hidden mb-6 relative">
+                <img class="w-full h-full object-cover"
+                  data-alt="High quality creative film editing studio workspace with dual ultrawide monitor setup showing Adobe Premiere timeline, DaVinci Resolve color grading vectorscope, studio sound mixing monitors, and 4K video reel playback."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhGxGOGb_xoT-3ShnQLv33_R-5S6w2k3xI0LFXrRpXRekt2LUhZ8KJw329_4q9wasBNVm1siCgcKxPNFiZhZVa6jl-OcfBCDPZhVtwhjm8oKWj46Fi-uxW0y2ePXjQBj54M68jLi2_NktGcVCnUOfXuHCF4F6rmVPyH7cALnOthWSHaLa8Voc_I0vpig1M78i2QrL5NBT4JedK-k53YCeRRUBsTY_Q6kNIs3dK-qht">
+                <div
+                  class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-pill text-label-pill text-on-surface uppercase font-bold">
+                  Post-Production Desk
+                </div>
+              </div>
+              <div>
+                <h4 class="font-headline-lg text-headline-lg text-on-surface mt-1">Cinematic Product Storytelling for
+                  Global SaaS</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+                  Engineered 18 high-fidelity explainer videos generating over 2.4M organic YouTube impressions within
+                  the first 60 days of launch.
+                </p>
+              </div>
+            </div>
+            <!-- Bento Big 2 -->
+            <div class="md:col-span-5 flex flex-col gap-6">
+              <div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm flex-1 flex flex-col justify-between">
+                <div class="aspect-[16/9] rounded-DEFAULT overflow-hidden mb-4 relative">
+                  <img class="w-full h-full object-cover"
+                    data-alt="Modern collaborative digital marketing strategy session with diverse senior content strategists reviewing engagement charts and content calendars on iPads and digital whiteboards in a bright airy studio."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOJ8XUGEKiqUJ0NgkYM2af1nEWQyAW61Nc3bbxy9DNc_HtAe1Jo0oj_dJskpTztA4-y6jY_FKtXTKCBy8ZW0kQ2iy2IotLmKK5T_SgJWZqk0Qtz5ApmAb0OtXuUsvyDEuUmDG5CfYovmz-_vHxKA6Rs7FFHmdvtnBss2GiLQ2BIGtWyEFrier4O6QynyiSXNlvkJr46WMtF1wR9wJJP243SjIpDcsawn73DRqEh-jP">
+                </div>
+                <div>
+                  <h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">Multi-Channel Distribution Engine
+                  </h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                    Automated publishing schedules, cross-platform adaptation, and active community growth for B2B
+                    brands.
+                  </p>
+                </div>
+              </div>
+              <!-- Metric Highlights Box -->
+              <div
+                class="bg-gradient-to-br from-primary-fixed to-secondary-fixed p-6 rounded-lg flex items-center justify-between text-on-primary-fixed">
+                <div>
+                  <span class="font-label-pill text-label-pill uppercase font-bold tracking-wider">Fast
+                    Turnaround</span>
+                  <h4 class="font-headline-lg text-headline-lg font-bold mt-1">48 Hours</h4>
+                  <p class="font-body-sm text-body-sm opacity-80 mt-1">Average draft delivery across all video packages
+                  </p>
+                </div>
+                <div
+                  class="w-14 h-14 rounded-full bg-surface-container-lowest/40 backdrop-blur-md flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[32px]">bolt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- LEGAL & COMPLIANCE UNDERWRITING BAR -->
+      <section class="w-full bg-surface-container-low py-10">
+        <div class="max-w-[1440px] mx-auto px-margin">
+          <div
+            class="bg-surface-container-lowest p-8 rounded-lg shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col gap-2 max-w-2xl">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[22px]">gavel</span>
+                <span class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wider">Legal
+                  Underwriting &amp; Merchant Governance</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                All billing operations comply with Stripe Global Merchant Terms, US Federal Trade Commission guidelines,
+                and International Card Schemes (Visa/Mastercard Regulations).
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+              <button
+                class="px-5 py-2.5 rounded-full bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors"
+                onclick="document.getElementById('compliance-modal').classList.remove('hidden')">
+                Terms of Service
+              </button>
+              <button
+                class="px-5 py-2.5 rounded-full bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors"
+                onclick="document.getElementById('compliance-modal').classList.remove('hidden')">
+                Refund Policy
+              </button>
+              <button
+                class="px-5 py-2.5 rounded-full bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface transition-colors"
+                onclick="document.getElementById('compliance-modal').classList.remove('hidden')">
+                Privacy &amp; CCPA
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- MODAL 1: CHECKOUT DIALOG MODAL -->
+      <div class="fixed inset-0 z-50 bg-[#1b0b38]/70 backdrop-blur-md hidden flex items-center justify-center p-4"
+        id="checkout-modal">
+        <div
+          class="bg-surface-container-lowest max-w-lg w-full rounded-lg p-8 shadow-[0_32px_72px_-12px_rgba(17,12,36,0.35)] relative">
+          <button
+            class="absolute top-6 right-6 w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors"
+            onclick="document.getElementById('checkout-modal').classList.add('hidden')">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-[20px]">credit_card</span>
+            </div>
+            <div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface">Initiate Stripe Checkout</h3>
+              <span class="font-label-pill text-label-pill text-on-surface-variant">Vortex Digital Media LLC • Sandbox
+                Mode</span>
+            </div>
+          </div>
+          <div class="bg-surface-container p-4 rounded-DEFAULT mb-6">
+            <span class="font-body-sm text-body-sm text-on-surface-variant block">Selected Service Retainer:</span>
+            <span class="font-label-md text-label-md text-on-surface font-bold" id="modal-package-name">Video Editing
+              Package ($1,499/mo)</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mb-6 leading-relaxed">
+            You are testing our automated Stripe Checkout session. When active in production, clients are seamlessly
+            directed to Stripe's hosted PCI-DSS Level 1 gateway or invoiced via ACH.
+          </p>
+          <div class="flex flex-col gap-3">
+            <button
+              class="w-full py-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-tertiary transition-colors flex items-center justify-center gap-2"
+              onclick="simulateSuccessfulPayment()">
+              <span class="">Authorize Test Charge</span>
+              <span class="material-symbols-outlined text-[18px]">check</span>
+            </button>
+            <button
+              class="w-full py-3 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors"
+              onclick="document.getElementById('checkout-modal').classList.add('hidden')">
+              Cancel &amp; Return
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL 2: US COMPLIANCE & INCORPORATION DOCKET MODAL -->
+      <div class="fixed inset-0 z-50 bg-[#1b0b38]/70 backdrop-blur-md hidden flex items-center justify-center p-4"
+        id="compliance-modal">
+        <div
+          class="bg-surface-container-lowest max-w-2xl w-full rounded-lg p-8 shadow-[0_32px_72px_-12px_rgba(17,12,36,0.35)] max-h-[921px] overflow-y-auto relative">
+          <button
+            class="absolute top-6 right-6 w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors"
+            onclick="document.getElementById('compliance-modal').classList.add('hidden')">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+              <span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+            </div>
+            <div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface">Official US Entity Disclosure</h3>
+              <span class="font-label-pill text-label-pill text-primary font-bold">State of Delaware • File No.
+                7491028</span>
+            </div>
+          </div>
+          <div class="space-y-6 font-body-sm text-body-sm text-on-surface-variant">
+            <div class="bg-surface-container-low p-4 rounded-DEFAULT">
+              <h4 class="font-label-md text-label-md text-on-surface font-bold mb-1">Company Details</h4>
+              <p class=""><strong>Legal Entity Name:</strong> Vortex Digital Media LLC</p>
+              <p class=""><strong>Formation State:</strong> Delaware, United States</p>
+              <p class=""><strong>Registered Address:</strong> 1209 Orange Street, Wilmington, DE 19801</p>
+              <p class=""><strong>IRS Federal Employer ID (EIN):</strong> 88-3928174</p>
+            </div>
+            <div>
+              <h4 class="font-label-md text-label-md text-on-surface font-bold mb-1">14-Day Refund &amp; Cancellation
+                Policy</h4>
+              <p class="">
+                Vortex Digital Media LLC guarantees satisfaction. Retainer contracts include a 14-day evaluation window
+                from initial milestone kickoff. If initial creative deliverables do not satisfy the agreed statement of
+                work (SOW), clients may request a prorated or full refund processed through Stripe merchant ledger.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-label-md text-label-md text-on-surface font-bold mb-1">Payment Processing Standards</h4>
+              <p class="">
+                Payment credentials are never stored on agency servers. All tokenization, 3-D Secure authentication, and
+                recurring invoices are processed by Stripe Inc. under PCI DSS Level 1 certificate standards.
+              </p>
+            </div>
+          </div>
+          <div class="mt-8 pt-4 flex justify-end">
+            <button
+              class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-tertiary transition-colors"
+              onclick="document.getElementById('compliance-modal').classList.add('hidden')">
+              I Understand &amp; Acknowledge
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- INTERACTIVE MICRO-SCRIPTS -->
+      <script>
+        function triggerCheckout(packageName, price) {
+          const modal = document.getElementById('checkout-modal');
+          const label = document.getElementById('modal-package-name');
+          const demoField = document.getElementById('demo-selected-package');
+          if (label) label.textContent = packageName + ' (' + price + ')';
+          if (demoField) demoField.value = packageName + ' (' + price + ')';
+          modal.classList.remove('hidden');
+        }
+
+        function handleMockSubmit(e) {
+          e.preventDefault();
+          const btn = document.getElementById('mock-checkout-btn');
+          const note = document.getElementById('checkout-notification');
+          btn.disabled = true;
+          btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span> Processing Stripe Token...';
+
+          setTimeout(function () {
+            btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span> Payment Verified';
+            note.classList.remove('hidden');
+          }, 1200);
+        }
+
+        function simulateSuccessfulPayment() {
+          const modal = document.getElementById('checkout-modal');
+          alert('✓ Sandbox Transaction Authorized. Stripe Test webhook received by Vortex Digital Media LLC.');
+          modal.classList.add('hidden');
+        }
+      </script>
+    </div>
+  </main>
+  <footer class="w-full bg-surface-container-low text-on-surface mt-space-xl">
+    <div class="max-w-[1440px] mx-auto px-margin py-space-xl flex flex-col gap-space-lg">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+        <div class="flex flex-col gap-space-sm">
+          <div class="flex items-center gap-space-xs"><img alt="Agency Brand Logo" class="h-7 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ODM5yCwPNzMUBv6Fu6eJ2atEOTLB5awrwOCUZVYj3WC2H-4Sc4kTpx1ckvRstnTraY_k3Hj4k9Cxy4E0OCTqtm90GqJ1H9Aq6W3fH5GDXX7kVaOtRILs5GQbFJMUQyHq1fXr3yd__6WTGb1aNP8xfqsJOuYa0sHZCrqzoT7lFQ_MNetCrxaERYRcX-VOmbOitd26GJIt2rH2lfA3pPDy7R9QUwQnr3RFA9MNAYBi"><span
+              class="font-headline-sm text-headline-sm text-on-surface">AuraScale Digital LLC</span></div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Premier enterprise digital engineering &amp;
+            brand scale firm registered and operated under United States corporate jurisdiction.</p>
+          <div class="flex items-center gap-space-xs mt-space-xs"><span
+              class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span
+              class="font-label-pill text-label-pill text-on-surface-variant uppercase">256-bit SSL Secured • PCI-DSS
+              Compliant</span></div>
+        </div>
+        <div class="flex flex-col gap-space-xs"><span
+            class="font-label-md text-label-md text-on-surface uppercase tracking-wider">US Corporate Domicile</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">AuraScale Digital LLC • State of Delaware
+            Registry ID: DE-7491028 • Registered Agent: Corporation Service Company, 251 Little Falls Drive, Wilmington,
+            DE 19808</p>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Wyoming Operating Branch:<br>30 N Gould St Ste R,
+            Sheridan, WY 82801</p>
+        </div>
+        <div class="flex flex-col gap-space-xs"><span
+            class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Compliance &amp;
+            Settlement</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Federal EIN: 88-3928174 • Official Stripe
+            Verified Business Entity • Direct ACH, Corporate Wire, &amp; Card settlements processed via Stripe Inc.</p>
+          <div
+            class="flex items-center gap-space-xs mt-space-xs text-on-surface-variant font-label-pill text-label-pill">
+            <span class="material-symbols-outlined text-[16px] text-primary">lock</span><span class="">Stripe TLS
+              End-to-End Encryption</span></div>
+        </div>
+        <div class="flex flex-col gap-space-xs"><span
+            class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Governance &amp; Legal</span>
+          <div class="flex flex-col gap-space-xs font-body-sm text-body-sm"><a
+              class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="legal-compliance"
+              href="#">Terms of Service &amp; Engagement</a><a
+              class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="legal-compliance"
+              href="#">Privacy Policy (CCPA / GDPR)</a><a
+              class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="legal-compliance"
+              href="#">Official Refund &amp; Cancellation Policy</a><a
+              class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="legal-compliance"
+              href="#">Stripe Merchant Disclosures</a></div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md border-none text-on-surface-variant font-body-sm text-body-sm bg-surface-container px-space-md py-space-sm rounded-lg">
+        <p class="">© 2025 AuraScale Digital LLC. All rights reserved. Registered under the laws of the State of
+          Delaware, United States.</p>
+        <div class="flex items-center gap-space-sm font-label-pill text-label-pill text-on-surface-variant"><span
+            class="flex items-center gap-1"><span
+              class="material-symbols-outlined text-[14px] text-primary">shield</span>DE &amp; WY Registered
+            Entity</span><span class="">•</span><span class="flex items-center gap-1"><span
+              class="material-symbols-outlined text-[14px] text-primary">credit_card</span>Stripe Merchant
+            Validated</span></div>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>
