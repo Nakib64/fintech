@@ -77,8 +77,8 @@ export default function CheckoutForm({
   return (
     <div className="flex flex-col gap-6">
       {/* ── 1. Plan Selector Dropdown Card ── */}
-      <RevealOnScroll variant="up">
-        <div className="bg-surface-container-low rounded-[1.75rem] p-6 shadow-sm border border-outline-variant/30 space-y-3 relative">
+      <RevealOnScroll variant="up" className="relative z-30">
+        <div className="bg-surface-container-low rounded-[1.75rem] p-6 shadow-sm border border-outline-variant/30 space-y-3 relative z-30">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-[18px] text-primary">
@@ -94,7 +94,7 @@ export default function CheckoutForm({
           </div>
 
           {/* Interactive Dropdown Trigger */}
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative z-40" ref={dropdownRef}>
             <button
               type="button"
               onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -149,7 +149,7 @@ export default function CheckoutForm({
             {/* Custom Dropdown Menu */}
             {dropdownOpen && (
               <div
-                className="absolute top-full left-0 right-0 mt-2 z-40 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-[0_20px_50px_rgba(27,11,56,0.2)] overflow-hidden p-2 space-y-1 animate-scale-in"
+                className="absolute top-full left-0 right-0 mt-2 z-50 bg-surface-container-lowest rounded-2xl border border-primary/30 shadow-[0_24px_60px_rgba(27,11,56,0.35)] overflow-hidden p-2 space-y-1 animate-scale-in"
                 role="listbox"
               >
                 <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-outline border-b border-outline-variant/20">

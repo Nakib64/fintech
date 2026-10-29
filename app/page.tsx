@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="w-full bg-[#180535]">
+      <main className="w-full bg-[#180535] overflow-x-clip">
         <div className="flex flex-col w-full">
           <HeroSection />
           <LogoStrip />
