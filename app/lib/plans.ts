@@ -218,66 +218,7 @@ export const ALL_PLANS: Plan[] = [
     ],
   },
 
-  // ── Enterprise & Legacy Retainers ──
-  {
-    id: "growth-engine",
-    name: "Growth Engine Retainer",
-    price: "$1,499",
-    numericPrice: 1499,
-    cycle: "/mo",
-    badge: "Recommended",
-    icon: "rocket_launch",
-    desc: "Dedicated high-velocity creative sprint with full producer access.",
-    features: [
-      "Continuous video sprints",
-      "Multi-channel video & copy",
-      "Dedicated creative director",
-      "ASHIVOX LLC contract & SLA",
-    ],
-  },
-  {
-    id: "omnichannel-enterprise",
-    name: "Omnichannel Media Sprint",
-    price: "$4,999",
-    numericPrice: 4999,
-    cycle: "/mo",
-    badge: "Enterprise",
-    icon: "workspace_premium",
-    desc: "Full-scale media pipeline for global brands and scaling startups.",
-    features: [
-      "Unlimited video production",
-      "Priority 24-hour turnaround",
-      "Dedicated 4-person studio team",
-      "Custom SLA & bilateral MSA",
-    ],
-  },
-  {
-    id: "video-editing-legacy",
-    name: "Video Editing (Legacy)",
-    price: "$1,499",
-    numericPrice: 1499,
-    cycle: "/mo",
-    desc: "Legacy retainer plan.",
-    features: ["Standard video production"],
-  },
-  {
-    id: "content-writing-legacy",
-    name: "Content Writing (Legacy)",
-    price: "$999",
-    numericPrice: 999,
-    cycle: "/mo",
-    desc: "Legacy content writing plan.",
-    features: ["Standard copywriting"],
-  },
-  {
-    id: "social-media-legacy",
-    name: "Social Media (Legacy)",
-    price: "$1,899",
-    numericPrice: 1899,
-    cycle: "/mo",
-    desc: "Legacy social media plan.",
-    features: ["Standard social management"],
-  },
+
 ];
 
 export function getPlanByNameOrId(
