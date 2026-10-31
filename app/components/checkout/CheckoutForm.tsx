@@ -28,7 +28,7 @@ export default function CheckoutForm({
   const [cvc, setCvc] = useState("382");
   const [ein, setEin] = useState("");
   const [address, setAddress] = useState(
-    "1201 N Orange St, Suite 700, Wilmington, DE 19801"
+    "1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110"
   );
 
   // Processing & Success States
@@ -66,7 +66,7 @@ export default function CheckoutForm({
     setIsProcessing(true);
     // Generate unique order ID
     const randomNum = Math.floor(10000 + Math.random() * 90000);
-    setOrderId(`VDM-${randomNum}`);
+    setOrderId(`ASH-${randomNum}`);
 
     setTimeout(() => {
       setIsProcessing(false);
@@ -429,7 +429,7 @@ export default function CheckoutForm({
               </span>
             </div>
             <p className="text-[13px] text-on-surface-variant leading-relaxed">
-              We also accept PayPal and corporate bank wire transfers. Delaware LLC invoices issued instantly.
+              We also accept PayPal and corporate bank wire transfers. ASHIVOX LLC invoices issued instantly.
             </p>
           </div>
         </div>

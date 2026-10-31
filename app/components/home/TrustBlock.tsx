@@ -24,22 +24,24 @@ const pillars = [
   },
 ];
 
-const contactDetails = [
+interface ContactDetail {
+  icon: string;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+const contactDetails: ContactDetail[] = [
   {
     icon: "location_on",
     label: "Office Address:",
-    value: "1209 North Orange St, Wilmington, DE 19801",
-  },
-  {
-    icon: "phone_iphone",
-    label: "Phone:",
-    value: "+1 (302) 555-0198",
-    isLink: true,
+    value: "1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA",
   },
   {
     icon: "mail",
     label: "Email Support:",
-    value: "contracts@vortexdigitalmedia.us",
+    value: "support@ashivox.com",
+    href: "mailto:support@ashivox.com",
   },
   {
     icon: "shield_with_heart",
@@ -86,9 +88,7 @@ export default function TrustBlock() {
                     <span className="text-[14px] leading-[18px] tracking-[0.01em] font-bold text-on-surface block">
                       {pillar.title}
                     </span>
-                    <p className="text-[13px] leading-[20px] text-on-surface-variant mt-1">
-                      {pillar.desc}
-                    </p>
+                 
                   </div>
                 </RevealOnScroll>
               ))}
@@ -106,7 +106,7 @@ export default function TrustBlock() {
                 <div className="flex items-center gap-3">
                   <span className="w-3 h-3 rounded-full bg-[#10b981]" />
                   <span className="text-[14px] leading-[18px] tracking-[0.01em] font-bold text-on-surface">
-                    Vortex Digital Media LLC
+                    ASHIVOX LLC
                   </span>
                 </div>
               </div>
@@ -121,10 +121,10 @@ export default function TrustBlock() {
                       <span className="font-bold text-on-surface block">
                         {detail.label}
                       </span>
-                      {detail.isLink ? (
+                      {detail.href ? (
                         <a
                           className="text-primary hover:underline font-semibold"
-                          href="tel:+13025550198"
+                          href={detail.href}
                         >
                           {detail.value}
                         </a>

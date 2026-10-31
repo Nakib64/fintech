@@ -26,7 +26,7 @@ export default function EnterpriseBanner() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0">
                 <Link
-                  href="/projects"
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-[14px] font-bold shadow-lg shadow-primary/40 hover:shadow-xl transition-all transform hover:-translate-y-0.5"
                 >
                   <span>Book a Call</span>

@@ -17,70 +17,45 @@ export default function EntityVerificationCard() {
                   <span>US LLC Details</span>
                 </div>
                 <h2 className="text-[28px] sm:text-[32px] font-bold text-on-surface tracking-tight">
-                  Vortex Digital Media LLC
+                  ASHIVOX LLC
                 </h2>
-                <p className="text-[13px] text-on-surface-variant">
-                  Delaware LLC • Active &amp; Registered
-                </p>
+              
               </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+         
               <a
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface text-[14px] font-semibold transition-colors"
-                href="tel:+18005829104"
-              >
-                <span className="material-symbols-outlined text-[18px] text-primary">
-                  call
-                </span>
-                <span>+1 (800) 582-9104</span>
-              </a>
-              <a
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface text-[14px] font-semibold transition-colors"
-                href="mailto:ops@vortexdigitalmedia.us"
+                href="mailto:support@ashivox.com"
               >
                 <span className="material-symbols-outlined text-[18px] text-primary">
                   mail
                 </span>
-                <span>ops@vortexdigitalmedia.us</span>
+                <span>support@ashivox.com</span>
               </a>
             </div>
           </div>
 
           {/* Details Mosaic Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 bg-surface-container-low/60 rounded-2xl p-6 mt-6">
-            <div className="space-y-1">
-              <span className="text-[11px] uppercase text-outline tracking-wider font-bold block">
-                File Number
-              </span>
-              <div className="text-[20px] text-primary font-bold">
-                #742910-US
-              </div>
-              <p className="text-[13px] text-on-surface-variant">
-                Active &amp; in Good Standing
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 bg-surface-container-low/60 rounded-2xl p-6 mt-6">
+           
             <div className="space-y-1">
               <span className="text-[11px] uppercase text-outline tracking-wider font-bold block">
                 Registered Office
               </span>
               <div className="text-[15px] font-bold text-on-surface">
-                1201 N Orange St, Suite 700
+                1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA
               </div>
-              <p className="text-[13px] text-on-surface-variant">
-                Wilmington, DE 19801, USA
-              </p>
+              
             </div>
             <div className="space-y-1">
               <span className="text-[11px] uppercase text-outline tracking-wider font-bold block">
                 Registered Agent
               </span>
               <div className="text-[15px] font-bold text-on-surface">
-                Delaware Registered Agents Corp.
+                Registered Agents Inc.
               </div>
-              <p className="text-[13px] text-on-surface-variant">
-                Official Legal Agent
-              </p>
             </div>
           </div>
         </div>

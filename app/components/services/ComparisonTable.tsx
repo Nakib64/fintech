@@ -21,7 +21,7 @@ const comparisonRows = [
     isIcon: true,
   },
   {
-    term: "US Delaware MSA Coverage",
+    term: "US Commercial Agreement (MSA)",
     video: "Included",
     content: "Included",
     smm: "Included",

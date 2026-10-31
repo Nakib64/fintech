@@ -7,9 +7,9 @@ import ComparisonTable from "../components/services/ComparisonTable";
 import EnterpriseBanner from "../components/services/EnterpriseBanner";
 
 export const metadata: Metadata = {
-  title: "Services & Retainer Packages",
+  title: "Services & Pricing Packages | ASHIVOX LLC",
   description:
-    "Explore Vortex Digital Media LLC's transparent production packages, video editing retainers, content writing sprints, and social media growth operations.",
+    "Explore ASHIVOX LLC's transparent production packages, video editing retainers, content writing sprints, and social media growth operations.",
 };
 
 export default function ServicesPage() {

@@ -20,15 +20,9 @@ export default function LegalCounselBanner() {
           <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
             <a
               className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full bg-surface-container-lowest text-primary text-[14px] font-bold hover:shadow-lg transition-all transform hover:-translate-y-0.5"
-              href="mailto:ops@vortexdigitalmedia.us"
+              href="mailto:support@ashivox.com"
             >
-              Contact Us ↗
-            </a>
-            <a
-              className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-[14px] font-semibold transition-colors border border-white/20"
-              href="tel:+18005829104"
-            >
-              Call Us
+              Contact Support ↗
             </a>
           </div>
         </div>

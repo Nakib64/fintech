@@ -26,7 +26,7 @@ export default function AboutHero() {
             </RevealOnScroll>
             <RevealOnScroll variant="up" delay={160}>
               <p className="text-[16px] md:text-[18px] text-secondary-fixed-dim/90 max-w-2xl leading-relaxed">
-                Vortex Digital Media LLC is a registered US company. We deliver
+                ASHIVOX LLC is a registered US company. We deliver
                 premium video production with 100% intellectual property
                 ownership, clear contracts, and dependable delivery.
               </p>
@@ -42,14 +42,14 @@ export default function AboutHero() {
                     verified
                   </span>
                   <span className="text-[12px] uppercase font-bold tracking-wider">
-                    Registration
+                    US Based
                   </span>
                 </div>
                 <div className="text-[26px] lg:text-[38px] font-extrabold text-white">
-                  DE, USA
+                  Albuquerque, NM
                 </div>
                 <p className="text-[11px] lg:text-[13px] text-surface-container-high/70 mt-1">
-                  Delaware Registered LLC
+                  ASHIVOX LLC
                 </p>
               </div>
             </RevealOnScroll>

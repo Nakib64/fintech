@@ -10,7 +10,7 @@ import LegalCounselBanner from "../components/about/LegalCounselBanner";
 export const metadata: Metadata = {
   title: "About & Legal Governance",
   description:
-    "Institutional trust, corporate charters, Delaware entity disclosure, executive directors, and standard commercial terms of service at Vortex Digital Media LLC.",
+    "Institutional trust, corporate charters, Delaware entity disclosure, executive directors, and standard commercial terms of service at ASHIVOX LLC.",
 };
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
           <section className="w-full bg-surface-bright pb-24">
             <div className="max-w-[1440px] mx-auto px-5 md:px-margin">
               <EntityVerificationCard />
-              <LeadershipGrid />
+              {/* <LeadershipGrid /> */}
               <LegalFrameworkTabs />
               <LegalCounselBanner />
             </div>

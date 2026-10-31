@@ -4,105 +4,286 @@ import { useState } from "react";
 import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
 
-type BillingCycle = "retainer" | "milestone";
+type TabId = "video-editing" | "content-writing" | "social-media";
 
-interface ServicePackage {
+interface PackageCard {
   id: string;
-  badge: string;
-  icon: string;
+  planId: string;
   title: string;
-  desc: string;
-  prices: {
-    retainer: { price: string; cycle: string; cta: string };
-    milestone: { price: string; cycle: string; cta: string };
-  };
+  subtitle: string;
+  price: string;
+  cycle: string;
+  delivery: string;
+  revisions: string;
   features: string[];
+  cta: string;
   featured?: boolean;
 }
 
-const packages: ServicePackage[] = [
+interface ServiceTab {
+  id: TabId;
+  label: string;
+  icon: string;
+  note: string;
+  packages: PackageCard[];
+}
+
+const serviceTabs: ServiceTab[] = [
   {
-    id: "video",
-    badge: "Post-Production",
-    icon: "movie_edit",
-    title: "Video Editing",
-    desc: "High-impact video editing for YouTube, Reels, and TikTok.",
-    prices: {
-      retainer: {
-        price: "$1,499",
-        cycle: "/mo",
-        cta: "Purchase",
+    id: "video-editing",
+    label: "Video Editing",
+    icon: "movie",
+    note: "All video packages include commercial audio licensing & high-resolution masters.",
+    packages: [
+      {
+        id: "ve-starter",
+        planId: "video-50",
+        title: "Starter",
+        subtitle: "Basic editing, transitions & copyright-free music.",
+        price: "$50",
+        cycle: "/project",
+        delivery: "2-3 days",
+        revisions: "1 round",
+        features: [
+          "1 video up to 60 seconds",
+          "Cuts, transitions & music sync",
+          "Copyright-free soundtrack",
+          "Basic color & audio leveling",
+          "1080p Full HD vertical/square",
+        ],
+        cta: "Choose Plan",
+        featured: false,
       },
-      milestone: {
-        price: "$2,199",
-        cycle: "/sprint",
-        cta: "Purchase",
+      {
+        id: "ve-professional",
+        planId: "video-100",
+        title: "Professional",
+        subtitle: "Color correction, sound design & basic motion graphics.",
+        price: "$100",
+        cycle: "/project",
+        delivery: "3-5 days",
+        revisions: "2 rounds",
+        features: [
+          "1 video up to 3-5 minutes",
+          "Cinematic color grading & LUTs",
+          "Sound design & audio cleanup",
+          "Motion titles & lower thirds",
+          "Multi-format export (Reels, TikTok, YT)",
+        ],
+        cta: "Choose Plan",
+        featured: true,
       },
-    },
-    features: [
-      "20 Short-form Reels/Shorts",
-      "4 Master YouTube Videos",
-      "Sound design & color grading",
-      "48-hour turnaround guarantee",
+      {
+        id: "ve-advanced",
+        planId: "video-150",
+        title: "Advanced",
+        subtitle: "Professional motion graphics, subtitles & multi-format export.",
+        price: "$150",
+        cycle: "/project",
+        delivery: "4-6 days",
+        revisions: "3 rounds",
+        features: [
+          "Advanced motion graphics & hooks",
+          "Dynamic animated subtitles",
+          "Multi-format export (16:9, 9:16, 1:1)",
+          "Custom thumbnail concept",
+          "Priority 48h turnaround queue",
+        ],
+        cta: "Choose Plan",
+        featured: false,
+      },
+      {
+        id: "ve-premium",
+        planId: "video-200",
+        title: "Premium Studio",
+        subtitle: "Premium production, advanced visual effects & dedicated support.",
+        price: "$200",
+        cycle: "/project",
+        delivery: "5-7 days",
+        revisions: "Unlimited",
+        features: [
+          "Full studio production & VFX",
+          "Commercial sound mastering",
+          "Multi-platform master exports",
+          "Source project files included",
+          "Dedicated editor & 24/7 VIP support",
+        ],
+        cta: "Choose Plan",
+        featured: false,
+      },
     ],
-    featured: false,
   },
   {
-    id: "scripting",
-    badge: "Writing & Copy",
+    id: "content-writing",
+    label: "Content Writing",
     icon: "edit_note",
-    title: "Content Writing",
-    desc: "Viral video scripts and copy to grow your brand and revenue.",
-    prices: {
-      retainer: {
-        price: "$999",
-        cycle: "/mo",
-        cta: "Purchase",
+    note: "All copy is 100% human-crafted, plagiarism-checked, and SEO-optimized.",
+    packages: [
+      {
+        id: "cw-starter",
+        planId: "content-20",
+        title: "Social Captions",
+        subtitle: "Catchy short-form social media captions and viral hashtags.",
+        price: "$20",
+        cycle: "/project",
+        delivery: "24 hours",
+        revisions: "1 round",
+        features: [
+          "Engaging short-form copy",
+          "Targeted viral hashtag matrix",
+          "Conversion-focused CTA",
+          "Formatted for IG, FB & LinkedIn",
+        ],
+        cta: "Choose Plan",
+        featured: false,
       },
-      milestone: {
-        price: "$1,450",
-        cycle: "/sprint",
-        cta: "Purchase",
+      {
+        id: "cw-blog",
+        planId: "content-60",
+        title: "SEO Blog Post",
+        subtitle: "300-word SEO-friendly blog post optimized for ranking.",
+        price: "$60",
+        cycle: "/project",
+        delivery: "2 days",
+        revisions: "2 rounds",
+        features: [
+          "300 words of 100% original copy",
+          "Primary keyword & meta description",
+          "Hook-driven intro & outline",
+          "Plagiarism-free verification",
+        ],
+        cta: "Choose Plan",
+        featured: false,
       },
-    },
-    features: [
-      "24 Video retention scripts",
-      "4 Deep-dive articles",
-      "Weekly newsletters & copy",
-      "Trend research & hook matrix",
+      {
+        id: "cw-article",
+        planId: "content-80",
+        title: "In-Depth Article",
+        subtitle: "500-word in-depth SEO-optimized article with rich formatting.",
+        price: "$80",
+        cycle: "/project",
+        delivery: "3 days",
+        revisions: "3 rounds",
+        features: [
+          "500 words deep-dive SEO article",
+          "Competitor analysis & keyword map",
+          "H2/H3 hierarchy & scannable layout",
+          "Proofread & citation-ready",
+        ],
+        cta: "Choose Plan",
+        featured: true,
+      },
+      {
+        id: "cw-guide",
+        planId: "content-120",
+        title: "Authority Guide",
+        subtitle: "1,000-word comprehensive guide or professional e-book.",
+        price: "$120",
+        cycle: "/project",
+        delivery: "4-5 days",
+        revisions: "Unlimited",
+        features: [
+          "1,000-word complete guide or e-book",
+          "Deep research & industry case studies",
+          "Executive summary & takeaways",
+          "Full commercial copyright transfer",
+        ],
+        cta: "Choose Plan",
+        featured: false,
+      },
     ],
-    featured: true,
   },
   {
-    id: "smm",
-    badge: "Social Growth",
-    icon: "hub",
-    title: "Social Media",
-    desc: "Complete account management and distribution across channels.",
-    prices: {
-      retainer: {
-        price: "$1,899",
+    id: "social-media",
+    label: "Social Media Management",
+    icon: "trending_up",
+    note: "Consistent monthly management with content calendars and transparent analytics.",
+    packages: [
+      {
+        id: "smm-starter",
+        planId: "social-300",
+        title: "Starter Growth",
+        subtitle: "3 posts per week with basic engagement and branded graphics.",
+        price: "$300",
         cycle: "/mo",
-        cta: "Purchase",
+        delivery: "Monthly",
+        revisions: "Active",
+        features: [
+          "3 custom posts per week (12/mo)",
+          "Branded graphic design & copy",
+          "Community monitoring & replies",
+          "Cross-posting to IG & Facebook",
+          "Monthly performance recap",
+        ],
+        cta: "Choose Plan",
+        featured: false,
       },
-      milestone: {
-        price: "$2,750",
-        cycle: "/audit",
-        cta: "Purchase",
+      {
+        id: "smm-growth",
+        planId: "social-400",
+        title: "Growth Retainer",
+        subtitle: "5 posts per week with monthly reporting and scheduling.",
+        price: "$400",
+        cycle: "/mo",
+        delivery: "Monthly",
+        revisions: "Active",
+        features: [
+          "5 high-impact posts per week (20/mo)",
+          "End-to-end scheduling & calendar",
+          "In-depth monthly analytics report",
+          "Audience interaction & growth plan",
+          "Dedicated account coordinator",
+        ],
+        cta: "Choose Plan",
+        featured: true,
       },
-    },
-    features: [
-      "Posting to IG, TikTok, X & YouTube",
-      "Community engagement & DM replies",
-      "Growth audits & analytics",
-      "Dedicated creative director",
+      {
+        id: "smm-pro",
+        planId: "social-500",
+        title: "Pro Acceleration",
+        subtitle: "Daily posts with community management and growth strategy.",
+        price: "$500",
+        cycle: "/mo",
+        delivery: "Monthly",
+        revisions: "Active",
+        features: [
+          "Daily posts & carousels (30/mo)",
+          "Active community & DM management",
+          "Data-driven algorithm strategy",
+          "Weekly performance check-in",
+          "Creative direction & branding",
+        ],
+        cta: "Choose Plan",
+        featured: false,
+      },
+      {
+        id: "smm-360",
+        planId: "social-600",
+        title: "360 Omnichannel",
+        subtitle: "Full paid campaign management, video planning, and 24/7 support.",
+        price: "$600",
+        cycle: "/mo",
+        delivery: "Monthly",
+        revisions: "VIP 24/7",
+        features: [
+          "Complete paid ad management",
+          "Short video planning & scripts",
+          "Multi-channel (FB, IG, TikTok, X)",
+          "Conversion tracking & A/B testing",
+          "24/7 priority support & director",
+        ],
+        cta: "Choose Plan",
+        featured: false,
+      },
     ],
-    featured: false,
   },
 ];
 
 export default function ServicesPricing() {
-  const [billing, setBilling] = useState<BillingCycle>("retainer");
+  const [activeTab, setActiveTab] = useState<TabId>("video-editing");
+
+  const currentTab =
+    serviceTabs.find((tab) => tab.id === activeTab) || serviceTabs[0];
 
   return (
     <>
@@ -118,7 +299,7 @@ export default function ServicesPricing() {
             <RevealOnScroll variant="up">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md mb-6 shadow-sm border border-white/10">
                 <span className="text-[12px] uppercase font-bold text-primary-fixed-dim tracking-wider">
-                  Creative Services &amp; Plans
+                  Creative Services &amp; Packages
                 </span>
               </div>
             </RevealOnScroll>
@@ -131,40 +312,39 @@ export default function ServicesPricing() {
 
             <RevealOnScroll variant="up" delay={160}>
               <p className="text-[16px] md:text-[18px] text-surface-container-high/85 max-w-2xl leading-relaxed mb-10">
-                Scale your media engine with predictable production cycles and
-                fast 48-hour turnarounds.
+                Predictable pricing, fast 48-hour turnarounds, and full copyright ownership with zero hidden fees.
               </p>
             </RevealOnScroll>
 
-            {/* Pricing Model Switcher */}
+            {/* Tab Navigation Pill Bar */}
             <RevealOnScroll variant="scale" delay={240}>
-              <div className="inline-flex p-1.5 rounded-full bg-[#110427]/80 backdrop-blur-xl border border-white/10 shadow-inner">
-                <button
-                  type="button"
-                  onClick={() => setBilling("retainer")}
-                  className={`px-7 py-3 rounded-full text-[14px] font-semibold transition-all duration-300 cursor-pointer ${billing === "retainer"
-                      ? "bg-gradient-to-r from-primary to-primary-container text-on-primary shadow-lg shadow-primary/30"
-                      : "text-surface-container-high hover:text-white"
-                    }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setBilling("milestone")}
-                  className={`px-7 py-3 rounded-full text-[14px] font-semibold transition-all duration-300 cursor-pointer ${billing === "milestone"
-                      ? "bg-gradient-to-r from-primary to-primary-container text-on-primary shadow-lg shadow-primary/30"
-                      : "text-surface-container-high hover:text-white"
-                    }`}
-                >
-                  One-Off
-                </button>
+              <div className="inline-flex items-center gap-1.5 p-1.5 rounded-full bg-[#110427]/80 backdrop-blur-xl border border-white/10 shadow-inner">
+                {serviceTabs.map((tab) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-semibold transition-all duration-300 cursor-pointer ${
+                        isActive
+                          ? "bg-gradient-to-r from-primary to-primary-container text-white shadow-lg shadow-primary/30"
+                          : "text-surface-container-high hover:text-white"
+                      }`}
+                    >
+                      <span className="material-symbols-outlined text-[18px]">
+                        {tab.icon}
+                      </span>
+                      <span>{tab.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </RevealOnScroll>
           </div>
         </div>
 
-        {/* Soft Organic Transition Curve to Crisp Light Surface */}
+        {/* Soft Organic Transition Curve */}
         <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none">
           <svg
             className="relative block w-full h-12 md:h-16 text-surface-container-lowest"
@@ -179,166 +359,189 @@ export default function ServicesPricing() {
         </div>
       </section>
 
-      {/* Core Service Packages Section */}
+      {/* Core Packages Section */}
       <section className="w-full bg-surface-container-lowest py-16 md:py-24">
         <div className="max-w-[1440px] mx-auto px-5 md:px-margin">
+          {/* Note Banner */}
+          <div className="flex items-center justify-center gap-2 text-[12px] sm:text-[13px] text-on-surface-variant mb-12 text-center">
+            <span className="px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 font-bold text-[11px] border border-amber-500/25">
+              Transparent Pricing
+            </span>
+            <span>{currentTab.note}</span>
+          </div>
+
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 -mt-16 md:-mt-24 relative z-20 items-stretch">
-            {packages.map((pkg, idx) => {
-              const currentPricing = pkg.prices[billing];
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+            {currentTab.packages.map((pkg, idx) => {
+              const checkoutUrl = `/checkout?plan=${encodeURIComponent(
+                pkg.planId
+              )}&price=${encodeURIComponent(pkg.price + " " + pkg.cycle)}`;
+
               return (
-                <RevealOnScroll key={pkg.id} variant="up" delay={idx * 120} className="h-full">
+                <RevealOnScroll
+                  key={`${currentTab.id}-${pkg.id}`}
+                  variant="up"
+                  delay={idx * 80}
+                  className="h-full"
+                >
                   {pkg.featured ? (
                     /* Featured Card with Radiant Gradient Border */
-                    <div className="h-full p-[2.5px] rounded-[2.25rem] bg-gradient-to-b from-[#b060ff] via-[#8525e8] to-[#5914a8] shadow-[0_20px_50px_rgba(112,21,226,0.28)] hover:shadow-[0_24px_60px_rgba(112,21,226,0.38)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col relative group">
+                    <div className="h-full p-[2.5px] rounded-[2rem] bg-gradient-to-b from-[#b060ff] via-[#8525e8] to-[#5914a8] shadow-[0_20px_50px_rgba(112,21,226,0.25)] hover:shadow-[0_24px_60px_rgba(112,21,226,0.38)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col relative group">
                       {/* Floating Top Badge */}
                       <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-[#b060ff] text-white text-[11px] uppercase font-extrabold tracking-wider shadow-lg flex items-center gap-1.5 whitespace-nowrap">
-                        <span>⭐ Most Popular • Best Value</span>
+                        <span>MOST POPULAR</span>
                       </div>
 
-                      <div className="h-full rounded-[2.1rem] bg-gradient-to-b from-surface-container-lowest via-surface-container-lowest to-surface-container-low/40 p-8 flex flex-col justify-between">
+                      <div className="h-full rounded-[1.85rem] bg-gradient-to-b from-surface-container-lowest via-surface-container-lowest to-surface-container-low/40 p-6 sm:p-7 flex flex-col justify-between">
                         <div>
-                          <div className="flex items-center justify-between mb-5">
-                            <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-primary to-primary-container text-white flex items-center justify-center shadow-md shadow-primary/30">
-                              <span className="material-symbols-outlined text-[28px]">
-                                {pkg.icon}
-                              </span>
-                            </div>
-                            <span className="text-[11px] uppercase tracking-widest text-primary font-extrabold px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-                              {pkg.badge}
+                          {/* Header */}
+                          <div className="flex items-center justify-between mb-2">
+                            <h2 className="text-[22px] font-extrabold text-on-surface">
+                              {pkg.title}
+                            </h2>
+                            <span className="text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                              Recommended
                             </span>
                           </div>
-
-                          <h2 className="text-[26px] font-extrabold text-on-surface mb-2">
-                            {pkg.title}
-                          </h2>
-                          <p className="text-[13px] text-on-surface-variant leading-relaxed mb-6">
-                            {pkg.desc}
+                          <p className="text-[13px] text-on-surface-variant leading-relaxed min-h-[38px]">
+                            {pkg.subtitle}
                           </p>
 
                           {/* Price Tag */}
-                          <div className="bg-primary-fixed/25 border border-primary/20 rounded-2xl p-4 mb-6">
+                          <div className="my-5">
                             <div className="flex items-baseline gap-1">
-                              <span className="text-[42px] font-black text-on-surface tracking-tight">
-                                {currentPricing.price}
+                              <span className="text-[38px] font-black text-on-surface tracking-tight">
+                                {pkg.price}
                               </span>
-                              <span className="text-[14px] text-on-surface-variant font-semibold">
-                                {currentPricing.cycle}
+                              <span className="text-[13px] text-primary font-bold">
+                                {pkg.cycle}
                               </span>
                             </div>
-                            <p className="text-[11px] text-primary font-semibold mt-0.5">
-                              {billing === "retainer" ? "Billed monthly • Cancel anytime" : "Single milestone delivery"}
-                            </p>
                           </div>
 
-                          <div className="flex flex-col gap-3 mb-8">
-                            {pkg.features.map((feature, i) => (
-                              <div key={i} className="flex items-start gap-2.5">
-                                <span className="w-5 h-5 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 mt-0.5">
-                                  <span className="material-symbols-outlined text-[15px] font-bold">
+                          {/* Delivery & Revisions Dual Pill Box */}
+                          <div className="grid grid-cols-2 gap-2.5 mb-6">
+                            <div className="p-2.5 rounded-xl bg-primary-fixed/25 border border-primary/20 text-center">
+                              <span className="block text-[10px] uppercase font-bold tracking-wider text-primary">
+                                DELIVERY
+                              </span>
+                              <span className="text-[12px] font-bold text-on-surface">
+                                [{pkg.delivery}]
+                              </span>
+                            </div>
+                            <div className="p-2.5 rounded-xl bg-primary-fixed/25 border border-primary/20 text-center">
+                              <span className="block text-[10px] uppercase font-bold tracking-wider text-primary">
+                                REVISIONS
+                              </span>
+                              <span className="text-[12px] font-bold text-on-surface">
+                                [{pkg.revisions}]
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Features List */}
+                          <ul className="space-y-2.5 text-[13px] text-on-surface">
+                            {pkg.features.map((feature) => (
+                              <li key={feature} className="flex items-start gap-2.5">
+                                <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                                  <span className="material-symbols-outlined text-[13px] font-bold">
                                     check
                                   </span>
                                 </span>
-                                <span
-                                  className={`text-[13px] ${i === 0
-                                      ? "text-on-surface font-semibold"
-                                      : "text-on-surface"
-                                    }`}
-                                >
+                                <span className="font-medium leading-snug">
                                   {feature}
                                 </span>
-                              </div>
+                              </li>
                             ))}
-                          </div>
+                          </ul>
                         </div>
 
-                        <div className="pt-4 border-t border-outline-variant/30">
+                        {/* CTA Button */}
+                        <div className="mt-7 pt-4 border-t border-outline-variant/30">
                           <Link
-                            href={`/checkout?plan=${encodeURIComponent(
-                              pkg.title
-                            )}&price=${encodeURIComponent(
-                              currentPricing.price + currentPricing.cycle
-                            )}`}
-                            className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] text-on-primary text-[15px] font-extrabold shadow-[0_10px_28px_rgba(138,63,252,0.45)] hover:shadow-[0_12px_36px_rgba(138,63,252,0.65)] transition-all transform active:scale-95 cursor-pointer"
+                            href={checkoutUrl}
+                            className="w-full py-3.5 rounded-full text-white text-[14px] font-extrabold bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] shadow-[0_8px_24px_rgba(138,63,252,0.4)] hover:shadow-[0_12px_32px_rgba(138,63,252,0.6)] transition-all flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer"
                           >
-                            <span>{currentPricing.cta}</span>
-                            <span className="material-symbols-outlined text-[19px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                              north_east
+                            <span>{pkg.cta}</span>
+                            <span className="material-symbols-outlined text-[17px] transition-transform group-hover:translate-x-0.5">
+                              arrow_forward
                             </span>
                           </Link>
                         </div>
                       </div>
                     </div>
                   ) : (
-                    /* Standard Card with Polished Hover Lift */
-                    <div className="h-full rounded-[2.25rem] p-8 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/40 shadow-[0_8px_30px_rgba(27,11,56,0.06)] hover:shadow-[0_20px_45px_rgba(112,21,226,0.18)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between group">
+                    /* Standard Card */
+                    <div className="h-full rounded-[2rem] p-6 sm:p-7 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/40 shadow-sm hover:shadow-[0_16px_40px_rgba(112,21,226,0.12)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between group">
                       <div>
-                        <div className="flex items-center justify-between mb-5">
-                          <div className="w-13 h-13 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center shadow-sm">
-                            <span className="material-symbols-outlined text-[28px]">
-                              {pkg.icon}
-                            </span>
-                          </div>
-                          <span className="text-[11px] uppercase tracking-widest text-primary font-bold px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/30">
-                            {pkg.badge}
-                          </span>
+                        {/* Header */}
+                        <div className="flex items-center justify-between mb-2">
+                          <h2 className="text-[22px] font-extrabold text-on-surface">
+                            {pkg.title}
+                          </h2>
                         </div>
-
-                        <h2 className="text-[26px] font-extrabold text-on-surface mb-2">
-                          {pkg.title}
-                        </h2>
-                        <p className="text-[13px] text-on-surface-variant leading-relaxed mb-6">
-                          {pkg.desc}
+                        <p className="text-[13px] text-on-surface-variant leading-relaxed min-h-[38px]">
+                          {pkg.subtitle}
                         </p>
 
                         {/* Price Tag */}
-                        <div className="bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 mb-6">
+                        <div className="my-5">
                           <div className="flex items-baseline gap-1">
-                            <span className="text-[42px] font-black text-on-surface tracking-tight">
-                              {currentPricing.price}
+                            <span className="text-[38px] font-black text-on-surface tracking-tight">
+                              {pkg.price}
                             </span>
-                            <span className="text-[14px] text-on-surface-variant font-semibold">
-                              {currentPricing.cycle}
+                            <span className="text-[13px] text-on-surface-variant font-semibold">
+                              {pkg.cycle}
                             </span>
                           </div>
-                          <p className="text-[11px] text-on-surface-variant mt-0.5">
-                            {billing === "retainer" ? "Billed monthly • Cancel anytime" : "Single milestone delivery"}
-                          </p>
                         </div>
 
-                        <div className="flex flex-col gap-3 mb-8">
-                          {pkg.features.map((feature, i) => (
-                            <div key={i} className="flex items-start gap-2.5">
+                        {/* Delivery & Revisions Dual Pill Box */}
+                        <div className="grid grid-cols-2 gap-2.5 mb-6">
+                          <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-center">
+                            <span className="block text-[10px] uppercase font-bold tracking-wider text-on-surface-variant">
+                              DELIVERY
+                            </span>
+                            <span className="text-[12px] font-bold text-on-surface">
+                              [{pkg.delivery}]
+                            </span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-center">
+                            <span className="block text-[10px] uppercase font-bold tracking-wider text-on-surface-variant">
+                              REVISIONS
+                            </span>
+                            <span className="text-[12px] font-bold text-on-surface">
+                              [{pkg.revisions}]
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Features List */}
+                        <ul className="space-y-2.5 text-[13px] text-on-surface">
+                          {pkg.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2.5">
                               <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
-                                <span className="material-symbols-outlined text-[15px] font-bold">
+                                <span className="material-symbols-outlined text-[13px] font-bold">
                                   check
                                 </span>
                               </span>
-                              <span
-                                className={`text-[13px] ${i === 0
-                                    ? "text-on-surface font-semibold"
-                                    : "text-on-surface"
-                                  }`}
-                              >
+                              <span className="font-medium leading-snug">
                                 {feature}
                               </span>
-                            </div>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
 
-                      <div className="pt-4 border-t border-outline-variant/20">
+                      {/* CTA Button */}
+                      <div className="mt-7 pt-4 border-t border-outline-variant/20">
                         <Link
-                          href={`/checkout?plan=${encodeURIComponent(
-                            pkg.title
-                          )}&price=${encodeURIComponent(
-                            currentPricing.price + currentPricing.cycle
-                          )}`}
-                          className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-primary hover:bg-primary-container text-on-primary text-[15px] font-bold shadow-[0_6px_20px_rgba(112,21,226,0.3)] hover:shadow-[0_8px_24px_rgba(112,21,226,0.45)] transition-all transform active:scale-95 cursor-pointer"
+                          href={checkoutUrl}
+                          className="w-full py-3.5 rounded-full text-on-surface text-[14px] font-bold bg-surface-container-low hover:bg-primary hover:text-white border border-outline-variant/30 hover:border-transparent transition-all flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer shadow-sm hover:shadow-[0_6px_20px_rgba(112,21,226,0.25)]"
                         >
-                          <span>{currentPricing.cta}</span>
-                          <span className="material-symbols-outlined text-[19px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                            north_east
+                          <span>{pkg.cta}</span>
+                          <span className="material-symbols-outlined text-[17px] transition-transform group-hover:translate-x-0.5">
+                            arrow_forward
                           </span>
                         </Link>
                       </div>

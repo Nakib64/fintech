@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -8,7 +9,7 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/checkout", label: "Checkout" },
-  { href: "/projects", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -66,8 +67,8 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${isScrolled
         ? "h-16 sm:h-16 bg-[#160430]/95 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20"
         : isHomePage
-          ? "h-16 sm:h-20  sm:bg-transparent border-b border-white/5 sm:border-transparent backdrop-blur-sm sm:backdrop-blur-none"
-          : "h-16 sm:h-20 border-b border-white/10"
+          ? "h-16 sm:h-20 sm:bg-transparent border-b border-white/5 sm:border-transparent backdrop-blur-sm sm:backdrop-blur-none"
+          : "h-16 sm:h-20 bg-[#160430]/90 backdrop-blur-md border-b border-white/10"
         }`}
     >
       <div className="max-w-[1280px] w-full h-full mx-auto px-4 sm:px-6 md:px-margin flex items-center justify-between">
@@ -75,16 +76,16 @@ export default function Header() {
         <Link
           href="/"
           className="flex items-center gap-2 group shrink-0"
-          aria-label="Vortex Digital Media LLC"
+          aria-label="ASHIVOX LLC"
         >
-          <div className="flex flex-col">
-            <span className="text-[17px] sm:text-[19px] font-extrabold tracking-tight text-white group-hover:text-primary-fixed-dim transition-colors font-sans leading-tight">
-              VORTEX
-            </span>
-            <span className="hidden sm:block text-[9px] uppercase tracking-[0.2em] text-primary-fixed-dim font-semibold">
-              Digital Media LLC
-            </span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="ASHIVOX LLC"
+            width={160}
+            height={40}
+            priority
+            className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
         </Link>
 
         {/* Center: Desktop Inline Nav Links */}
@@ -96,8 +97,8 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`relative text-[14px] font-medium transition-colors py-1 ${isActive
-                    ? "text-white font-semibold"
-                    : "text-white/75 hover:text-white"
+                  ? "text-white font-semibold"
+                  : "text-white/75 hover:text-white"
                   }`}
               >
                 {link.label}
@@ -165,8 +166,8 @@ export default function Header() {
                   href={link.href}
                   onClick={() => setDrawerOpen(false)}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-[14px] transition-colors ${isActive
-                      ? "bg-white/10 text-white font-semibold"
-                      : "text-white/75 hover:bg-white/5 hover:text-white"
+                    ? "bg-white/10 text-white font-semibold"
+                    : "text-white/75 hover:bg-white/5 hover:text-white"
                     }`}
                 >
                   <span>{link.label}</span>

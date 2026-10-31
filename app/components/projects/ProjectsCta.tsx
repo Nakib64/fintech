@@ -32,9 +32,9 @@ export default function ProjectsCta() {
               </a>
               <a
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/15 text-white text-[15px] font-semibold transition-colors text-center border border-white/10"
-                href="tel:+18005829104"
+                href="mailto:support@ashivox.com"
               >
-                <span>Call Us</span>
+                <span>Email Support</span>
               </a>
             </div>
           </div>

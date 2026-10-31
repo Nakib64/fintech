@@ -159,7 +159,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
               <span>↗</span>
             </Link>
             <span className="text-outline">•</span>
-            <span className="text-outline">Delaware Entity SLA</span>
+            <span className="text-outline">ASHIVOX LLC SLA</span>
           </div>
         </div>
       </RevealOnScroll>

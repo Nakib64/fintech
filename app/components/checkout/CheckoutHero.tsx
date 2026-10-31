@@ -51,7 +51,7 @@ export default function CheckoutHero() {
                 verified
               </span>
               <span className="text-[13px] text-white font-medium">
-                Delaware LLC Invoicing
+                ASHIVOX LLC Invoicing
               </span>
             </div>
             <span className="w-1 h-1 rounded-full bg-white/30 hidden sm:block" />

@@ -122,14 +122,14 @@ export default function HeroSection() {
           <div className="p-1.5 sm:p-2.5 rounded-[1.75rem] sm:rounded-[2.25rem] bg-[#9333ea] shadow-[0_20px_60px_rgba(112,21,226,0.5),0_0_40px_rgba(192,132,252,0.35)]">
             <div className="rounded-[1.4rem] sm:rounded-[1.85rem] overflow-hidden bg-[#110526] relative aspect-[16/9] shadow-2xl">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhGxGOGb_xoT-3ShnQLv33_R-5S6w2k3xI0LFXrRpXRekt2LUhZ8KJw329_4q9wasBNVm1siCgcKxPNFiZhZVa6jl-OcfBCDPZhVtwhjm8oKWj46Fi-uxW0y2ePXjQBj54M68jLi2_NktGcVCnUOfXuHCF4F6rmVPyH7cALnOthWSHaLa8Voc_I0vpig1M78i2QrL5NBT4JedK-k53YCeRRUBsTY_Q6kNIs3dK-qht"
-                alt="Agency Conference Presentation Showcase"
+                src="/hero-services.webp"
+                alt="ASHIVOX Creative Studio - Video Editing, Content Writing & Social Media Management"
                 fill
-                sizes="(max-width: 768px) 100vw, 880px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1440px) 1200px, 1440px"
                 className="object-cover object-center"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
             </div>
           </div>
 

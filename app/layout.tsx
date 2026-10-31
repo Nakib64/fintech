@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Vortex Digital Media LLC — Enterprise Creative Agency",
-    template: "%s | Vortex Digital Media LLC",
+    default: "ASHIVOX LLC — Enterprise Creative Agency",
+    template: "%s | ASHIVOX LLC",
   },
   description:
     "Delaware-registered US agency providing end-to-end cinematic creative solutions, scalable content architecture, and streamlined payment processing with enterprise SLA guarantees.",

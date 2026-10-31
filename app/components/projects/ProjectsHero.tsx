@@ -41,7 +41,7 @@ export default function ProjectsHero() {
                 verified
               </span>
               <span className="text-[13px] text-white font-medium">
-                Delaware Entity
+                ASHIVOX LLC
               </span>
             </div>
             <span className="w-1 h-1 rounded-full bg-white/30 hidden sm:block" />

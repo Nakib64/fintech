@@ -84,7 +84,7 @@ export default function LegalBar() {
                   Company Details
                 </h4>
                 <p>
-                  <strong>Legal Entity Name:</strong> Vortex Digital Media LLC
+                  <strong>Legal Entity Name:</strong> ASHIVOX LLC
                 </p>
                 <p>
                   <strong>Formation State:</strong> Delaware, United States
@@ -103,7 +103,7 @@ export default function LegalBar() {
                   14-Day Refund &amp; Cancellation Policy
                 </h4>
                 <p>
-                  Vortex Digital Media LLC guarantees satisfaction. Retainer
+                  ASHIVOX LLC guarantees satisfaction. Retainer
                   contracts include a 14-day evaluation window from initial
                   milestone kickoff. If initial creative deliverables do not
                   satisfy the agreed statement of work (SOW), clients may request

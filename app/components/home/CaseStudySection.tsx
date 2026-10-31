@@ -59,7 +59,7 @@ export default function CaseStudySection() {
               <div className="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between h-full group hover:shadow-md transition-shadow">
                 <div className="aspect-[16/10] rounded-[1.25rem] overflow-hidden mb-6 relative">
                   <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhGxGOGb_xoT-3ShnQLv33_R-5S6w2k3xI0LFXrRpXRekt2LUhZ8KJw329_4q9wasBNVm1siCgcKxPNFiZhZVa6jl-OcfBCDPZhVtwhjm8oKWj46Fi-uxW0y2ePXjQBj54M68jLi2_NktGcVCnUOfXuHCF4F6rmVPyH7cALnOthWSHaLa8Voc_I0vpig1M78i2QrL5NBT4JedK-k53YCeRRUBsTY_Q6kNIs3dK-qht"
+                    src= "/hero-services.webp"
                     alt="Creative film editing studio workspace"
                     fill
                     sizes="(max-width: 768px) 100vw, 60vw"

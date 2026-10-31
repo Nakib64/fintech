@@ -8,12 +8,12 @@ import ProcurementFaq from "../components/projects/ProcurementFaq";
 import ProjectsCta from "../components/projects/ProjectsCta";
 
 export const metadata: Metadata = {
-  title: "Projects & Strategic Intake",
+  title: "Contact & Strategic Intake | ASHIVOX LLC",
   description:
-    "Initiate project discovery, review Delaware commercial registration details, or reserve an immediate synchronization slot with our Executive Producer.",
+    "Initiate project discovery, review ASHIVOX LLC registration details, or get in touch directly at support@ashivox.com.",
 };
 
-export default function ProjectsPage() {
+export default function ContactPage() {
   return (
     <>
       <Header />

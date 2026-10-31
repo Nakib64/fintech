@@ -37,10 +37,10 @@ export default function IntakeSection() {
                   <span>Direct Contact</span>
                 </div>
                 <h2 className="text-[32px] sm:text-[38px] font-bold text-on-surface tracking-tight">
-                  Our Office
+                  ASHIVOX LLC
                 </h2>
                 <p className="text-[15px] leading-[24px] text-on-surface-variant mt-2">
-                  Based in Wilmington, Delaware. Reach us anytime by phone, email, or Slack.
+                  Registered in the United States. Reach our team anytime via email or submit your project details below.
                 </p>
               </div>
             </RevealOnScroll>
@@ -56,17 +56,17 @@ export default function IntakeSection() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
-                      Registered Commercial Office
+                      Registered Business Address
                     </span>
                     <span className="text-[16px] text-on-surface font-semibold mt-0.5">
-                      1201 N Orange St, Suite 700
+                      1209 Mountain Road PL NE, Ste R
                     </span>
                     <span className="text-[13px] text-on-surface-variant">
-                      Wilmington, DE 19801, United States
+                      Albuquerque, NM 87110, USA
                     </span>
                     <span className="text-[12px] text-tertiary font-semibold mt-2 inline-flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                      Registered Agent &amp; Corp Headquarters
+                      Active &amp; Registered Business Entity
                     </span>
                   </div>
                 </div>
@@ -76,21 +76,18 @@ export default function IntakeSection() {
                 <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
                   <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
                     <span className="material-symbols-outlined text-[24px]">
-                      call
+                      gavel
                     </span>
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
-                      Direct Commercial Hotline
+                      Registered Agent
                     </span>
-                    <a
-                      className="text-[18px] text-primary font-bold hover:underline mt-0.5"
-                      href="tel:+18005829104"
-                    >
-                      +1 (800) 582-9104
-                    </a>
+                    <span className="text-[17px] text-on-surface font-bold mt-0.5">
+                      Registered Agents Inc.
+                    </span>
                     <span className="text-[13px] text-on-surface-variant">
-                      Mon – Fri, 8:00 AM – 7:00 PM EST Priority Dispatch
+                      Official Legal &amp; Corporate Registered Agent
                     </span>
                   </div>
                 </div>
@@ -105,38 +102,16 @@ export default function IntakeSection() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
-                      Enterprise Inquiries &amp; RFP
+                      Professional Business Email
                     </span>
                     <a
                       className="text-[18px] text-primary font-bold hover:underline mt-0.5"
-                      href="mailto:ops@vortexdigitalmedia.us"
+                      href="mailto:support@ashivox.com"
                     >
-                      ops@vortexdigitalmedia.us
+                      support@ashivox.com
                     </a>
                     <span className="text-[13px] text-on-surface-variant">
-                      Reviewed within 2 business hours by Managing Partner
-                    </span>
-                  </div>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll variant="left" delay={320}>
-                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-                    <span className="material-symbols-outlined text-[24px]">
-                      forum
-                    </span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
-                      Commercial Slack Studio
-                    </span>
-                    <span className="text-[16px] text-on-surface font-semibold mt-0.5">
-                      Real-time Dedicated Production Channel
-                    </span>
-                    <span className="text-[13px] text-on-surface-variant">
-                      9:00 – 18:00 EST dedicated channel invite granted upon
-                      sprint qualification.
+                      Reviewed within 2 business hours by our production team
                     </span>
                   </div>
                 </div>
@@ -193,10 +168,10 @@ export default function IntakeSection() {
                   </div>
                   <div>
                     <p className="text-[14px] font-semibold text-white">
-                      Delaware Division of Corporations
+                      ASHIVOX LLC
                     </p>
                     <p className="text-[12px] text-secondary-fixed-dim">
-                      Entity #742910-US • Good Standing Verified
+                      Active US Registered Entity • Good Standing
                     </p>
                   </div>
                 </div>
@@ -367,17 +342,17 @@ export default function IntakeSection() {
                           {
                             id: "writing",
                             title: "Content Writing & Scripting",
-                            price: "$999 / month",
+                       
                           },
                           {
                             id: "social",
                             title: "Social Media Management",
-                            price: "$1,899 / month",
+                      
                           },
                           {
                             id: "custom",
                             title: "Custom Multi-Pod Package",
-                            price: "Bespoke SLA Sizing",
+                     
                           },
                         ].map((opt) => (
                           <label
@@ -399,48 +374,14 @@ export default function IntakeSection() {
                               <span className="text-[14px] text-on-surface font-semibold">
                                 {opt.title}
                               </span>
-                              <span className="text-[12px] text-primary font-bold">
-                                {opt.price}
-                              </span>
+                             
                             </div>
                           </label>
                         ))}
                       </div>
                     </div>
 
-                    {/* Monthly Budget Range */}
-                    <div>
-                      <label className="block text-[14px] text-on-surface font-semibold mb-2.5">
-                        Estimated Monthly Budget Range
-                      </label>
-                      <div className="flex flex-wrap gap-2.5">
-                        {[
-                          { id: "1.5k-3k", label: "$1,500 – $3,000 / mo" },
-                          { id: "3k-6k", label: "$3,000 – $6,000 / mo" },
-                          { id: "6k-12k", label: "$6,000 – $12,000 / mo" },
-                          { id: "enterprise", label: "$12,000+ Enterprise Tier" },
-                        ].map((b) => (
-                          <label key={b.id} className="cursor-pointer">
-                            <input
-                              checked={budget === b.id}
-                              onChange={() => setBudget(b.id)}
-                              className="sr-only"
-                              name="budget"
-                              type="radio"
-                              value={b.id}
-                            />
-                            <span
-                              className={`inline-block px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${budget === b.id
-                                  ? "bg-primary text-white border-primary shadow-sm"
-                                  : "bg-surface-container-low text-on-surface-variant border-outline-variant/40 hover:border-outline"
-                                }`}
-                            >
-                              {b.label}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
+                
 
                     {/* Project Timeline & Scope Details */}
                     <div>
