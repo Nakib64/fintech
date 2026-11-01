@@ -21,7 +21,7 @@ export default function CheckoutPage() {
 
           {/* Main Checkout Section */}
           <section className="relative w-full bg-surface-container-lowest pb-16 md:pb-24 pt-6">
-            <div className="max-w-[1440px] mx-auto px-5 md:px-margin relative z-10">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-margin relative z-10 w-full overflow-hidden sm:overflow-visible">
               <Suspense
                 fallback={
                   <div className="p-12 text-center text-on-surface-variant">

@@ -27,9 +27,9 @@ export default function CheckoutContainer() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start w-full max-w-full">
       {/* Left Column: Form & Interactive Plan Selector (7 cols) */}
-      <div className="lg:col-span-7">
+      <div className="lg:col-span-7 w-full max-w-full min-w-0">
         <CheckoutForm
           selectedPlan={selectedPlan}
           onPlanChange={handlePlanChange}
@@ -38,7 +38,7 @@ export default function CheckoutContainer() {
       </div>
 
       {/* Right Column: Order Summary (5 cols) */}
-      <div className="lg:col-span-5">
+      <div className="lg:col-span-5 w-full max-w-full min-w-0">
         <OrderSummary selectedPlan={selectedPlan} />
       </div>
     </div>

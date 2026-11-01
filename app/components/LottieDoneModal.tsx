@@ -44,7 +44,7 @@ export default function LottieDoneModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-[360px] sm:max-w-[420px] rounded-[2rem] bg-white text-neutral-900 p-7 text-center flex flex-col items-center justify-center border border-neutral-200/80 shadow-[0_20px_60px_rgba(0,0,0,0.18)] overflow-hidden animate-scale-in cursor-default"
+        className="relative w-full max-w-[340px] sm:max-w-[420px] rounded-2xl sm:rounded-[2rem] bg-white text-neutral-900 p-5 sm:p-7 text-center flex flex-col items-center justify-center border border-neutral-200/80 shadow-[0_20px_60px_rgba(0,0,0,0.18)] overflow-hidden animate-scale-in cursor-default"
       >
         {/* Soft Ambient Emerald Glow */}
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-emerald-100/70 rounded-full blur-2xl pointer-events-none" />
