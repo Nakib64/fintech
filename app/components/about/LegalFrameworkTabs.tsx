@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
 
 type TabId = "tos" | "privacy" | "refund";
@@ -88,7 +89,7 @@ export default function LegalFrameworkTabs() {
                   verified_user
                 </span>
                 <span className="text-[13px] font-bold text-on-surface">
-                  Delaware, USA Jurisdiction
+                  New Mexico, USA Jurisdiction
                 </span>
               </div>
             </div>
@@ -141,10 +142,20 @@ export default function LegalFrameworkTabs() {
                   <h4>4. Fair Resolution</h4>
                 </div>
                 <p className="text-[14px] text-on-surface-variant leading-relaxed">
-                  Engagements are backed by Delaware law, keeping contracts clear,
+                  Engagements are backed by New Mexico law, keeping contracts clear,
                   standardized, and easy to resolve.
                 </p>
               </div>
+            </div>
+
+            <div className="pt-4 border-t border-outline-variant/20 flex justify-end">
+              <Link
+                href="/terms"
+                className="inline-flex items-center gap-1.5 text-primary text-[14px] font-bold hover:underline"
+              >
+                <span>Read Full Terms of Service</span>
+                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </Link>
             </div>
           </div>
         )}
@@ -224,6 +235,16 @@ export default function LegalFrameworkTabs() {
                   request copies or ask us to delete them anytime.
                 </p>
               </div>
+            </div>
+
+            <div className="pt-4 border-t border-outline-variant/20 flex justify-end">
+              <Link
+                href="/privacy"
+                className="inline-flex items-center gap-1.5 text-primary text-[14px] font-bold hover:underline"
+              >
+                <span>Read Full Privacy Policy</span>
+                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </Link>
             </div>
           </div>
         )}
@@ -305,6 +326,16 @@ export default function LegalFrameworkTabs() {
                   bank within 5 to 7 business days.
                 </p>
               </div>
+            </div>
+
+            <div className="pt-4 border-t border-outline-variant/20 flex justify-end">
+              <Link
+                href="/refund-policy"
+                className="inline-flex items-center gap-1.5 text-primary text-[14px] font-bold hover:underline"
+              >
+                <span>Read Full Refund &amp; Cancellation Policy</span>
+                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </Link>
             </div>
           </div>
         )}

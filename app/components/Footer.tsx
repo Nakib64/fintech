@@ -28,40 +28,64 @@ export default function Footer() {
                 />
               </Link>
               <p className="text-[13px] leading-[22px] text-white/70">
-                Creative media production and brand growth agency registered in
-                the United States.
+                Creative media production, video editing, and digital brand growth agency registered in the United States.
               </p>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="material-symbols-outlined text-[#c084fc] text-[18px]">
-                  mail
-                </span>
-                <a
-                  href="mailto:support@ashivox.com"
-                  className="text-[13px] text-white/90 hover:text-white underline-offset-2 hover:underline transition-colors font-medium"
-                >
-                  support@ashivox.com
-                </a>
+              
+              <div className="flex flex-col gap-1.5 mt-1 text-[13px]">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#c084fc] text-[18px]">
+                    mail
+                  </span>
+                  <a
+                    href="mailto:support@ashivox.com"
+                    className="text-white/90 hover:text-white underline-offset-2 hover:underline transition-colors font-medium"
+                  >
+                    support@ashivox.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#c084fc] text-[18px]">
+                    call
+                  </span>
+                  <a
+                    href="tel:+15055289302"
+                    className="text-white/90 hover:text-white underline-offset-2 hover:underline transition-colors font-medium"
+                  >
+                    +1 (505) 528-9302
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-space-xs mt-1">
+
+              <div className="flex items-center gap-space-xs mt-2">
                 <span className="material-symbols-outlined text-[#c084fc] text-[18px]">
                   verified_user
                 </span>
                 <span className="text-[12px] font-semibold text-white/85">
-                  256-bit SSL • PCI Compliant
+                  256-bit SSL • PCI-DSS Compliant
                 </span>
               </div>
             </div>
 
-            {/* US Office */}
+            {/* US Registered Office */}
             <div className="flex flex-col gap-space-xs">
               <span className="text-[13px] font-bold text-white uppercase tracking-wider">
-                Registered Business Address
+                Registered Business Office
               </span>
               <p className="text-[13px] leading-[22px] text-white/70">
+                ASHIVOX LLC
+                <br />
                 1209 Mountain Road PL NE, Ste R
                 <br />
                 Albuquerque, NM 87110, USA
               </p>
+              <div className="mt-2">
+                <span className="text-[11px] uppercase font-bold text-white/50 tracking-wider block">
+                  Business Registration #
+                </span>
+                <p className="text-[13px] text-white/90 font-mono font-bold tracking-wide">
+                  0008132694
+                </p>
+              </div>
               <div className="mt-2">
                 <span className="text-[11px] uppercase font-bold text-white/50 tracking-wider block">
                   Registered Agent
@@ -70,33 +94,73 @@ export default function Footer() {
                   Registered Agents Inc.
                 </p>
               </div>
+              <div className="mt-2">
+                <span className="text-[11px] uppercase font-bold text-white/50 tracking-wider block">
+                  Jurisdiction
+                </span>
+                <p className="text-[13px] text-white/80 font-medium">
+                  State of New Mexico, USA
+                </p>
+              </div>
             </div>
 
             {/* Payment & Security */}
             <div className="flex flex-col gap-space-xs">
               <span className="text-[13px] font-bold text-white uppercase tracking-wider">
-                Support &amp; Payments
+                Billing &amp; Payment Rails
               </span>
               <p className="text-[13px] leading-[22px] text-white/70">
-                Cards and bank transfers processed securely via Stripe with
-                institutional encryption and zero hidden fees.
+                Cards and bank transfers processed securely via Stripe and Wise with 256-bit institutional encryption and transparent USD billing.
               </p>
-              <div className="flex items-center gap-space-xs mt-space-xs text-white/80">
-                <span className="material-symbols-outlined text-[16px] text-[#c084fc]">
-                  lock
+              <div className="flex flex-wrap items-center gap-2 mt-2">
+                <span className="px-2.5 py-1 rounded bg-white/10 text-white text-[11px] font-semibold">
+                  Visa
                 </span>
-                <span className="text-[12px] font-semibold">
-                  Stripe Encrypted
+                <span className="px-2.5 py-1 rounded bg-white/10 text-white text-[11px] font-semibold">
+                  Mastercard
+                </span>
+                <span className="px-2.5 py-1 rounded bg-white/10 text-white text-[11px] font-semibold">
+                  AMEX
+                </span>
+                <span className="px-2.5 py-1 rounded bg-white/10 text-white text-[11px] font-semibold">
+                  ACH Wire
+                </span>
+                <span className="px-2.5 py-1 rounded bg-white/10 text-white text-[11px] font-semibold">
+                  Stripe
                 </span>
               </div>
             </div>
 
-            {/* Navigation & Legal Links */}
+            {/* Quick Links & Essential Legal Policies */}
             <div className="flex flex-col gap-space-xs">
               <span className="text-[13px] font-bold text-white uppercase tracking-wider">
-                Quick Links
+                Legal &amp; Policies
               </span>
-              <div className="flex flex-col gap-2 text-[13px]">
+              <div className="grid grid-cols-1 gap-2 text-[13px]">
+                <Link
+                  href="/terms"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </Link>
+                <Link
+                  href="/privacy"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/refund-policy"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  Refund &amp; Cancellation
+                </Link>
+                <Link
+                  href="/fulfillment-policy"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
+                  Delivery &amp; Fulfillment
+                </Link>
                 <Link
                   href="/services"
                   className="text-white/70 hover:text-white transition-colors"
@@ -109,18 +173,6 @@ export default function Footer() {
                 >
                   Contact &amp; Discovery
                 </Link>
-                <Link
-                  href="/about"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  About &amp; Governance
-                </Link>
-                <Link
-                  href="/checkout"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  Checkout
-                </Link>
               </div>
             </div>
           </div>
@@ -129,21 +181,29 @@ export default function Footer() {
         {/* Bottom Bar */}
         <RevealOnScroll variant="fade" delay={200}>
           <div className="pt-space-md border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-white/60 text-[13px]">
-            <p>© 2025 ASHIVOX LLC. All rights reserved.</p>
-            <div className="flex items-center gap-3 text-[12px]">
+            <p>© 2026 ASHIVOX LLC. All rights reserved.</p>
+            <div className="flex flex-wrap items-center gap-3 text-[12px]">
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[14px] text-[#c084fc]">
                   shield
                 </span>
-                Registered US Entity
+                Registered US Entity (NM #0008132694)
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[14px] text-[#c084fc]">
-                  credit_card
+                  lock
                 </span>
-                Stripe Verified
+                PCI-DSS Compliant
               </span>
+              <span>•</span>
+              <Link href="/terms" className="hover:text-white transition-colors">
+                Terms
+              </Link>
+              <span>•</span>
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                Privacy
+              </Link>
             </div>
           </div>
         </RevealOnScroll>

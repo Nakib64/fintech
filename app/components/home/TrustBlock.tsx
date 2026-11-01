@@ -1,3 +1,4 @@
+import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
 
 const pillars = [
@@ -6,21 +7,21 @@ const pillars = [
     color: "bg-primary-fixed",
     iconColor: "text-primary",
     title: "US Registered",
-    desc: "Delaware File #7491028-DE.",
+    desc: "State of New Mexico, USA",
   },
   {
     icon: "receipt_long",
     color: "bg-secondary-fixed",
     iconColor: "text-secondary",
-    title: "Tax Compliant",
-    desc: "Federal EIN: 88-3928174.",
+    title: "Commercial Entity",
+    desc: "Registered Agents Inc.",
   },
   {
     icon: "security",
     color: "bg-tertiary-fixed",
     iconColor: "text-tertiary",
     title: "Safe Payments",
-    desc: "Secure Stripe checkout.",
+    desc: "Stripe & Wise rails",
   },
 ];
 
@@ -34,7 +35,7 @@ interface ContactDetail {
 const contactDetails: ContactDetail[] = [
   {
     icon: "location_on",
-    label: "Office Address:",
+    label: "Registered Office Address:",
     value: "1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA",
   },
   {
@@ -44,9 +45,20 @@ const contactDetails: ContactDetail[] = [
     href: "mailto:support@ashivox.com",
   },
   {
+    icon: "call",
+    label: "Business Telephone:",
+    value: "+1 (505) 528-9302",
+    href: "tel:+15055289302",
+  },
+  {
+    icon: "badge",
+    label: "Business Registration #:",
+    value: "0008132694 (State of New Mexico)",
+  },
+  {
     icon: "shield_with_heart",
-    label: "Currency:",
-    value: "USD ($) & major global cards accepted",
+    label: "Currency & Billing:",
+    value: "USD ($) & major credit cards / bank wire accepted",
   },
 ];
 
@@ -65,7 +77,7 @@ export default function TrustBlock() {
 
             <RevealOnScroll variant="up" delay={100}>
               <p className="text-[15px] leading-[24px] text-on-surface-variant max-w-xl">
-                Registered in Delaware, USA. We provide formal contracts, W-9
+                Registered in New Mexico, USA. We provide formal commercial contracts, W-9
                 tax forms, and secure Stripe billing for domestic and global
                 clients.
               </p>
@@ -88,7 +100,9 @@ export default function TrustBlock() {
                     <span className="text-[14px] leading-[18px] tracking-[0.01em] font-bold text-on-surface block">
                       {pillar.title}
                     </span>
-                 
+                    <span className="text-[12px] text-on-surface-variant mt-1 block">
+                      {pillar.desc}
+                    </span>
                   </div>
                 </RevealOnScroll>
               ))}
@@ -109,11 +123,14 @@ export default function TrustBlock() {
                     ASHIVOX LLC
                   </span>
                 </div>
+                <span className="text-[11px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2.5 py-1 rounded-full">
+                  Good Standing
+                </span>
               </div>
 
               <div className="space-y-4 text-[13px] leading-[20px]">
                 {contactDetails.map((detail) => (
-                  <div key={detail.icon} className="flex items-start gap-3">
+                  <div key={detail.label} className="flex items-start gap-3">
                     <span className="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">
                       {detail.icon}
                     </span>
@@ -138,12 +155,15 @@ export default function TrustBlock() {
                 ))}
               </div>
 
-              <button className="w-full py-3 rounded-full bg-surface-container text-on-surface text-[14px] leading-[18px] tracking-[0.01em] font-semibold hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+              <Link
+                href="/about"
+                className="w-full py-3 rounded-full bg-surface-container text-on-surface text-[14px] leading-[18px] tracking-[0.01em] font-semibold hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2"
+              >
                 <span className="material-symbols-outlined text-[18px]">
                   verified_user
                 </span>
-                <span>View Full US Incorporation Certificate</span>
-              </button>
+                <span>View Entity Governance Details</span>
+              </Link>
             </div>
           </RevealOnScroll>
         </div>

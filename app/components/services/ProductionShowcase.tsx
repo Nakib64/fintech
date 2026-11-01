@@ -64,7 +64,7 @@ export default function ProductionShowcase() {
                 </div>
                 <div className="p-5 rounded-[1.5rem] bg-surface-container-lowest shadow-sm border border-outline-variant/30">
                   <p className="text-[38px] font-extrabold text-primary leading-none">
-                    120M+
+                    4.8M+
                   </p>
                   <p className="text-[13px] text-on-surface-variant font-medium mt-1">
                     Views Generated

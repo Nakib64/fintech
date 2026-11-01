@@ -7,13 +7,21 @@ interface LottieDoneModalProps {
   onClose: () => void;
   title?: string;
   subtitle?: string;
+  orderId?: string;
+  email?: string;
+  message?: string;
+  buttonText?: string;
 }
 
 export default function LottieDoneModal({
   isOpen,
   onClose,
-  title = "Done!",
-  subtitle = "Payment Successful",
+  title = "Confirmation Sent!",
+  subtitle,
+  orderId,
+  email,
+  message,
+  buttonText = "Got it",
 }: LottieDoneModalProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -30,13 +38,13 @@ export default function LottieDoneModal({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-sm animate-fade-in cursor-pointer"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in cursor-pointer"
       role="dialog"
       aria-modal="true"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-[320px] sm:max-w-[340px] rounded-[2rem] bg-white text-neutral-900 p-7 text-center flex flex-col items-center justify-center border border-neutral-200/80 shadow-[0_20px_60px_rgba(0,0,0,0.16)] overflow-hidden animate-scale-in cursor-default"
+        className="relative w-full max-w-[360px] sm:max-w-[420px] rounded-[2rem] bg-white text-neutral-900 p-7 text-center flex flex-col items-center justify-center border border-neutral-200/80 shadow-[0_20px_60px_rgba(0,0,0,0.18)] overflow-hidden animate-scale-in cursor-default"
       >
         {/* Soft Ambient Emerald Glow */}
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-emerald-100/70 rounded-full blur-2xl pointer-events-none" />
@@ -52,7 +60,7 @@ export default function LottieDoneModal({
         </button>
 
         {/* ── Lottie Done Animated Checkmark SVG (Light Theme) ── */}
-        <div className="relative w-28 h-28 flex items-center justify-center my-2">
+        <div className="relative w-24 h-24 flex items-center justify-center my-1">
           {/* Radiating Sparkle Bursts */}
           <div className="absolute inset-0 rounded-full border border-emerald-300/60 animate-[lottie-burst_1s_ease-out_forwards] pointer-events-none" />
 
@@ -64,7 +72,7 @@ export default function LottieDoneModal({
 
           {/* Animated SVG */}
           <svg
-            className="w-24 h-24 relative z-10"
+            className="w-20 h-20 relative z-10"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -115,17 +123,44 @@ export default function LottieDoneModal({
         <h3 className="text-[22px] font-black text-neutral-900 mt-2 tracking-tight">
           {title}
         </h3>
-        <p className="text-[13px] text-neutral-500 mt-0.5 font-medium">
-          {subtitle}
-        </p>
+        {subtitle && (
+          <p className="text-[13px] text-neutral-600 mt-0.5 font-medium">
+            {subtitle}
+          </p>
+        )}
 
-        {/* Simple OK/Done Button */}
+        {orderId && (
+          <div className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200/80 text-[11px] font-bold text-neutral-700 tracking-wider">
+            <span>Reference:</span>
+            <span className="font-mono text-purple-700">{orderId}</span>
+          </div>
+        )}
+
+        {email && (
+          <div className="mt-3 text-[13px] text-neutral-700 bg-emerald-50 border border-emerald-100 rounded-xl p-3 w-full text-left">
+            <div className="flex items-center gap-1.5 font-semibold text-emerald-800 text-[12px]">
+              <span className="material-symbols-outlined text-[16px]">mark_email_read</span>
+              <span>Confirmation Dispatched</span>
+            </div>
+            <p className="text-[12px] text-emerald-950 mt-1">
+              We&apos;ve sent your order request details to <strong>{email}</strong>.
+            </p>
+          </div>
+        )}
+
+        {message && (
+          <p className="text-[13px] text-neutral-600 mt-3 leading-relaxed">
+            {message}
+          </p>
+        )}
+
+        {/* Action Button */}
         <button
           type="button"
           onClick={onClose}
-          className="mt-6 w-full py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-[14px] font-extrabold shadow-[0_4px_16px_rgba(5,150,105,0.3)] active:scale-95 transition-all cursor-pointer"
+          className="mt-6 w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-[14px] font-extrabold shadow-[0_4px_16px_rgba(5,150,105,0.3)] active:scale-95 transition-all cursor-pointer"
         >
-          OK
+          {buttonText}
         </button>
       </div>
 

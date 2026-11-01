@@ -1,26 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
 import { ALL_PLANS, Plan } from "../../lib/plans";
-import LottieDoneModal from "../LottieDoneModal";
 
 export default function FintechSection() {
   const [selectedPlan, setSelectedPlan] = useState<Plan>(ALL_PLANS[0]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Form Fields
-  const [email, setEmail] = useState("alex@company.com");
-  const [cardNumber, setCardNumber] = useState("4242 •••• •••• 4242");
-  const [expiry, setExpiry] = useState("12 / 28");
-  const [cvc, setCvc] = useState("382");
-
-  // Processing & Modal
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [orderId, setOrderId] = useState("");
+  const [activeTab, setActiveTab] = useState<"card" | "wire">("card");
 
   // Close dropdown on outside click or ESC
   useEffect(() => {
@@ -35,7 +24,6 @@ export default function FintechSection() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setDropdownOpen(false);
-        setShowModal(false);
       }
     };
 
@@ -46,18 +34,6 @@ export default function FintechSection() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-
-  const handleSandboxSubmit = (e?: FormEvent) => {
-    if (e) e.preventDefault();
-    setIsProcessing(true);
-    const randomNum = Math.floor(10000 + Math.random() * 90000);
-    setOrderId(`VDM-${randomNum}`);
-
-    setTimeout(() => {
-      setIsProcessing(false);
-      setShowModal(true);
-    }, 900);
-  };
 
   return (
     <section className="w-full bg-[#1b0b38] text-on-primary py-space-xl relative overflow-hidden">
@@ -70,24 +46,24 @@ export default function FintechSection() {
           <div className="flex flex-col gap-2">
             <RevealOnScroll variant="up">
               <span className="font-bold text-[12px] tracking-wider uppercase text-primary-fixed block">
-                Secure Payments
+                Secure Settlement
               </span>
             </RevealOnScroll>
             <RevealOnScroll variant="up" delay={80}>
               <h2 className="text-[32px] sm:text-[40px] leading-[1.2] font-bold text-on-primary tracking-tight">
-                Fast &amp; Secure Payment Rails
+                Enterprise Payment &amp; Invoicing Rails
               </h2>
             </RevealOnScroll>
             <RevealOnScroll variant="up" delay={160}>
               <p className="text-[15px] leading-[24px] text-secondary-fixed max-w-xl">
                 Pay with credit cards, ACH bank transfer, Apple Pay, or Google
-                Pay. All payments are encrypted and secured by Stripe.
+                Pay. All payments are encrypted, tokenized, and secured by Stripe and Wise.
               </p>
             </RevealOnScroll>
           </div>
         </div>
 
-        {/* Payment Gateways & Sandbox Display */}
+        {/* Payment Gateways & Compliant Checkout Rails */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Gateway Status Cards */}
           <div className="lg:col-span-6 flex flex-col gap-5">
@@ -101,16 +77,15 @@ export default function FintechSection() {
                   </div>
                   <div>
                     <h4 className="text-[17px] font-bold text-on-primary">
-                      Stripe Checkout
+                      Stripe 256-Bit Hosted Rails
                     </h4>
                     <span className="text-[12px] font-medium text-primary-fixed">
-                      Instant &amp; 3D Secure
+                      Instant 3D Secure Verification
                     </span>
                   </div>
                 </div>
                 <p className="text-[13px] leading-[20px] text-secondary-fixed mt-1">
-                  End-to-end 256-bit encryption. Accepts Visa, Mastercard, AMEX,
-                  Apple Pay, and Google Pay.
+                  Card details are processed with end-to-end tokenization directly on Stripe PCI-DSS Level 1 infrastructure. Accepts Visa, Mastercard, AMEX, Apple Pay, and Google Pay.
                 </p>
               </div>
             </RevealOnScroll>
@@ -125,16 +100,15 @@ export default function FintechSection() {
                   </div>
                   <div>
                     <h4 className="text-[17px] font-bold text-on-primary">
-                      Bank Wire &amp; ACH
+                      Corporate ACH &amp; Wire Invoicing
                     </h4>
                     <span className="text-[12px] font-medium text-secondary-fixed">
-                      Direct Invoicing
+                      Direct US Banking Settlement
                     </span>
                   </div>
                 </div>
                 <p className="text-[13px] leading-[20px] text-secondary-fixed opacity-80 mt-1">
-                  US ACH bank transfers and international SWIFT wire options for
-                  teams and monthly retainers.
+                  Compliant US ACH bank transfers and international SWIFT wire options for enterprise accounting teams and monthly creative retainers.
                 </p>
               </div>
             </RevealOnScroll>
@@ -147,7 +121,7 @@ export default function FintechSection() {
                     verified_user
                   </span>
                   <span className="text-[13px] text-on-primary font-medium">
-                    PCI-DSS Level 1 Safe
+                    PCI-DSS Level 1 Certified
                   </span>
                 </div>
                 <div className="flex items-center gap-3 bg-white/5 p-3.5 rounded-xl border border-white/10">
@@ -155,14 +129,14 @@ export default function FintechSection() {
                     published_with_changes
                   </span>
                   <span className="text-[13px] text-on-primary font-medium">
-                    14-Day Money Back
+                    14-Day Evaluation Window
                   </span>
                 </div>
               </div>
             </RevealOnScroll>
           </div>
 
-          {/* Interactive Fully Workable Checkout Form (Matching /checkout) */}
+          {/* Transparent Checkout Selector & Summary (Linking to compliant /checkout) */}
           <div className="lg:col-span-6">
             <RevealOnScroll variant="right" delay={150}>
               <div className="bg-surface-container-lowest text-on-surface p-6 sm:p-8 rounded-[2rem] shadow-[0_24px_60px_-8px_rgba(105,41,196,0.3)] relative">
@@ -173,51 +147,30 @@ export default function FintechSection() {
                       lock
                     </span>
                     <span className="text-[14px] font-bold">
-                      Stripe Test Checkout
+                      Verified Settlement Preview
                     </span>
                   </div>
                   <span className="text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed">
-                    Interactive Demo
+                    USD Billing
                   </span>
                 </div>
 
-                {/* Express Pay Options */}
-                <div className="grid grid-cols-2 gap-3 mb-5">
-                  <button
-                    type="button"
-                    onClick={() => handleSandboxSubmit()}
-                    className="h-11 rounded-full bg-black text-white text-[13px] font-semibold hover:bg-neutral-800 transition-transform active:scale-95 flex items-center justify-center cursor-pointer shadow-sm"
-                  >
-                    <span>Apple Pay</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleSandboxSubmit()}
-                    className="h-11 rounded-full bg-black text-white text-[13px] font-semibold hover:bg-neutral-800 transition-transform active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
-                  >
-                    <span>Google Pay</span>
-                    <span className="material-symbols-outlined text-[16px] text-[#c084fc]">
-                      account_balance_wallet
-                    </span>
-                  </button>
-                </div>
-
-                <form onSubmit={handleSandboxSubmit} className="space-y-4">
-                  {/* Selected Plan Dropdown */}
+                {/* Plan Dropdown */}
+                <div className="space-y-4">
                   <div className="relative" ref={dropdownRef}>
                     <div className="flex items-center justify-between mb-1">
                       <label className="block text-[11px] uppercase text-on-surface-variant font-extrabold tracking-wider">
-                        Selected Plan
+                        Select Package
                       </label>
-                      <span className="text-[10px] text-primary font-bold">
-                        Click to Switch
+                      <span className="text-[11px] text-primary font-semibold">
+                        Instant Selection
                       </span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => setDropdownOpen(!dropdownOpen)}
-                      className="w-full h-13 px-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 text-[14px] text-on-surface flex items-center justify-between transition-all cursor-pointer text-left"
+                      className="w-full h-14 px-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 text-[14px] text-on-surface flex items-center justify-between transition-all cursor-pointer text-left"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         <span className="material-symbols-outlined text-primary text-[20px]">
@@ -230,15 +183,16 @@ export default function FintechSection() {
                         </div>
                       </div>
                       <div className="flex items-center gap-2 shrink-0 ml-2">
-                        <span className="font-black text-primary text-[15px]">
+                        <span className="font-black text-primary text-[16px]">
                           {selectedPlan.price}
                         </span>
                         <span className="text-[11px] text-outline font-medium">
-                          {selectedPlan.cycle}
+                          {selectedPlan.cycle} USD
                         </span>
                         <span
-                          className={`material-symbols-outlined text-[18px] text-outline transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""
-                            }`}
+                          className={`material-symbols-outlined text-[18px] text-outline transition-transform duration-200 ${
+                            dropdownOpen ? "rotate-180" : ""
+                          }`}
                         >
                           expand_more
                         </span>
@@ -258,10 +212,11 @@ export default function FintechSection() {
                                 setSelectedPlan(plan);
                                 setDropdownOpen(false);
                               }}
-                              className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all cursor-pointer text-left ${isSelected
+                              className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all cursor-pointer text-left ${
+                                isSelected
                                   ? "bg-primary/10 border border-primary/30"
                                   : "hover:bg-surface-container-low"
-                                }`}
+                              }`}
                             >
                               <div className="flex items-center gap-2.5 min-w-0">
                                 <span className="material-symbols-outlined text-primary text-[18px]">
@@ -281,7 +236,7 @@ export default function FintechSection() {
                                   {plan.price}
                                 </span>
                                 <span className="text-[10px] text-outline ml-0.5">
-                                  {plan.cycle}
+                                  {plan.cycle} USD
                                 </span>
                               </div>
                             </button>
@@ -291,105 +246,82 @@ export default function FintechSection() {
                     )}
                   </div>
 
-                  {/* Email Field */}
-                  <div>
-                    <label className="block text-[11px] uppercase text-on-surface-variant font-extrabold tracking-wider mb-1">
-                      Email Address
+                  {/* Payment Rails Selector */}
+                  <div className="space-y-2">
+                    <label className="block text-[11px] uppercase text-on-surface-variant font-extrabold tracking-wider">
+                      Settlement Method
                     </label>
-                    <input
-                      className="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px] text-on-surface focus:ring-2 focus:ring-primary focus:outline-none transition-all placeholder:text-on-surface-variant/50"
-                      placeholder="you@company.com"
-                      required
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab("card")}
+                        className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                          activeTab === "card"
+                            ? "border-primary bg-primary/10 font-bold text-primary"
+                            : "border-outline-variant/30 bg-surface-container-low text-on-surface"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="material-symbols-outlined text-[18px]">credit_card</span>
+                          <span className="text-[13px]">Card &amp; Digital</span>
+                        </div>
+                        <span className="text-[10px] block text-outline font-normal mt-0.5">Stripe Hosted Rails</span>
+                      </button>
 
-                  {/* Card Number */}
-                  <div>
-                    <label className="block text-[11px] uppercase text-on-surface-variant font-extrabold tracking-wider mb-1">
-                      Demo Card Number
-                    </label>
-                    <div className="relative flex items-center">
-                      <span className="absolute left-3.5 material-symbols-outlined text-outline text-[18px]">
-                        credit_card
-                      </span>
-                      <input
-                        className="w-full h-12 pl-10 pr-24 rounded-xl bg-surface-container-low border border-outline-variant/30 font-mono text-[14px] text-on-surface focus:ring-2 focus:ring-primary focus:outline-none"
-                        value={cardNumber}
-                        onChange={(e) => setCardNumber(e.target.value)}
-                      />
-                      <span className="absolute right-3 px-2 py-0.5 rounded-md bg-primary-fixed text-[10px] font-bold text-on-primary-fixed uppercase tracking-wider">
-                        Test Mode
-                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab("wire")}
+                        className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                          activeTab === "wire"
+                            ? "border-primary bg-primary/10 font-bold text-primary"
+                            : "border-outline-variant/30 bg-surface-container-low text-on-surface"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="material-symbols-outlined text-[18px]">receipt_long</span>
+                          <span className="text-[13px]">ACH &amp; Wire</span>
+                        </div>
+                        <span className="text-[10px] block text-outline font-normal mt-0.5">Corporate Invoicing</span>
+                      </button>
                     </div>
                   </div>
 
-                  {/* Expiry and CVC */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[11px] uppercase text-on-surface-variant font-extrabold tracking-wider mb-1">
-                        Expiry
-                      </label>
-                      <input
-                        className="w-full h-11 px-3 rounded-xl bg-surface-container-low border border-outline-variant/30 font-mono text-[13px] text-on-surface focus:ring-2 focus:ring-primary focus:outline-none"
-                        value={expiry}
-                        onChange={(e) => setExpiry(e.target.value)}
-                      />
+                  {/* Summary Box */}
+                  <div className="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 space-y-2 text-[13px]">
+                    <div className="flex justify-between text-on-surface-variant">
+                      <span>Plan Selection:</span>
+                      <span className="font-bold text-on-surface">{selectedPlan.name}</span>
                     </div>
-                    <div>
-                      <label className="block text-[11px] uppercase text-on-surface-variant font-extrabold tracking-wider mb-1">
-                        CVC
-                      </label>
-                      <input
-                        className="w-full h-11 px-3 rounded-xl bg-surface-container-low border border-outline-variant/30 font-mono text-[13px] text-on-surface focus:ring-2 focus:ring-primary focus:outline-none"
-                        value={cvc}
-                        onChange={(e) => setCvc(e.target.value)}
-                      />
+                    <div className="flex justify-between text-on-surface-variant">
+                      <span>Billing Cycle:</span>
+                      <span className="font-medium text-on-surface">{selectedPlan.cycle === "/mo" ? "Monthly Subscription" : "Milestone Sprint"}</span>
+                    </div>
+                    <div className="flex justify-between text-on-surface-variant pt-2 border-t border-outline-variant/20">
+                      <span className="font-bold text-on-surface">Total Amount:</span>
+                      <span className="font-black text-primary text-[16px]">{selectedPlan.price} USD</span>
                     </div>
                   </div>
 
-                  {/* Purchase CTA Button */}
-                  <button
-                    className="w-full py-4 rounded-full bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] text-white text-[15px] font-extrabold transition-all flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(112,21,226,0.35)] hover:shadow-[0_10px_30px_rgba(112,21,226,0.5)] mt-4 disabled:opacity-70 cursor-pointer active:scale-95"
-                    disabled={isProcessing}
-                    type="submit"
+                  {/* Proceed to Full Checkout Button */}
+                  <Link
+                    href={`/checkout?plan=${encodeURIComponent(selectedPlan.name)}&price=${encodeURIComponent(selectedPlan.price)}`}
+                    className="w-full h-14 rounded-full text-white text-[15px] font-bold flex items-center justify-center gap-2 bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] shadow-[0_12px_28px_rgba(112,21,226,0.38)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                   >
-                    {isProcessing ? (
-                      <>
-                        <span className="material-symbols-outlined animate-spin text-[18px]">
-                          progress_activity
-                        </span>
-                        <span>Securing Settlement...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Purchase ({selectedPlan.price})</span>
-                        <span className="material-symbols-outlined text-[19px]">
-                          arrow_forward
-                        </span>
-                      </>
-                    )}
-                  </button>
+                    <span>Proceed to Secure Checkout ({selectedPlan.price} USD)</span>
+                    <span className="material-symbols-outlined text-[20px]">
+                      arrow_forward
+                    </span>
+                  </Link>
 
-                  <p className="text-center text-[11px] text-on-surface-variant mt-2">
-                    Instant Delaware LLC SLA activation • 14-day guarantee
+                  <p className="text-center text-[12px] text-outline">
+                    Complies with PCI-DSS Level 1 &bull; 14-Day Evaluation Guarantee
                   </p>
-                </form>
+                </div>
               </div>
             </RevealOnScroll>
           </div>
         </div>
       </div>
-
-      {/* ── SIMPLE LOTTIE DONE MODAL ── */}
-      <LottieDoneModal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        title="Done!"
-        subtitle="Purchase Successful"
-      />
     </section>
   );
 }

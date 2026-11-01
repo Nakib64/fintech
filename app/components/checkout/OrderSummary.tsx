@@ -10,6 +10,8 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
+  const isMonthly = selectedPlan.cycle === "/mo";
+
   return (
     <div className="flex flex-col gap-6">
       {/* Order Summary Card */}
@@ -23,7 +25,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
               </span>
             </div>
             <span className="px-3 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant text-[11px] font-bold">
-              {selectedPlan.cycle === "/mo" ? "Monthly Billing" : "Milestone Sprint"}
+              {isMonthly ? "Monthly Subscription" : "Milestone Project"}
             </span>
           </div>
 
@@ -46,16 +48,16 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
                 </p>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-[30px] font-black text-on-surface tracking-tight">
+                <span className="text-[28px] font-black text-on-surface tracking-tight">
                   {selectedPlan.price}
                 </span>
-                <span className="block text-[13px] text-outline font-semibold">
-                  {selectedPlan.cycle}
+                <span className="block text-[12px] text-outline font-semibold">
+                  {selectedPlan.cycle} (USD)
                 </span>
               </div>
             </div>
 
-            {/* Dynamic Plan Feature Badges */}
+            {/* Plan Feature Badges */}
             <div className="flex flex-wrap gap-2 pt-2">
               {selectedPlan.features.slice(0, 3).map((feat, i) => (
                 <span
@@ -71,19 +73,32 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
             </div>
           </div>
 
-          {/* Mathematical Breakdown */}
+          {/* Fulfillment Time Estimate */}
+          <div className="rounded-xl bg-surface-container-low p-3.5 flex items-center justify-between text-[13px] border border-outline-variant/20">
+            <div className="flex items-center gap-2 text-on-surface font-semibold">
+              <span className="material-symbols-outlined text-primary text-[18px]">
+                schedule
+              </span>
+              <span>Expected Delivery Timeline</span>
+            </div>
+            <span className="text-primary font-bold">
+              {isMonthly ? "Weekly Sprints" : "2 – 5 Business Days"}
+            </span>
+          </div>
+
+          {/* Transparent Mathematical Breakdown */}
           <div className="bg-surface-container-low rounded-2xl p-4 space-y-2.5 border border-outline-variant/20 text-[14px]">
             <div className="flex justify-between text-on-surface-variant">
-              <span>Selected Plan Subtotal</span>
-              <span className="font-semibold text-on-surface">{selectedPlan.price}</span>
+              <span>Selected Package Subtotal</span>
+              <span className="font-semibold text-on-surface">{selectedPlan.price} USD</span>
             </div>
             <div className="flex justify-between text-on-surface-variant">
-              <span>Institutional Stripe Processing</span>
+              <span>Payment Processing Fee</span>
               <span className="text-emerald-600 font-semibold">$0.00 (Waived)</span>
             </div>
             <div className="flex justify-between text-on-surface-variant">
               <span>Applicable Sales Tax</span>
-              <span>$0.00</span>
+              <span>$0.00 USD</span>
             </div>
             <div className="pt-3 border-t border-outline-variant/30 flex justify-between items-baseline text-[18px] font-bold text-on-surface">
               <span>Total Due Today</span>
@@ -91,7 +106,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
                 <span className="text-[26px] font-black text-primary">
                   {selectedPlan.price}
                 </span>
-                <span className="text-[12px] text-on-surface-variant font-medium ml-1">
+                <span className="text-[13px] text-on-surface-variant font-medium ml-1">
                   USD
                 </span>
               </div>
@@ -104,17 +119,17 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
               verified_user
             </span>
             <p className="text-[12.5px] text-on-primary-fixed-variant leading-relaxed">
-              Backed by our 14-day money-back guarantee. You own 100% of all video rights, raw assets, and deliverables upon purchase.
+              Backed by our 14-day evaluation guarantee. 100% intellectual property ownership of all final masters and source files upon payment.
             </p>
           </div>
         </div>
       </RevealOnScroll>
 
-      {/* Security Architecture Blueprint */}
+      {/* Security & Compliance Architecture */}
       <RevealOnScroll variant="right" delay={150}>
         <div className="bg-surface-container-low rounded-[2rem] p-6 shadow-sm border border-outline-variant/30 space-y-4">
           <span className="text-[12px] uppercase tracking-wider font-bold text-on-surface block">
-            Institutional Guarantee
+            Payment Security &amp; Compliance
           </span>
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
@@ -136,30 +151,44 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
                 <span className="text-[12px] font-bold">PCI Compliant</span>
               </div>
               <p className="text-[12px] text-outline">
-                Card details never stored
+                Tokenized processing
               </p>
             </div>
           </div>
 
-          {/* Compliance Documentation Links */}
-          <div className="pt-1 flex flex-wrap items-center justify-between gap-3 text-on-surface-variant text-[13px]">
+          {/* Direct Compliance Links to Dedicated Pages */}
+          <div className="pt-2 border-t border-outline-variant/20 flex flex-wrap items-center justify-between gap-2 text-on-surface-variant text-[12.5px]">
             <Link
-              className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
-              href="/about"
+              className="text-primary hover:underline font-semibold"
+              href="/terms"
+              target="_blank"
             >
-              <span>Service Terms</span>
-              <span>↗</span>
+              Terms of Service ↗
             </Link>
             <span className="text-outline">•</span>
             <Link
-              className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
-              href="/about"
+              className="text-primary hover:underline font-semibold"
+              href="/privacy"
+              target="_blank"
             >
-              <span>Refund Policy</span>
-              <span>↗</span>
+              Privacy Policy ↗
             </Link>
             <span className="text-outline">•</span>
-            <span className="text-outline">ASHIVOX LLC SLA</span>
+            <Link
+              className="text-primary hover:underline font-semibold"
+              href="/refund-policy"
+              target="_blank"
+            >
+              Refund Policy ↗
+            </Link>
+            <span className="text-outline">•</span>
+            <Link
+              className="text-primary hover:underline font-semibold"
+              href="/fulfillment-policy"
+              target="_blank"
+            >
+              Fulfillment ↗
+            </Link>
           </div>
         </div>
       </RevealOnScroll>
@@ -167,24 +196,20 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
       {/* Support Guarantee Card */}
       <RevealOnScroll variant="right" delay={250}>
         <div className="bg-surface-container-lowest rounded-[2rem] p-5 shadow-sm border border-outline-variant/30 flex items-center gap-4">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-primary/20">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXDYjsxrCuKB5-hb65QZkNuwJApC1S9LNB6iVaA9N1flC2d6hd9scXbjS1ae9opUQXC5mxi6ZBpfW0Tibvdx5pKRaDYweHjQ9Pp3IC8cWrJndC6EaCY1qooTu6M38f_FEr8z_CEoHqJduxxQGnM5CbXSGTCX9kN87-OvgII_ZwqyooPQEPZgmabK62Ii_DbbO5_LsERcp3bj2IRNqw9mIAHaQdciFitCcZu8n61c3a"
-              alt="Executive Client Success Manager"
-              fill
-              sizes="48px"
-              className="object-cover"
-            />
+          <div className="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span className="material-symbols-outlined text-[22px]">
+              support_agent
+            </span>
           </div>
-          <div className="space-y-0.5">
+          <div className="space-y-0.5 text-[13px]">
             <div className="flex items-center gap-2">
-              <span className="text-[14px] font-bold text-on-surface">
-                Dedicated Producer
+              <span className="font-bold text-on-surface">
+                Dedicated Creative Producer
               </span>
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             </div>
-            <p className="text-[12px] text-outline">
-              Assigned immediately to guide your creative onboarding.
+            <p className="text-outline text-[12px]">
+              Assigned within 24 business hours to guide your project kickoff.
             </p>
           </div>
         </div>

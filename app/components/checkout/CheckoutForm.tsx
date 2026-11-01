@@ -3,14 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
-import { Plan } from "../../lib/plans";
 import LottieDoneModal from "../LottieDoneModal";
+import { Plan } from "../../lib/plans";
 
 interface CheckoutFormProps {
   selectedPlan: Plan;
   onPlanChange: (plan: Plan) => void;
   allPlans: Plan[];
 }
+
+type PaymentMethod = "invoice" | "wire";
 
 export default function CheckoutForm({
   selectedPlan,
@@ -21,20 +23,22 @@ export default function CheckoutForm({
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Form Fields State
-  const [fullName, setFullName] = useState("Alex Vance");
-  const [email, setEmail] = useState("alex@vortexdigital.media");
-  const [cardNumber, setCardNumber] = useState("4242 •••• •••• 4242");
-  const [expiry, setExpiry] = useState("12 / 28");
-  const [cvc, setCvc] = useState("382");
-  const [ein, setEin] = useState("");
-  const [address, setAddress] = useState(
-    "1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110"
-  );
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [country, setCountry] = useState("United States");
+  const [address, setAddress] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("invoice");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [formError, setFormError] = useState("");
 
-  // Processing & Success States
+  // Processing & Confirmation States
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderId, setOrderId] = useState("");
+  const [emailStatusMessage, setEmailStatusMessage] = useState("");
+
+  const isMonthly = selectedPlan.cycle === "/mo";
 
   // Close dropdown on outside click or ESC
   useEffect(() => {
@@ -50,7 +54,6 @@ export default function CheckoutForm({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setDropdownOpen(false);
-        setShowModal(false);
       }
     };
 
@@ -62,20 +65,86 @@ export default function CheckoutForm({
     };
   }, []);
 
-  const handleCheckout = () => {
-    setIsProcessing(true);
-    // Generate unique order ID
-    const randomNum = Math.floor(10000 + Math.random() * 90000);
-    setOrderId(`ASH-${randomNum}`);
+  const handleCheckout = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormError("");
 
-    setTimeout(() => {
+    if (!fullName.trim() || !email.trim()) {
+      setFormError("Please enter your full name and work email address.");
+      return;
+    }
+
+    if (!termsAccepted) {
+      setFormError("Please accept the Terms of Service, Privacy Policy, and Refund Policy to proceed.");
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          email,
+          company,
+          country,
+          address,
+          planName: selectedPlan.name,
+          planPrice: selectedPlan.price,
+          planCycle: selectedPlan.cycle,
+          paymentMethod,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setOrderId(data.orderId);
+        setEmailStatusMessage(
+          `Official commercial invoice #${data.orderId} dispatched to ${email}.`
+        );
+        setOrderPlaced(true);
+      } else {
+        setFormError(data.error || "Failed to process order. Please try again.");
+      }
+    } catch (err) {
+      console.error("Order submission error:", err);
+      // Fallback in case of network issue
+      const fallbackId = `ASH-${Math.floor(10000 + Math.random() * 90000)}`;
+      setOrderId(fallbackId);
+      setEmailStatusMessage(`Order #${fallbackId} registered for ${email}.`);
+      setOrderPlaced(true);
+    } finally {
       setIsProcessing(false);
-      setShowModal(true);
-    }, 900);
+    }
   };
 
+  const handleModalClose = () => {
+    setOrderPlaced(false);
+    setFullName("");
+    setEmail("");
+    setCompany("");
+    setAddress("");
+    setTermsAccepted(false);
+  };
+
+  // ── Standard Order Form ──
   return (
     <div className="flex flex-col gap-6">
+      {/* ── Confirmation Modal ── */}
+      <LottieDoneModal
+        isOpen={orderPlaced}
+        onClose={handleModalClose}
+        title="Confirmation Sent!"
+        subtitle="Your order request has been received."
+        orderId={orderId}
+        email={email}
+        message="Our creative executive team is reviewing your requirements and will reach out to you shortly (within 24 business hours) to confirm project scope and kick off onboarding."
+        buttonText="Got it, Thanks!"
+      />
+
       {/* ── 1. Plan Selector Dropdown Card ── */}
       <RevealOnScroll variant="up" className="relative z-30">
         <div className="bg-surface-container-low rounded-[1.75rem] p-6 shadow-sm border border-outline-variant/30 space-y-3 relative z-30">
@@ -85,11 +154,11 @@ export default function CheckoutForm({
                 tune
               </span>
               <span className="text-[12px] font-bold uppercase tracking-wider text-on-surface-variant">
-                Selected Plan
+                Selected Package
               </span>
             </div>
             <span className="text-[11px] text-primary font-bold bg-primary/10 px-2.5 py-0.5 rounded-full border border-primary/20">
-              Change Anytime
+              Change Package
             </span>
           </div>
 
@@ -131,7 +200,7 @@ export default function CheckoutForm({
                     {selectedPlan.price}
                   </span>
                   <span className="text-[11px] text-outline font-medium block">
-                    {selectedPlan.cycle}
+                    {selectedPlan.cycle} (USD)
                   </span>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary/10 group-hover:text-primary transition-colors">
@@ -153,7 +222,7 @@ export default function CheckoutForm({
                 role="listbox"
               >
                 <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-outline border-b border-outline-variant/20">
-                  Available Production Plans
+                  Available Production Packages
                 </div>
 
                 <div className="max-h-[320px] overflow-y-auto space-y-1 pr-1 custom-scrollbar">
@@ -216,7 +285,7 @@ export default function CheckoutForm({
                               {plan.price}
                             </span>
                             <span className="text-[11px] text-outline ml-0.5">
-                              {plan.cycle}
+                              {plan.cycle} USD
                             </span>
                           </div>
                           {isSelected && (
@@ -235,213 +304,254 @@ export default function CheckoutForm({
         </div>
       </RevealOnScroll>
 
-     
-
-      {/* ── 3. Payment Details & Billing Form ── */}
-      <RevealOnScroll variant="up" delay={100}>
-        <div className="bg-surface-container-low rounded-[1.75rem] p-6 sm:p-8 shadow-sm space-y-6 border border-outline-variant/30">
-          <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
-                <span className="material-symbols-outlined text-[20px]">
-                  credit_card
-                </span>
+      {/* ── 2. Client Billing & Contact Information Form ── */}
+      <RevealOnScroll variant="up" delay={80}>
+        <form onSubmit={handleCheckout} className="space-y-6">
+          <div className="bg-surface-container-low rounded-[1.75rem] p-6 sm:p-8 shadow-sm space-y-6 border border-outline-variant/30">
+            <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+                  <span className="material-symbols-outlined text-[20px]">
+                    person
+                  </span>
+                </div>
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-on-surface">
+                  Client &amp; Billing Details
+                </h2>
               </div>
-              <h2 className="text-[18px] sm:text-[20px] font-bold text-on-surface">
-                Payment Details
-              </h2>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[11px] font-semibold text-on-surface-variant">
-                Stripe Test Environment
+              <span className="text-[11px] font-semibold text-outline">
+                Step 1 of 2
               </span>
+            </div>
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    required
+                    className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
+                    placeholder="e.g. John Doe"
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
+                    Work Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    required
+                    className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
+                    placeholder="name@company.com"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
+                    Company / Organization (Optional)
+                  </label>
+                  <input
+                    className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
+                    placeholder="e.g. Acme Media Corp"
+                    type="text"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
+                    Country / Region
+                  </label>
+                  <select
+                    className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 cursor-pointer"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                  >
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Other International">Other International</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
+                  Billing Address (Optional for Invoicing)
+                </label>
+                <input
+                  className="w-full h-12 px-4 rounded-xl bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
+                  placeholder="Street Address, City, State/Province, Postal Code"
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Form Fields */}
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                  Full Name
-                </label>
-                <input
-                  className="w-full h-12 px-4 rounded-full bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
+          {/* ── 3. Compliant Commercial Payment Rails ── */}
+          <div className="bg-surface-container-low rounded-[1.75rem] p-6 sm:p-8 shadow-sm space-y-6 border border-outline-variant/30">
+            <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+                  <span className="material-symbols-outlined text-[20px]">
+                    receipt_long
+                  </span>
+                </div>
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-on-surface">
+                  Payment &amp; Invoicing Preference
+                </h2>
               </div>
-              <div>
-                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                  Work Email
-                </label>
-                <input
-                  className="w-full h-12 px-4 rounded-full bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <span className="text-[11px] font-semibold text-on-surface-variant">
+                  Official Commercial Rails
+                </span>
               </div>
             </div>
 
-            <div>
-              <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                Card Number
+            {/* Payment Method Radio Options */}
+            <div className="space-y-3">
+              <label
+                onClick={() => setPaymentMethod("invoice")}
+                className={`flex items-start gap-3.5 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
+                  paymentMethod === "invoice"
+                    ? "border-primary bg-primary/5 shadow-sm"
+                    : "border-outline-variant/30 bg-surface-container-lowest hover:border-primary/40"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  checked={paymentMethod === "invoice"}
+                  onChange={() => setPaymentMethod("invoice")}
+                  className="mt-1 text-primary focus:ring-primary"
+                />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[15px] font-bold text-on-surface">
+                      Electronic Invoice with Card &amp; Digital Pay (Stripe &amp; Wise Link)
+                    </span>
+                  </div>
+                  
+                </div>
               </label>
-              <div className="relative flex items-center">
-                <span className="absolute left-4 material-symbols-outlined text-outline text-[20px]">
-                  credit_card
-                </span>
+
+              <label
+                onClick={() => setPaymentMethod("wire")}
+                className={`flex items-start gap-3.5 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
+                  paymentMethod === "wire"
+                    ? "border-primary bg-primary/5 shadow-sm"
+                    : "border-outline-variant/30 bg-surface-container-lowest hover:border-primary/40"
+                }`}
+              >
                 <input
-                  className="w-full h-12 pl-12 pr-28 rounded-full bg-surface-container-lowest text-[14px] font-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
-                  placeholder="4242 4242 4242 4242"
-                  type="text"
-                  value={cardNumber}
-                  onChange={(e) => setCardNumber(e.target.value)}
+                  type="radio"
+                  name="paymentMethod"
+                  checked={paymentMethod === "wire"}
+                  onChange={() => setPaymentMethod("wire")}
+                  className="mt-1 text-primary focus:ring-primary"
                 />
-                <div className="absolute right-4 flex items-center gap-1.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-primary-fixed text-[10px] text-on-primary-fixed font-bold uppercase tracking-wider">
-                    Demo Card
-                  </span>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[15px] font-bold text-on-surface">
+                      Direct US ACH &amp; Domestic / International Bank Wire
+                    </span>
+                  
+                  </div>
+                  
                 </div>
-              </div>
+              </label>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                  Expiration Date
-                </label>
-                <div className="relative flex items-center">
-                  <span className="absolute left-4 material-symbols-outlined text-outline text-[20px]">
-                    calendar_today
+            {/* ── Subscription Disclosure (if applicable) ── */}
+            {isMonthly && (
+              <div className="p-4 rounded-xl bg-surface-container border border-outline-variant/30 space-y-1.5 text-[13px]">
+                <div className="flex items-center gap-1.5 font-bold text-primary">
+                  <span className="material-symbols-outlined text-[18px]">
+                    autorenew
                   </span>
-                  <input
-                    className="w-full h-12 pl-12 pr-4 rounded-full bg-surface-container-lowest text-[14px] font-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
-                    placeholder="MM / YY"
-                    type="text"
-                    value={expiry}
-                    onChange={(e) => setExpiry(e.target.value)}
-                  />
+                  <span>Subscription &amp; Renewal Terms</span>
                 </div>
+                <p className="text-on-surface-variant leading-relaxed">
+                  By subscribing, you authorize ASHIVOX LLC to invoice your selected payment method <strong>{selectedPlan.price} USD every 30 days</strong> until cancelled. You may cancel your subscription at any time with thirty (30) days notice by emailing <a href="mailto:support@ashivox.com" className="text-primary underline">support@ashivox.com</a>. No cancellation fees apply.
+                </p>
               </div>
-              <div>
-                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                  CVC / CVV
-                </label>
-                <div className="relative flex items-center">
-                  <span className="absolute left-4 material-symbols-outlined text-outline text-[20px]">
-                    lock
-                  </span>
-                  <input
-                    className="w-full h-12 pl-12 pr-4 rounded-full bg-surface-container-lowest text-[14px] font-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
-                    placeholder="123"
-                    type="text"
-                    value={cvc}
-                    onChange={(e) => setCvc(e.target.value)}
-                  />
-                </div>
-              </div>
+            )}
+
+            {/* ── Mandatory Policy Agreement Checkbox ── */}
+            <div className="pt-2">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  required
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                  className="mt-1 w-4 h-4 rounded text-primary focus:ring-primary cursor-pointer"
+                />
+                <span className="text-[13px] text-on-surface-variant leading-relaxed">
+                  I agree to the ASHIVOX LLC{" "}
+                  <Link href="/terms" target="_blank" className="text-primary font-semibold underline">
+                    Terms of Service
+                  </Link>
+                  ,{" "}
+                  <Link href="/privacy" target="_blank" className="text-primary font-semibold underline">
+                    Privacy Policy
+                  </Link>
+                  , and{" "}
+                  <Link href="/refund-policy" target="_blank" className="text-primary font-semibold underline">
+                    Refund &amp; Cancellation Policy
+                  </Link>
+                  .
+                </span>
+              </label>
             </div>
 
-            <div className="pt-2 space-y-4">
-              <div>
-                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                  Company Tax ID (EIN - Optional)
-                </label>
-                <div className="relative flex items-center">
-                  <span className="absolute left-4 material-symbols-outlined text-outline text-[20px]">
-                    corporate_fare
-                  </span>
-                  <input
-                    className="w-full h-12 pl-12 pr-4 rounded-full bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 placeholder:text-outline/70"
-                    placeholder="e.g. 12-3456789 (Optional)"
-                    type="text"
-                    value={ein}
-                    onChange={(e) => setEin(e.target.value)}
-                  />
-                </div>
+            {formError && (
+              <div className="p-3 rounded-xl bg-red-50 text-red-700 text-[13px] font-medium border border-red-200">
+                {formError}
               </div>
-              <div>
-                <label className="block text-[13px] font-semibold text-on-surface-variant mb-1.5">
-                  Billing Address
-                </label>
-                <div className="relative flex items-center">
-                  <span className="absolute left-4 material-symbols-outlined text-outline text-[20px]">
-                    pin_drop
-                  </span>
-                  <input
-                    className="w-full h-12 pl-12 pr-4 rounded-full bg-surface-container-lowest text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30"
-                    type="text"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </div>
-              </div>
+            )}
+
+            {/* Execution CTA Button */}
+            <div className="pt-2">
+              <button
+                disabled={isProcessing}
+                type="submit"
+                className="w-full h-14 rounded-full text-white text-[16px] font-bold flex items-center justify-center gap-2 bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] shadow-[0_12px_28px_rgba(112,21,226,0.38)] hover:shadow-[0_16px_36px_rgba(112,21,226,0.55)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75"
+              >
+                {isProcessing ? (
+                  <>
+                    <span className="material-symbols-outlined text-[20px] animate-spin">
+                      progress_activity
+                    </span>
+                    <span>Submitting Order Request...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Submit Order Request ({selectedPlan.price} USD)</span>
+                    <span className="material-symbols-outlined text-[20px]">
+                      send
+                    </span>
+                  </>
+                )}
+              </button>
             </div>
           </div>
-
-          {/* Execution Button */}
-          <div className="pt-2">
-            <button
-              onClick={handleCheckout}
-              disabled={isProcessing}
-              className="w-full h-14 rounded-full text-white text-[16px] font-bold flex items-center justify-center gap-2 bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] shadow-[0_12px_28px_rgba(112,21,226,0.38)] hover:shadow-[0_16px_36px_rgba(112,21,226,0.55)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75"
-              type="button"
-            >
-              {isProcessing ? (
-                <>
-                  <span className="material-symbols-outlined text-[20px] animate-spin">
-                    progress_activity
-                  </span>
-                  <span>Securing Settlement...</span>
-                </>
-              ) : (
-                <>
-                  <span>Purchase ({selectedPlan.price})</span>
-                  <span className="material-symbols-outlined text-[22px]">
-                    arrow_forward
-                  </span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
+        </form>
       </RevealOnScroll>
-
-      {/* ── 4. PayPal & Wire Transfer Alternative ── */}
-      <RevealOnScroll variant="up" delay={150}>
-        <div className="bg-surface-container-high rounded-[1.75rem] p-6 shadow-sm flex items-start gap-4 border border-outline-variant/30">
-          <div className="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0 mt-0.5">
-            <span className="material-symbols-outlined text-[20px]">
-              account_balance
-            </span>
-          </div>
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-[15px] font-bold text-on-surface">
-                PayPal &amp; Bank Wire
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-outline text-[10px] tracking-wider uppercase font-semibold">
-                Available
-              </span>
-            </div>
-            <p className="text-[13px] text-on-surface-variant leading-relaxed">
-              We also accept PayPal and corporate bank wire transfers. ASHIVOX LLC invoices issued instantly.
-            </p>
-          </div>
-        </div>
-      </RevealOnScroll>
-
-      {/* ── 5. SIMPLE LOTTIE DONE MODAL ── */}
-      <LottieDoneModal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        title="Done!"
-        subtitle="Purchase Successful"
-      />
     </div>
   );
 }

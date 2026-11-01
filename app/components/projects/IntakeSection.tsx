@@ -13,10 +13,32 @@ export default function IntakeSection() {
   const [details, setDetails] = useState("");
   const [nda, setNda] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          phone,
+          service,
+          budget,
+          details,
+          nda,
+        }),
+      });
+    } catch (err) {
+      console.error("Contact submit error:", err);
+    } finally {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }
   };
 
   return (
@@ -76,6 +98,27 @@ export default function IntakeSection() {
                 <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
                   <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
                     <span className="material-symbols-outlined text-[24px]">
+                      badge
+                    </span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                      Business Registration Number
+                    </span>
+                    <span className="text-[18px] text-primary font-mono font-bold mt-0.5">
+                      0008132694
+                    </span>
+                    <span className="text-[13px] text-on-surface-variant">
+                      State of New Mexico Secretary of State (SOS ID)
+                    </span>
+                  </div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll variant="left" delay={200}>
+                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[24px]">
                       gavel
                     </span>
                   </div>
@@ -112,6 +155,30 @@ export default function IntakeSection() {
                     </a>
                     <span className="text-[13px] text-on-surface-variant">
                       Reviewed within 2 business hours by our production team
+                    </span>
+                  </div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll variant="left" delay={300}>
+                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[24px]">
+                      call
+                    </span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                      Direct Business Phone
+                    </span>
+                    <a
+                      className="text-[18px] text-primary font-bold hover:underline mt-0.5"
+                      href="tel:+15055289302"
+                    >
+                      +1 (505) 528-9302
+                    </a>
+                    <span className="text-[13px] text-on-surface-variant">
+                      Mon – Fri, 9:00 AM – 6:00 PM (Mountain Time)
                     </span>
                   </div>
                 </div>
@@ -357,7 +424,7 @@ export default function IntakeSection() {
                         ].map((opt) => (
                           <label
                             key={opt.id}
-                            className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${service === opt.id
+                             className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${service === opt.id
                                 ? "border-primary bg-primary/5 shadow-sm"
                                 : "border-outline-variant/40 hover:border-primary/50 bg-surface-container-low"
                               }`}
@@ -416,7 +483,7 @@ export default function IntakeSection() {
                         htmlFor="mutual-nda"
                       >
                         <span className="font-semibold text-on-surface">
-                          Request mutual Delaware NDA before sprint kickoff.
+                          Request mutual bilateral NDA before sprint kickoff.
                         </span>{" "}
                         Our counsel will counter-sign and issue bilateral
                         confidentiality documents within 60 minutes of submission.
@@ -424,11 +491,23 @@ export default function IntakeSection() {
                     </div>
 
                     <button
-                      className="w-full py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-[16px] font-bold shadow-[0_8px_28px_rgba(112,21,226,0.38)] hover:shadow-[0_12px_36px_rgba(112,21,226,0.55)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-[16px] font-bold shadow-[0_8px_28px_rgba(112,21,226,0.38)] hover:shadow-[0_12px_36px_rgba(112,21,226,0.55)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                       type="submit"
                     >
-                      <span>Send Request</span>
-                      <span className="text-lg">↗</span>
+                      {isSubmitting ? (
+                        <>
+                          <span className="material-symbols-outlined text-[20px] animate-spin">
+                            progress_activity
+                          </span>
+                          <span>Submitting Project Brief...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Request</span>
+                          <span className="text-lg">↗</span>
+                        </>
+                      )}
                     </button>
 
                     <div className="flex flex-wrap items-center justify-center gap-6 pt-2 text-outline text-[12px]">

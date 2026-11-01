@@ -24,7 +24,7 @@ const leaders = [
     name: "Julian Thorne",
     role: "Head of Operations & Legal",
     tag: "Legal & Ops",
-    desc: "Manages Delaware compliance, contract terms, copyright transfer, and client agreements.",
+    desc: "Manages New Mexico corporate compliance, contract terms, copyright transfer, and client agreements.",
     badge: "Corporate Legal",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuA0an3QA6Wiwk_mHZd_Qo-gaU5TaKt2y1y7y6eI7GX0ST3-pfE1pXlxV7YYRlbsZys0-ecod6lW0hXMWxiu13251yKaDZa39RunsBIVDapKiP4G5im4fSrhIJ87-r2t-qClvg_dRyOPdC3WyKL31KjOmWXMzRCzu3q5f13Llbm5mhSVTlnoOs3GJA-ycyt__C4ElK_LjyGNc8c-tiV6K5iYXtUxVqlrx9NpoTHvN41b",

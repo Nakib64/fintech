@@ -1,45 +1,36 @@
 import RevealOnScroll from "../RevealOnScroll";
 
-const logos = [
-  { icon: "hub", name: "HubSpot" },
-  { icon: null, name: "auping", style: "lowercase tracking-tighter" },
-  { icon: "star", name: "Heineken" },
-  { icon: "radio_button_checked", name: "EXPOMARK", style: "uppercase" },
-  {
-    icon: "change_history",
-    name: "ASTRA-NET",
-    style: "uppercase tracking-wide",
-  },
+const sectors = [
+  { icon: "terminal", name: "SaaS & Tech" },
+  { icon: "storefront", name: "E-Commerce Brands" },
+  { icon: "podcasts", name: "Creators & Media" },
+  { icon: "account_balance", name: "Fintech & Services" },
+  { icon: "rocket_launch", name: "Growth Startups" },
 ];
 
 export default function LogoStrip() {
   return (
-    <section className="w-full bg-background pt-32 pb-12">
+    <section className="w-full bg-background pt-24 pb-12">
       <div className="max-w-[1440px] mx-auto px-5 md:px-margin">
         <RevealOnScroll variant="fade">
-          <p className="text-center text-[12px] lg:text-3xl leading-[16px] font-bold text-on-surface-variant uppercase tracking-widest mb-6">
-            Trusted by leading brands
+          <p className="text-center text-[12px] lg:text-[14px] font-bold text-on-surface-variant uppercase tracking-widest mb-6">
+            Creative Production Solutions Across Modern Sectors
           </p>
         </RevealOnScroll>
 
-        <RevealOnScroll variant="up" delay={200}>
-          <div className="flex flex-wrap items-center justify-between gap-8 mt-12 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            {logos.map((logo, i) => (
+        <RevealOnScroll variant="up" delay={150}>
+          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 mt-6 opacity-75 hover:opacity-100 transition-opacity duration-300">
+            {sectors.map((sec, i) => (
               <div
-                key={logo.name}
-                className="flex items-center gap-2 lg:gap-6"
+                key={sec.name}
+                className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-surface-container-low border border-outline-variant/30"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                {logo.icon && (
-                  <span className="material-symbols-outlined text-primary text-[26px] lg:text-2xl">
-                    {logo.icon}
-                  </span>
-                )}
-                <span
-                  className={`text-[20px] lg:text-2xl font-bold tracking-tight text-on-surface ${logo.style || ""
-                    }`}
-                >
-                  {logo.name}
+                <span className="material-symbols-outlined text-primary text-[22px]">
+                  {sec.icon}
+                </span>
+                <span className="text-[14px] lg:text-[16px] font-bold tracking-tight text-on-surface">
+                  {sec.name}
                 </span>
               </div>
             ))}

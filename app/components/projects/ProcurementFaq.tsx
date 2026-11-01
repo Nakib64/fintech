@@ -23,7 +23,7 @@ const faqs = [
     icon: "description",
     question: "Can we sign a contract or NDA?",
     answer:
-      "Yes. We provide bilateral NDAs and master service agreements governed by Delaware, US corporate law.",
+      "Yes. We provide bilateral NDAs and master service agreements governed by New Mexico, US corporate law.",
   },
 ];
 

@@ -32,19 +32,19 @@ export default function CaseStudySection() {
             <div className="flex items-center gap-6">
               <div className="text-right">
                 <span className="text-[38px] sm:text-[44px] font-extrabold text-primary leading-none block">
-                  32K+
+                  250+
                 </span>
                 <span className="text-[11px] uppercase font-bold tracking-wider text-on-surface-variant">
-                  Projects Delivered
+                  Projects Completed
                 </span>
               </div>
               <div className="h-10 w-[1px] bg-outline-variant/50 hidden sm:block" />
               <div className="text-right">
                 <span className="text-[38px] sm:text-[44px] font-extrabold text-on-surface leading-none block">
-                  100%
+                  99%
                 </span>
                 <span className="text-[11px] uppercase font-bold tracking-wider text-on-surface-variant">
-                  On-Time Rate
+                  On-Time Sprints
                 </span>
               </div>
             </div>

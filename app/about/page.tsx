@@ -10,7 +10,7 @@ import LegalCounselBanner from "../components/about/LegalCounselBanner";
 export const metadata: Metadata = {
   title: "About & Legal Governance",
   description:
-    "Institutional trust, corporate charters, Delaware entity disclosure, executive directors, and standard commercial terms of service at ASHIVOX LLC.",
+    "Institutional trust, corporate charters, New Mexico entity disclosure, executive governance, and standard commercial terms of service at ASHIVOX LLC.",
 };
 
 export default function AboutPage() {

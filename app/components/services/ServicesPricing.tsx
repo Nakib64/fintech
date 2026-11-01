@@ -414,7 +414,7 @@ export default function ServicesPricing() {
                                 {pkg.price}
                               </span>
                               <span className="text-[13px] text-primary font-bold">
-                                {pkg.cycle}
+                                {pkg.cycle} USD
                               </span>
                             </div>
                           </div>
@@ -491,7 +491,7 @@ export default function ServicesPricing() {
                               {pkg.price}
                             </span>
                             <span className="text-[13px] text-on-surface-variant font-semibold">
-                              {pkg.cycle}
+                              {pkg.cycle} USD
                             </span>
                           </div>
                         </div>
