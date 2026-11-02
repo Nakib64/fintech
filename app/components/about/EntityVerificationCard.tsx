@@ -37,12 +37,12 @@ export default function EntityVerificationCard() {
               </a>
               <a
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface text-[14px] font-semibold transition-colors"
-                href="mailto:support@ashivox.com"
+                href="mailto:support@ashivox.net"
               >
                 <span className="material-symbols-outlined text-[18px] text-primary">
                   mail
                 </span>
-                <span>support@ashivox.com</span>
+                <span>support@ashivox.net</span>
               </a>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function EntityVerificationCard() {
                 NM Secretary of State ID
               </p>
             </div>
-            
+
             <div className="space-y-1">
               <span className="text-[11px] uppercase text-outline tracking-wider font-bold block">
                 Registered Office

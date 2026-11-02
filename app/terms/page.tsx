@@ -46,7 +46,7 @@ export default function TermsPage() {
                   <strong>Business Registration #:</strong> 0008132694 (State of New Mexico)<br />
                   <strong>Registered Office:</strong> 1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA<br />
                   <strong>Registered Agent:</strong> Registered Agents Inc.<br />
-                  <strong>Corporate Inquiries:</strong> <a href="mailto:support@ashivox.com" className="text-primary underline">support@ashivox.com</a> | +1 (505) 528-9302
+                  <strong>Corporate Inquiries:</strong> <a href="mailto:support@ashivox.net" className="text-primary underline">support@ashivox.net</a> | +1 (505) 528-9302
                 </p>
               </div>
             </RevealOnScroll>
@@ -76,7 +76,7 @@ export default function TermsPage() {
               <ul className="list-disc pl-6 space-y-2 text-[14px] text-on-surface-variant">
                 <li><strong>Billing Cycle:</strong> Retainers recur every thirty (30) days from the initial purchase date at the agreed fixed rate.</li>
                 <li><strong>Renewal:</strong> Subscriptions renew automatically unless cancelled prior to the end of the current billing cycle.</li>
-                <li><strong>Cancellation Method:</strong> Clients may cancel their monthly retainer at any time by sending an email notification to <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a> or via their account portal. Cancellations require thirty (30) days notice. No cancellation penalties or fees apply.</li>
+                <li><strong>Cancellation Method:</strong> Clients may cancel their monthly retainer at any time by sending an email notification to <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a> or via their account portal. Cancellations require thirty (30) days notice. No cancellation penalties or fees apply.</li>
               </ul>
             </div>
 
@@ -134,7 +134,7 @@ export default function TermsPage() {
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">Attn: Legal Department</p>
                 <p className="text-on-surface-variant">1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA</p>
-                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a></p>
+                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a></p>
                 <p className="text-on-surface-variant">Phone: +1 (505) 528-9302</p>
               </div>
             </div>

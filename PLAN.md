@@ -44,7 +44,7 @@ This action plan addresses all non-compliant points identified from `do-i-need-t
   - Jurisdiction: **New Mexico, USA**
   - Registered Office: **1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA**
   - Registered Agent: **Registered Agents Inc.**
-  - Email: **support@ashivox.com**
+  - Email: **support@ashivox.net**
   - Phone: Consistent business phone number (`+1 (505) 393-1890`) across all components.
 - [x] **Task 4.2**: Update `app/layout.tsx` metadata (changed Delaware to New Mexico).
 - [x] **Task 4.3**: Update `app/about/page.tsx`, `EntityVerificationCard.tsx`, and `LegalFrameworkTabs.tsx` to reflect New Mexico governing law and link to dedicated policy routes.

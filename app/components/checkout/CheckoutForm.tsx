@@ -205,9 +205,8 @@ export default function CheckoutForm({
                 </div>
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
                   <span
-                    className={`material-symbols-outlined text-[18px] sm:text-[20px] transition-transform duration-300 ${
-                      dropdownOpen ? "rotate-180" : ""
-                    }`}
+                    className={`material-symbols-outlined text-[18px] sm:text-[20px] transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""
+                      }`}
                   >
                     expand_more
                   </span>
@@ -236,21 +235,19 @@ export default function CheckoutForm({
                           onPlanChange(plan);
                           setDropdownOpen(false);
                         }}
-                        className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer text-left gap-2 ${
-                          isSelected
+                        className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer text-left gap-2 ${isSelected
                             ? "bg-primary/10 border border-primary/30 shadow-inner"
                             : "hover:bg-surface-container-low"
-                        }`}
+                          }`}
                         role="option"
                         aria-selected={isSelected}
                       >
                         <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
                           <div
-                            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                              isSelected
+                            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center shrink-0 ${isSelected
                                 ? "bg-primary text-white"
                                 : "bg-surface-container-low text-primary"
-                            }`}
+                              }`}
                           >
                             <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
                               {plan.icon || "star"}
@@ -259,11 +256,10 @@ export default function CheckoutForm({
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                               <span
-                                className={`text-[13px] sm:text-[14px] font-bold truncate ${
-                                  isSelected
+                                className={`text-[13px] sm:text-[14px] font-bold truncate ${isSelected
                                     ? "text-primary"
                                     : "text-on-surface"
-                                }`}
+                                  }`}
                               >
                                 {plan.name}
                               </span>
@@ -426,11 +422,10 @@ export default function CheckoutForm({
             <div className="space-y-2.5 sm:space-y-3">
               <label
                 onClick={() => setPaymentMethod("invoice")}
-                className={`flex items-start gap-2.5 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer ${
-                  paymentMethod === "invoice"
+                className={`flex items-start gap-2.5 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer ${paymentMethod === "invoice"
                     ? "border-primary bg-primary/5 shadow-sm"
                     : "border-outline-variant/30 bg-surface-container-lowest hover:border-primary/40"
-                }`}
+                  }`}
               >
                 <input
                   type="radio"
@@ -448,11 +443,10 @@ export default function CheckoutForm({
 
               <label
                 onClick={() => setPaymentMethod("wire")}
-                className={`flex items-start gap-2.5 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer ${
-                  paymentMethod === "wire"
+                className={`flex items-start gap-2.5 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer ${paymentMethod === "wire"
                     ? "border-primary bg-primary/5 shadow-sm"
                     : "border-outline-variant/30 bg-surface-container-lowest hover:border-primary/40"
-                }`}
+                  }`}
               >
                 <input
                   type="radio"
@@ -479,7 +473,7 @@ export default function CheckoutForm({
                   <span>Subscription &amp; Renewal Terms</span>
                 </div>
                 <p className="text-on-surface-variant leading-relaxed">
-                  By subscribing, you authorize ASHIVOX LLC to invoice your selected payment method <strong>{selectedPlan.price} USD every 30 days</strong> until cancelled. Cancel anytime with thirty (30) days notice via <a href="mailto:support@ashivox.com" className="text-primary underline">support@ashivox.com</a>. No cancellation fees apply.
+                  By subscribing, you authorize ASHIVOX LLC to invoice your selected payment method <strong>{selectedPlan.price} USD every 30 days</strong> until cancelled. Cancel anytime with thirty (30) days notice via <a href="mailto:support@ashivox.net" className="text-primary underline">support@ashivox.net</a>. No cancellation fees apply.
                 </p>
               </div>
             )}

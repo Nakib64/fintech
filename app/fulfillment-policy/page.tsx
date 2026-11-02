@@ -112,7 +112,7 @@ export default function FulfillmentPolicyPage() {
                 <p className="font-bold text-on-surface">ASHIVOX LLC — Production Fulfillment</p>
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA</p>
-                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a></p>
+                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a></p>
                 <p className="text-on-surface-variant">Phone: +1 (505) 528-9302</p>
               </div>
             </div>

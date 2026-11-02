@@ -10,7 +10,7 @@ import ProjectsCta from "../components/projects/ProjectsCta";
 export const metadata: Metadata = {
   title: "Contact & Strategic Intake | ASHIVOX LLC",
   description:
-    "Initiate project discovery, review ASHIVOX LLC registration details, or get in touch directly at support@ashivox.com.",
+    "Initiate project discovery, review ASHIVOX LLC registration details, or get in touch directly at support@ashivox.net.",
 };
 
 export default function ContactPage() {

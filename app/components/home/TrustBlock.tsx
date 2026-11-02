@@ -41,8 +41,8 @@ const contactDetails: ContactDetail[] = [
   {
     icon: "mail",
     label: "Email Support:",
-    value: "support@ashivox.com",
-    href: "mailto:support@ashivox.com",
+    value: "support@ashivox.net",
+    href: "mailto:support@ashivox.net",
   },
   {
     icon: "call",

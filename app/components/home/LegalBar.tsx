@@ -125,7 +125,7 @@ export default function LegalBar() {
                   </div>
                   <div>
                     <span className="text-outline uppercase text-[10px] font-bold block">Verified Support Email</span>
-                    <span className="text-on-surface font-medium">support@ashivox.com</span>
+                    <span className="text-on-surface font-medium">support@ashivox.net</span>
                   </div>
                 </div>
               </div>

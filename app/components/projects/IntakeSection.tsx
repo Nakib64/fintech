@@ -149,9 +149,9 @@ export default function IntakeSection() {
                     </span>
                     <a
                       className="text-[18px] text-primary font-bold hover:underline mt-0.5"
-                      href="mailto:support@ashivox.com"
+                      href="mailto:support@ashivox.net"
                     >
-                      support@ashivox.com
+                      support@ashivox.net
                     </a>
                     <span className="text-[13px] text-on-surface-variant">
                       Reviewed within 2 business hours by our production team
@@ -409,24 +409,24 @@ export default function IntakeSection() {
                           {
                             id: "writing",
                             title: "Content Writing & Scripting",
-                       
+
                           },
                           {
                             id: "social",
                             title: "Social Media Management",
-                      
+
                           },
                           {
                             id: "custom",
                             title: "Custom Multi-Pod Package",
-                     
+
                           },
                         ].map((opt) => (
                           <label
                             key={opt.id}
-                             className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${service === opt.id
-                                ? "border-primary bg-primary/5 shadow-sm"
-                                : "border-outline-variant/40 hover:border-primary/50 bg-surface-container-low"
+                            className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${service === opt.id
+                              ? "border-primary bg-primary/5 shadow-sm"
+                              : "border-outline-variant/40 hover:border-primary/50 bg-surface-container-low"
                               }`}
                           >
                             <input
@@ -441,14 +441,14 @@ export default function IntakeSection() {
                               <span className="text-[14px] text-on-surface font-semibold">
                                 {opt.title}
                               </span>
-                             
+
                             </div>
                           </label>
                         ))}
                       </div>
                     </div>
 
-                
+
 
                     {/* Project Timeline & Scope Details */}
                     <div>

@@ -76,7 +76,7 @@ export default function RefundPolicyPage() {
               </p>
               <ul className="list-disc pl-6 space-y-2 text-[14px] text-on-surface-variant">
                 <li>You may cancel recurring retainers at any time.</li>
-                <li>To avoid being charged for an upcoming billing cycle, submit written notice of cancellation via email to <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a> at least <strong>thirty (30) days</strong> prior to the renewal date.</li>
+                <li>To avoid being charged for an upcoming billing cycle, submit written notice of cancellation via email to <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a> at least <strong>thirty (30) days</strong> prior to the renewal date.</li>
                 <li>Upon cancellation, our production team will continue fulfilling all deliverable quotas through the end of the paid billing period. There are zero penalty fees or early exit fees.</li>
               </ul>
             </div>
@@ -88,7 +88,7 @@ export default function RefundPolicyPage() {
               </p>
               <ol className="list-decimal pl-6 space-y-3 text-[14px] text-on-surface-variant">
                 <li>
-                  <strong>Submit a Written Notice:</strong> Send an email to <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a> with the subject line: <code>Refund Request - [Order / Invoice Number]</code>.
+                  <strong>Submit a Written Notice:</strong> Send an email to <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a> with the subject line: <code>Refund Request - [Order / Invoice Number]</code>.
                 </li>
                 <li>
                   <strong>Provide Order Details:</strong> Include your full name, business email, transaction date, and a brief description of the issue or why the creative deliverables did not meet expectations.
@@ -120,7 +120,7 @@ export default function RefundPolicyPage() {
                 <p className="font-bold text-on-surface">ASHIVOX LLC — Billing Support</p>
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA</p>
-                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a></p>
+                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a></p>
                 <p className="text-on-surface-variant">Phone: +1 (505) 528-9302</p>
                 <p className="text-on-surface-variant">Business Hours: Monday – Friday, 9:00 AM – 6:00 PM (Mountain Time)</p>
               </div>

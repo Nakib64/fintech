@@ -51,7 +51,7 @@ function getTransporter() {
 }
 
 const COMPANY_NAME = "ASHIVOX LLC";
-const COMPANY_EMAIL = process.env.COMPANY_EMAIL || "support@ashivox.com";
+const COMPANY_EMAIL = process.env.COMPANY_EMAIL || "support@ashivox.net";
 const COMPANY_PHONE = "+1 (505) 528-9302";
 const COMPANY_REG_NUMBER = "0008132694";
 const COMPANY_ADDRESS = "1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA";
@@ -75,12 +75,12 @@ export async function sendInvoiceOrderEmail(data: OrderEmailData) {
 
   const attachments = hasLogo
     ? [
-        {
-          filename: "logo.png",
-          path: logoPath,
-          cid: "brandlogo",
-        },
-      ]
+      {
+        filename: "logo.png",
+        path: logoPath,
+        cid: "brandlogo",
+      },
+    ]
     : [];
 
   // Short, branded HTML Order Confirmation Template
@@ -111,11 +111,10 @@ export async function sendInvoiceOrderEmail(data: OrderEmailData) {
 <body>
   <div class="container">
     <div class="header">
-      ${
-        hasLogo
-          ? `<img src="cid:brandlogo" alt="${COMPANY_NAME}" />`
-          : `<h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">${COMPANY_NAME}</h1>`
-      }
+      ${hasLogo
+      ? `<img src="cid:brandlogo" alt="${COMPANY_NAME}" />`
+      : `<h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">${COMPANY_NAME}</h1>`
+    }
     </div>
 
     <div class="content">
@@ -220,12 +219,12 @@ export async function sendContactInquiryEmail(data: ContactEmailData) {
 
   const attachments = hasLogo
     ? [
-        {
-          filename: "logo.png",
-          path: logoPath,
-          cid: "brandlogo",
-        },
-      ]
+      {
+        filename: "logo.png",
+        path: logoPath,
+        cid: "brandlogo",
+      },
+    ]
     : [];
 
   const clientHtml = `
@@ -238,11 +237,10 @@ export async function sendContactInquiryEmail(data: ContactEmailData) {
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f6f6f9; color: #1a1c1f; margin: 0; padding: 24px;">
   <div style="max-width: 520px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e2e6;">
     <div style="background-color: #160430; padding: 26px 20px; text-align: center;">
-      ${
-        hasLogo
-          ? `<img src="cid:brandlogo" alt="${COMPANY_NAME}" style="height: 36px; width: auto; max-width: 170px; display: inline-block; vertical-align: middle;" />`
-          : `<h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">${COMPANY_NAME}</h1>`
-      }
+      ${hasLogo
+      ? `<img src="cid:brandlogo" alt="${COMPANY_NAME}" style="height: 36px; width: auto; max-width: 170px; display: inline-block; vertical-align: middle;" />`
+      : `<h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">${COMPANY_NAME}</h1>`
+    }
     </div>
     <div style="padding: 32px 28px;">
       <h2 style="margin: 0 0 12px 0; font-size: 20px; color: #1a1c1f;">Thank You for Reaching Out, ${data.name}</h2>

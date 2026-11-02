@@ -45,7 +45,7 @@ export default function PrivacyPage() {
                 <p className="text-[13px] text-on-surface-variant">
                   <strong>Business Registration #:</strong> 0008132694 (State of New Mexico)<br />
                   <strong>Registered Office:</strong> 1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA<br />
-                  <strong>Contact Email:</strong> <a href="mailto:support@ashivox.com" className="text-primary underline">support@ashivox.com</a><br />
+                  <strong>Contact Email:</strong> <a href="mailto:support@ashivox.net" className="text-primary underline">support@ashivox.net</a><br />
                   <strong>Telephone:</strong> +1 (505) 528-9302
                 </p>
               </div>
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
                 <li><strong>Right to Restrict or Object to Processing:</strong> Object to specific data uses.</li>
               </ul>
               <p className="text-[14px] text-on-surface-variant">
-                To exercise any of these rights, email us at <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a>. We respond to all verified requests within 30 days.
+                To exercise any of these rights, email us at <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a>. We respond to all verified requests within 30 days.
               </p>
             </div>
 
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
                 <p className="font-bold text-on-surface">ASHIVOX LLC — Data Privacy Officer</p>
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA</p>
-                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.com" className="text-primary font-semibold underline">support@ashivox.com</a></p>
+                <p className="text-on-surface-variant">Email: <a href="mailto:support@ashivox.net" className="text-primary font-semibold underline">support@ashivox.net</a></p>
                 <p className="text-on-surface-variant">Phone: +1 (505) 528-9302</p>
               </div>
             </div>

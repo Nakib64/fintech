@@ -30,17 +30,17 @@ export default function Footer() {
               <p className="text-[13px] leading-[22px] text-white/70">
                 Creative media production, video editing, and digital brand growth agency registered in the United States.
               </p>
-              
+
               <div className="flex flex-col gap-1.5 mt-1 text-[13px]">
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#c084fc] text-[18px]">
                     mail
                   </span>
                   <a
-                    href="mailto:support@ashivox.com"
+                    href="mailto:support@ashivox.net"
                     className="text-white/90 hover:text-white underline-offset-2 hover:underline transition-colors font-medium"
                   >
-                    support@ashivox.com
+                    support@ashivox.net
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
