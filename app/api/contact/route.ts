@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server";
 import { sendContactInquiryEmail, ContactEmailData } from "../../lib/mail";
 
+const SERVICE_NAMES: Record<string, string> = {
+  video: "Video Editing & VFX",
+  writing: "Content Writing & Scripting",
+  social: "Social Media Management",
+  custom: "Custom Multi-Pod Production",
+};
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, company, phone, service, budget, details, nda } = body;
+    const { name, email, company, phone, service, details, nda } = body;
 
     if (!name || !email) {
       return NextResponse.json(
@@ -13,13 +20,15 @@ export async function POST(request: Request) {
       );
     }
 
+    const cleanServiceName =
+      (service && SERVICE_NAMES[service]) || service || "Video Editing & VFX";
+
     const contactData: ContactEmailData = {
       name,
       email,
       company,
       phone,
-      service: service || "Video Editing",
-      budget: budget || "Custom Quote",
+      service: cleanServiceName,
       details: details || "No additional notes provided",
       nda: Boolean(nda),
     };

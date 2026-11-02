@@ -3,9 +3,27 @@
 import { useState, type FormEvent } from "react";
 import RevealOnScroll from "../RevealOnScroll";
 
+const SERVICES = [
+  {
+    id: "video",
+    title: "Video Editing & VFX",
+  },
+  {
+    id: "writing",
+    title: "Content Writing & Scripting",
+  },
+  {
+    id: "social",
+    title: "Social Media Management",
+  },
+  {
+    id: "custom",
+    title: "Custom Multi-Pod Production",
+  },
+];
+
 export default function IntakeSection() {
   const [service, setService] = useState("video");
-  const [budget, setBudget] = useState("1.5k-3k");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -18,6 +36,9 @@ export default function IntakeSection() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    const selectedServiceObj = SERVICES.find((s) => s.id === service);
+    const serviceName = selectedServiceObj ? selectedServiceObj.title : service;
+
     try {
       await fetch("/api/contact", {
         method: "POST",
@@ -27,8 +48,7 @@ export default function IntakeSection() {
           email,
           company,
           phone,
-          service,
-          budget,
+          service: serviceName,
           details,
           nda,
         }),
@@ -400,28 +420,7 @@ export default function IntakeSection() {
                         <span className="text-primary">*</span>
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {[
-                          {
-                            id: "video",
-                            title: "Video Editing & VFX",
-                            price: "$1,499 / month",
-                          },
-                          {
-                            id: "writing",
-                            title: "Content Writing & Scripting",
-
-                          },
-                          {
-                            id: "social",
-                            title: "Social Media Management",
-
-                          },
-                          {
-                            id: "custom",
-                            title: "Custom Multi-Pod Package",
-
-                          },
-                        ].map((opt) => (
+                        {SERVICES.map((opt) => (
                           <label
                             key={opt.id}
                             className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${service === opt.id
@@ -441,7 +440,6 @@ export default function IntakeSection() {
                               <span className="text-[14px] text-on-surface font-semibold">
                                 {opt.title}
                               </span>
-
                             </div>
                           </label>
                         ))}

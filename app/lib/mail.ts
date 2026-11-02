@@ -21,7 +21,6 @@ export interface ContactEmailData {
   company?: string;
   phone?: string;
   service: string;
-  budget: string;
   details: string;
   nda: boolean;
 }
@@ -250,7 +249,6 @@ export async function sendContactInquiryEmail(data: ContactEmailData) {
       <div style="background: #f9f8fd; border: 1px solid #e7e2f5; border-radius: 12px; padding: 18px; margin: 20px 0;">
         <strong style="color: #270058; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Inquiry Summary</strong>
         <p style="margin: 8px 0 4px 0; font-size: 13px; color: #4b4455;"><strong>Service:</strong> ${data.service}</p>
-        <p style="margin: 4px 0; font-size: 13px; color: #4b4455;"><strong>Budget:</strong> ${data.budget}</p>
         <p style="margin: 4px 0; font-size: 13px; color: #4b4455;"><strong>Bilateral NDA:</strong> ${data.nda ? "Requested" : "Standard Agency SLA"}</p>
       </div>
     </div>
@@ -270,7 +268,6 @@ export async function sendContactInquiryEmail(data: ContactEmailData) {
     <p><strong>Company:</strong> ${data.company || "N/A"}</p>
     <p><strong>Phone:</strong> ${data.phone || "N/A"}</p>
     <p><strong>Service:</strong> ${data.service}</p>
-    <p><strong>Budget:</strong> ${data.budget}</p>
     <p><strong>Bilateral NDA:</strong> ${data.nda ? "Yes" : "No"}</p>
     <p><strong>Details:</strong><br>${data.details}</p>
   `;
@@ -292,7 +289,7 @@ export async function sendContactInquiryEmail(data: ContactEmailData) {
     await transporter.sendMail({
       from: fromAddress,
       to: COMPANY_EMAIL,
-      subject: `[NEW INQUIRY] ${data.name} - ${data.service} (${data.budget})`,
+      subject: `[NEW INQUIRY] ${data.name} - ${data.service}`,
       html: agencyHtml,
     });
 
