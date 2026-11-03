@@ -16,7 +16,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
     <div className="flex flex-col gap-6 w-full max-w-full">
       {/* Order Summary Card */}
       <RevealOnScroll variant="right">
-        <div className="bg-surface-container-lowest rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 md:p-8 shadow-md border border-outline-variant/30 space-y-5 sm:space-y-6 w-full max-w-full overflow-hidden">
+        <div className="bg-surface-container-lowest rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-md border border-outline-variant/30 space-y-4 sm:space-y-6 w-full max-w-full overflow-hidden">
           <div className="flex items-center justify-between gap-2 pb-3 border-b border-outline-variant/20 flex-wrap sm:flex-nowrap">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shrink-0" />
@@ -87,7 +87,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
           </div>
 
           {/* Transparent Mathematical Breakdown */}
-          <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-3.5 sm:p-4 space-y-2.5 border border-outline-variant/20 text-[13px] sm:text-[14px]">
+          <div className="bg-surface-container-low rounded-lg sm:rounded-2xl p-3.5 sm:p-4 space-y-2.5 border border-outline-variant/20 text-[13px] sm:text-[14px]">
             <div className="flex justify-between text-on-surface-variant">
               <span>Selected Package Subtotal</span>
               <span className="font-semibold text-on-surface">{selectedPlan.price} USD</span>
@@ -127,12 +127,12 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
 
       {/* Security & Compliance Architecture */}
       <RevealOnScroll variant="right" delay={150}>
-        <div className="bg-surface-container-low rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 shadow-sm border border-outline-variant/30 space-y-3.5 sm:space-y-4 w-full max-w-full overflow-hidden">
+        <div className="bg-surface-container-low rounded-md sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-outline-variant/30 space-y-3.5 sm:space-y-4 w-full max-w-full overflow-hidden">
           <span className="text-[11px] sm:text-[12px] uppercase tracking-wider font-bold text-on-surface block">
             Payment Security &amp; Compliance
           </span>
           <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
-            <div className="p-3 sm:p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+            <div className="p-3 sm:p-4 bg-surface-container-lowest rounded-md sm:rounded-xl border border-outline-variant/20">
               <div className="flex items-center gap-1.5 text-primary mb-1">
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
                   security
@@ -143,7 +143,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
                 Encrypted checkout
               </p>
             </div>
-            <div className="p-3 sm:p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+            <div className="p-3 sm:p-4 bg-surface-container-lowest rounded-md border border-outline-variant/20">
               <div className="flex items-center gap-1.5 text-primary mb-1">
                 <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
                   shield
@@ -195,7 +195,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
 
       {/* Support Guarantee Card */}
       <RevealOnScroll variant="right" delay={250}>
-        <div className="bg-surface-container-lowest rounded-2xl sm:rounded-[2rem] p-4 sm:p-5 shadow-sm border border-outline-variant/30 flex items-start sm:items-center gap-3 sm:gap-4 w-full max-w-full overflow-hidden">
+        <div className="bg-surface-container-lowest rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-sm border border-outline-variant/30 flex items-start sm:items-center gap-3 sm:gap-4 w-full max-w-full overflow-hidden">
           <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
             <span className="material-symbols-outlined text-[20px] sm:text-[22px]">
               support_agent

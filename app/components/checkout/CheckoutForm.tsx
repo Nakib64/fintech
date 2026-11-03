@@ -147,7 +147,7 @@ export default function CheckoutForm({
 
       {/* ── 1. Plan Selector Dropdown Card ── */}
       <RevealOnScroll variant="up" className="relative z-50 w-full max-w-full">
-        <div className="bg-surface-container-low rounded-2xl sm:rounded-[1.75rem] p-4 sm:p-6 shadow-sm border border-outline-variant/30 space-y-3 relative z-50 w-full max-w-full overflow-visible">
+        <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-outline-variant/30 space-y-3 relative z-50 w-full max-w-full overflow-visible">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
               <span className="material-symbols-outlined text-[18px] text-primary shrink-0">
@@ -217,7 +217,7 @@ export default function CheckoutForm({
             {/* Custom Dropdown Menu Floating with high z-index and elevation */}
             {dropdownOpen && (
               <div
-                className="absolute top-full left-0 right-0 mt-2 z-50 bg-surface-container-lowest rounded-2xl border-2 border-primary/40 shadow-[0_24px_64px_rgba(20,5,45,0.45)] overflow-hidden p-2 space-y-1 animate-scale-in"
+                className="absolute top-full left-0 right-0 mt-2 z-50 bg-surface-container-lowest rounded-xl sm:rounded-2xl border-2 border-primary/40 shadow-[0_24px_64px_rgba(20,5,45,0.45)] overflow-hidden p-2 space-y-1 animate-scale-in"
                 role="listbox"
               >
                 <div className="px-3 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-outline border-b border-outline-variant/20">
@@ -303,7 +303,7 @@ export default function CheckoutForm({
       {/* ── 2. Client Billing & Contact Information Form ── */}
       <RevealOnScroll variant="up" delay={80} className="relative z-10 w-full max-w-full">
         <form onSubmit={handleCheckout} className="space-y-6 w-full max-w-full">
-          <div className="bg-surface-container-low rounded-2xl sm:rounded-[1.75rem] p-4 sm:p-6 md:p-8 shadow-sm space-y-5 sm:space-y-6 border border-outline-variant/30 w-full max-w-full overflow-hidden">
+          <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm space-y-5 sm:space-y-6 border border-outline-variant/30 w-full max-w-full overflow-hidden">
             <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20">
               <div className="flex items-center gap-2.5 sm:gap-3">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
@@ -398,7 +398,7 @@ export default function CheckoutForm({
           </div>
 
           {/* ── 3. Compliant Commercial Payment Rails ── */}
-          <div className="bg-surface-container-low rounded-2xl sm:rounded-[1.75rem] p-4 sm:p-6 md:p-8 shadow-sm space-y-5 sm:space-y-6 border border-outline-variant/30 w-full max-w-full overflow-hidden">
+          <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm space-y-5 sm:space-y-6 border border-outline-variant/30 w-full max-w-full overflow-hidden">
             <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20 gap-2">
               <div className="flex items-center gap-2.5 sm:gap-3">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">

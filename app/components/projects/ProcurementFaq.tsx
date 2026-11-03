@@ -53,18 +53,18 @@ export default function ProcurementFaq() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {faqs.map((faq, idx) => (
             <RevealOnScroll key={faq.question} variant="up" delay={idx * 100}>
-              <div className="p-7 rounded-[1.75rem] bg-surface-container-low border border-outline-variant/20 hover:border-primary/40 transition-colors h-full">
+              <div className="p-4 sm:p-6 lg:p-7 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/20 hover:border-primary/40 transition-colors h-full">
                 <div className="flex items-center gap-3 mb-2.5">
                   <div className="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
                     <span className="material-symbols-outlined text-[18px]">
                       {faq.icon}
                     </span>
                   </div>
-                  <h3 className="text-[17px] text-on-surface font-bold">
+                  <h3 className="text-[15px] sm:text-[17px] text-on-surface font-bold">
                     {faq.question}
                   </h3>
                 </div>
-                <p className="text-[14px] leading-[22px] text-on-surface-variant">
+                <p className="text-[13px] sm:text-[14px] leading-[20px] sm:leading-[22px] text-on-surface-variant">
                   {faq.answer}
                 </p>
               </div>

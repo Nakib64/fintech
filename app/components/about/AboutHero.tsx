@@ -34,40 +34,40 @@ export default function AboutHero() {
           </div>
 
           {/* Metric Glass Teaser Badges */}
-          <div className="lg:col-span-5 grid grid-cols-2 lg:grid-cols-1 gap-4 lg:justify-end">
+          <div className="lg:col-span-5 grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:justify-end">
             <RevealOnScroll variant="scale" delay={200} className="flex-1">
-              <div className="p-3 lg:p-6 rounded-[1.5rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl h-full">
-                <div className="flex items-center gap-2 text-primary-fixed-dim mb-1">
-                  <span className="material-symbols-outlined text-[12px] lg:text-[20px]">
+              <div className="p-3.5 sm:p-5 lg:p-6 rounded-md sm:rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl h-full">
+                <div className="flex items-center gap-1.5 sm:gap-2 text-primary-fixed-dim mb-1">
+                  <span className="material-symbols-outlined text-[16px] lg:text-[20px]">
                     verified
                   </span>
-                  <span className="text-[12px] uppercase font-bold tracking-wider">
+                  <span className="text-[10px] sm:text-[12px] uppercase font-bold tracking-wider">
                     US Based
                   </span>
                 </div>
-                <div className="text-[26px] lg:text-[38px] font-extrabold text-white">
+                <div className="text-[17px] sm:text-[24px] lg:text-[34px] font-extrabold text-white truncate">
                   Albuquerque, NM
                 </div>
-                <p className="text-[11px] lg:text-[13px] text-surface-container-high/70 mt-1">
+                <p className="text-[10px] sm:text-[12px] lg:text-[13px] text-surface-container-high/70 mt-0.5 sm:mt-1 truncate">
                   ASHIVOX LLC
                 </p>
               </div>
             </RevealOnScroll>
 
             <RevealOnScroll variant="scale" delay={300} className="flex-1">
-              <div className="p-3 lg:p-6 rounded-[1.5rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl h-full">
-                <div className="flex items-center gap-2 text-primary-fixed-dim mb-1">
-                  <span className="material-symbols-outlined text-[12px] lg:text-[20px]">
+              <div className="p-3.5 sm:p-5 lg:p-6 rounded-md sm:rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl h-full">
+                <div className="flex items-center gap-1.5 sm:gap-2 text-primary-fixed-dim mb-1">
+                  <span className="material-symbols-outlined text-[16px] lg:text-[20px]">
                     policy
                   </span>
-                  <span className="text-[12px] uppercase font-bold tracking-wider">
+                  <span className="text-[10px] sm:text-[12px] uppercase font-bold tracking-wider">
                     Rights
                   </span>
                 </div>
-                <div className="text-[26px] lg:text-[38px] font-extrabold text-white">
+                <div className="text-[22px] sm:text-[28px] lg:text-[38px] font-extrabold text-white">
                   100%
                 </div>
-                <p className="text-[11px] lg:text-[13px] text-surface-container-high/70 mt-1">
+                <p className="text-[10px] sm:text-[12px] lg:text-[13px] text-surface-container-high/70 mt-0.5 sm:mt-1 truncate">
                   Full IP Ownership on All Files
                 </p>
               </div>

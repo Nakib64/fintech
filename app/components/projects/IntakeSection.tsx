@@ -88,25 +88,25 @@ export default function IntakeSection() {
             </RevealOnScroll>
 
             {/* Direct Contact Cards */}
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               <RevealOnScroll variant="left" delay={80}>
-                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-                    <span className="material-symbols-outlined text-[24px]">
+                <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3 sm:gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">
                       location_on
                     </span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <span className="text-[10px] sm:text-[11px] uppercase text-outline font-semibold tracking-wider">
                       Registered Business Address
                     </span>
-                    <span className="text-[16px] text-on-surface font-semibold mt-0.5">
+                    <span className="text-[14px] sm:text-[16px] text-on-surface font-semibold mt-0.5 break-words">
                       1209 Mountain Road PL NE, Ste R
                     </span>
-                    <span className="text-[13px] text-on-surface-variant">
+                    <span className="text-[12px] sm:text-[13px] text-on-surface-variant break-words">
                       Albuquerque, NM 87110, USA
                     </span>
-                    <span className="text-[12px] text-tertiary font-semibold mt-2 inline-flex items-center gap-1.5">
+                    <span className="text-[11px] sm:text-[12px] text-tertiary font-semibold mt-1.5 inline-flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500" />
                       Active &amp; Registered Business Entity
                     </span>
@@ -115,20 +115,20 @@ export default function IntakeSection() {
               </RevealOnScroll>
 
               <RevealOnScroll variant="left" delay={160}>
-                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-                    <span className="material-symbols-outlined text-[24px]">
+                <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3 sm:gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">
                       badge
                     </span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <span className="text-[10px] sm:text-[11px] uppercase text-outline font-semibold tracking-wider">
                       Business Registration Number
                     </span>
-                    <span className="text-[18px] text-primary font-mono font-bold mt-0.5">
+                    <span className="text-[16px] sm:text-[18px] text-primary font-mono font-bold mt-0.5 break-words">
                       0008132694
                     </span>
-                    <span className="text-[13px] text-on-surface-variant">
+                    <span className="text-[12px] sm:text-[13px] text-on-surface-variant">
                       State of New Mexico Secretary of State (SOS ID)
                     </span>
                   </div>
@@ -136,20 +136,20 @@ export default function IntakeSection() {
               </RevealOnScroll>
 
               <RevealOnScroll variant="left" delay={200}>
-                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-                    <span className="material-symbols-outlined text-[24px]">
+                <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3 sm:gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">
                       gavel
                     </span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <span className="text-[10px] sm:text-[11px] uppercase text-outline font-semibold tracking-wider">
                       Registered Agent
                     </span>
-                    <span className="text-[17px] text-on-surface font-bold mt-0.5">
+                    <span className="text-[15px] sm:text-[17px] text-on-surface font-bold mt-0.5 break-words">
                       Registered Agents Inc.
                     </span>
-                    <span className="text-[13px] text-on-surface-variant">
+                    <span className="text-[12px] sm:text-[13px] text-on-surface-variant">
                       Official Legal &amp; Corporate Registered Agent
                     </span>
                   </div>
@@ -157,23 +157,23 @@ export default function IntakeSection() {
               </RevealOnScroll>
 
               <RevealOnScroll variant="left" delay={240}>
-                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-                    <span className="material-symbols-outlined text-[24px]">
+                <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3 sm:gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">
                       alternate_email
                     </span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <span className="text-[10px] sm:text-[11px] uppercase text-outline font-semibold tracking-wider">
                       Professional Business Email
                     </span>
                     <a
-                      className="text-[18px] text-primary font-bold hover:underline mt-0.5"
+                      className="text-[15px] sm:text-[18px] text-primary font-bold hover:underline mt-0.5 break-all sm:break-normal"
                       href="mailto:support@ashivox.net"
                     >
                       support@ashivox.net
                     </a>
-                    <span className="text-[13px] text-on-surface-variant">
+                    <span className="text-[12px] sm:text-[13px] text-on-surface-variant">
                       Reviewed within 2 business hours by our production team
                     </span>
                   </div>
@@ -181,23 +181,23 @@ export default function IntakeSection() {
               </RevealOnScroll>
 
               <RevealOnScroll variant="left" delay={300}>
-                <div className="p-6 rounded-[1.5rem] bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
-                    <span className="material-symbols-outlined text-[24px]">
+                <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-4 hover:border-primary/40 transition-colors">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">
                       call
                     </span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] uppercase text-outline font-semibold tracking-wider">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <span className="text-[10px] sm:text-[11px] uppercase text-outline font-semibold tracking-wider">
                       Direct Business Phone
                     </span>
                     <a
-                      className="text-[18px] text-primary font-bold hover:underline mt-0.5"
+                      className="text-[15px] sm:text-[18px] text-primary font-bold hover:underline mt-0.5"
                       href="tel:+15055289302"
                     >
                       +1 (505) 528-9302
                     </a>
-                    <span className="text-[13px] text-on-surface-variant">
+                    <span className="text-[12px] sm:text-[13px] text-on-surface-variant">
                       Mon – Fri, 9:00 AM – 6:00 PM (Mountain Time)
                     </span>
                   </div>
@@ -207,37 +207,37 @@ export default function IntakeSection() {
 
             {/* Fast Institutional SLA Cards */}
             <RevealOnScroll variant="up" delay={360}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className="p-4 rounded-2xl bg-surface-container border border-outline-variant/20 text-center flex flex-col items-center">
-                  <span className="material-symbols-outlined text-primary text-[22px] mb-1">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-2">
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-surface-container border border-outline-variant/20 text-center flex flex-col items-center">
+                  <span className="material-symbols-outlined text-primary text-[20px] sm:text-[22px] mb-1">
                     timer
                   </span>
-                  <span className="text-[14px] font-bold text-on-surface">
+                  <span className="text-[13px] sm:text-[14px] font-bold text-on-surface">
                     &lt; 2hr
                   </span>
-                  <span className="text-[11px] text-on-surface-variant">
+                  <span className="text-[10px] sm:text-[11px] text-on-surface-variant">
                     Technical Response
                   </span>
                 </div>
-                <div className="p-4 rounded-2xl bg-surface-container border border-outline-variant/20 text-center flex flex-col items-center">
-                  <span className="material-symbols-outlined text-primary text-[22px] mb-1">
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-surface-container border border-outline-variant/20 text-center flex flex-col items-center">
+                  <span className="material-symbols-outlined text-primary text-[20px] sm:text-[22px] mb-1">
                     gavel
                   </span>
-                  <span className="text-[14px] font-bold text-on-surface">
+                  <span className="text-[13px] sm:text-[14px] font-bold text-on-surface">
                     Mutual NDA
                   </span>
-                  <span className="text-[11px] text-on-surface-variant">
+                  <span className="text-[10px] sm:text-[11px] text-on-surface-variant">
                     First Workflow
                   </span>
                 </div>
-                <div className="p-4 rounded-2xl bg-surface-container border border-outline-variant/20 text-center flex flex-col items-center">
-                  <span className="material-symbols-outlined text-primary text-[22px] mb-1">
+                <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-surface-container border border-outline-variant/20 text-center flex flex-col items-center">
+                  <span className="material-symbols-outlined text-primary text-[20px] sm:text-[22px] mb-1">
                     badge
                   </span>
-                  <span className="text-[14px] font-bold text-on-surface">
+                  <span className="text-[13px] sm:text-[14px] font-bold text-on-surface">
                     Direct Access
                   </span>
-                  <span className="text-[11px] text-on-surface-variant">
+                  <span className="text-[10px] sm:text-[11px] text-on-surface-variant">
                     Executive Producer
                   </span>
                 </div>
@@ -246,23 +246,23 @@ export default function IntakeSection() {
 
             {/* Corporate Verification Seal */}
             <RevealOnScroll variant="up" delay={400}>
-              <div className="p-5 rounded-[1.5rem] bg-[#180535] text-white flex items-center justify-between shadow-md">
+              <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#180535] text-white flex items-center justify-between shadow-md">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary-fixed-dim">
-                    <span className="material-symbols-outlined text-[20px]">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center text-primary-fixed-dim shrink-0">
+                    <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
                       verified_user
                     </span>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-white">
+                    <p className="text-[13px] sm:text-[14px] font-semibold text-white">
                       ASHIVOX LLC
                     </p>
-                    <p className="text-[12px] text-secondary-fixed-dim">
+                    <p className="text-[11px] sm:text-[12px] text-secondary-fixed-dim">
                       Active US Registered Entity • Good Standing
                     </p>
                   </div>
                 </div>
-                <span className="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold uppercase tracking-wider">
+                <span className="text-[10px] sm:text-[11px] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold uppercase tracking-wider">
                   Active
                 </span>
               </div>
@@ -272,28 +272,28 @@ export default function IntakeSection() {
           {/* Right Column: Interactive Intake Form */}
           <div className="lg:col-span-7">
             <RevealOnScroll variant="right" delay={150}>
-              <div className="rounded-[2rem] bg-surface-container-lowest border border-outline-variant/30 shadow-[0_16px_40px_rgba(27,11,56,0.06)] p-6 sm:p-12 relative overflow-hidden">
-                <div className="border-b border-outline-variant/30 pb-6 mb-8">
+              <div className="rounded-xl sm:rounded-2xl lg:rounded-3xl bg-surface-container-lowest border border-outline-variant/30 shadow-[0_16px_40px_rgba(27,11,56,0.06)] p-4 sm:p-8 md:p-12 relative overflow-hidden">
+                <div className="border-b border-outline-variant/30 pb-5 sm:pb-6 mb-6 sm:mb-8">
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <div>
-                      <span className="text-[12px] uppercase tracking-wider text-primary font-bold">
+                      <span className="text-[11px] sm:text-[12px] uppercase tracking-wider text-primary font-bold">
                         Quick Intake
                       </span>
-                      <h3 className="text-[26px] font-bold text-on-surface mt-1">
+                      <h3 className="text-[20px] sm:text-[26px] font-bold text-on-surface mt-1">
                         Tell Us About Your Project
                       </h3>
                     </div>
-                    <span className="px-3.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[12px] font-semibold">
+                    <span className="px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] sm:text-[12px] font-semibold">
                       Takes 2 Minutes
                     </span>
                   </div>
-                  <p className="text-[14px] text-on-surface-variant mt-2 leading-relaxed">
+                  <p className="text-[13px] sm:text-[14px] text-on-surface-variant mt-2 leading-relaxed">
                     Tell us what you need. We will review your goals and reply within 2 hours with recommendations.
                   </p>
                 </div>
 
                 {isSubmitted ? (
-                  <div className="p-8 rounded-[1.5rem] bg-emerald-50 border border-emerald-200 text-center space-y-4 animate-scale-in">
+                  <div className="p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-4 animate-scale-in">
                     <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                       <span className="material-symbols-outlined text-[36px]">
                         check_circle
@@ -458,7 +458,7 @@ export default function IntakeSection() {
                         <span className="text-primary">*</span>
                       </label>
                       <textarea
-                        className="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 focus:border-primary focus:bg-surface-container-lowest focus:outline-none text-[14px] text-on-surface transition-all placeholder:text-outline/70 min-h-[110px]"
+                        className="w-full px-4 py-3.5 rounded-md bg-surface-container-low border border-outline-variant/40 focus:border-primary focus:bg-surface-container-lowest focus:outline-none text-[14px] text-on-surface transition-all placeholder:text-outline/70 min-h-[110px]"
                         id="project-details"
                         placeholder="Briefly outline your goals, sprint timeframe, key visual styles, target distribution channels, or existing production bottlenecks..."
                         required
@@ -468,7 +468,7 @@ export default function IntakeSection() {
                     </div>
 
                     {/* Checkbox: Mutual NDA */}
-                    <div className="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3">
+                    <div className="p-4 rounded-md bg-surface-container-low border border-outline-variant/30 flex items-start gap-3">
                       <input
                         checked={nda}
                         onChange={(e) => setNda(e.target.checked)}

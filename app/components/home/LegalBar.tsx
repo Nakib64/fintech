@@ -12,51 +12,43 @@ export default function LegalBar() {
       <section className="w-full bg-surface-container-low py-10">
         <div className="max-w-[1440px] mx-auto px-5 md:px-margin">
           <RevealOnScroll variant="up">
-            <div className="bg-surface-container-lowest p-6 sm:p-8 rounded-[2rem] shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 border border-outline-variant/30">
-              <div className="flex flex-col gap-2 max-w-2xl">
+            <div className="bg-surface-container-lowest p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-sm flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 border border-outline-variant/30">
+              <div className="flex flex-col gap-1.5 sm:gap-2 max-w-2xl">
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary text-[22px]">
+                  <span className="material-symbols-outlined text-primary text-[20px] sm:text-[22px]">
                     gavel
                   </span>
-                  <span className="text-[13px] font-bold text-on-surface uppercase tracking-wider">
+                  <span className="text-[12px] sm:text-[13px] font-bold text-on-surface uppercase tracking-wider">
                     Legal Governance &amp; Policies
                   </span>
                 </div>
-                <p className="text-[13px] leading-relaxed text-on-surface-variant">
+                <p className="text-[12px] sm:text-[13px] leading-relaxed text-on-surface-variant">
                   ASHIVOX LLC operates under US commercial guidelines, New Mexico state jurisdiction, and PCI-DSS Level 1 payment processing standards.
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2.5 w-full lg:w-auto">
-                <button
-                  type="button"
-                  onClick={() => setShowEntityModal(true)}
-                  className="px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/15 text-[13px] font-bold text-primary transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <span className="material-symbols-outlined text-[16px]">verified</span>
-                  <span>Entity Info</span>
-                </button>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full lg:w-auto">
                 <Link
                   href="/terms"
-                  className="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-[13px] font-semibold text-on-surface transition-colors"
+                  className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-full bg-surface-container-low hover:bg-surface-container text-[12px] sm:text-[13px] font-semibold text-on-surface transition-colors"
                 >
                   Terms
                 </Link>
                 <Link
                   href="/privacy"
-                  className="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-[13px] font-semibold text-on-surface transition-colors"
+                  className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-full bg-surface-container-low hover:bg-surface-container text-[12px] sm:text-[13px] font-semibold text-on-surface transition-colors"
                 >
                   Privacy
                 </Link>
                 <Link
                   href="/refund-policy"
-                  className="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-[13px] font-semibold text-on-surface transition-colors"
+                  className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-full bg-surface-container-low hover:bg-surface-container text-[12px] sm:text-[13px] font-semibold text-on-surface transition-colors"
                 >
                   Refunds
                 </Link>
                 <Link
                   href="/fulfillment-policy"
-                  className="px-4 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-[13px] font-semibold text-on-surface transition-colors"
+                  className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-full bg-surface-container-low hover:bg-surface-container text-[12px] sm:text-[13px] font-semibold text-on-surface transition-colors"
                 >
                   Fulfillment
                 </Link>
@@ -69,32 +61,32 @@ export default function LegalBar() {
       {/* Official Entity Disclosure Modal */}
       {showEntityModal && (
         <div className="fixed inset-0 z-50 bg-[#1b0b38]/70 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-surface-container-lowest max-w-2xl w-full rounded-[2rem] p-6 sm:p-8 shadow-[0_32px_72px_-12px_rgba(17,12,36,0.35)] max-h-[90vh] overflow-y-auto relative animate-scale-in">
+          <div className="bg-surface-container-lowest max-w-2xl w-full rounded-xl sm:rounded-2xl p-4 sm:p-8 shadow-[0_32px_72px_-12px_rgba(17,12,36,0.35)] max-h-[90vh] overflow-y-auto relative animate-scale-in">
             <button
               onClick={() => setShowEntityModal(false)}
-              className="absolute top-6 right-6 w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer"
+              className="absolute top-4 sm:top-6 right-4 sm:right-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[20px]">close</span>
+              <span className="material-symbols-outlined text-[18px] sm:text-[20px]">close</span>
             </button>
 
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-secondary text-[24px]">
+            <div className="flex items-center gap-3 mb-5 sm:mb-6">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-secondary text-[20px] sm:text-[24px]">
                   verified
                 </span>
               </div>
               <div>
-                <h3 className="text-[20px] font-bold text-on-surface">
+                <h3 className="text-[18px] sm:text-[20px] font-bold text-on-surface">
                   Official US Entity Disclosure
                 </h3>
-                <span className="text-[12px] font-bold text-primary tracking-wide">
+                <span className="text-[11px] sm:text-[12px] font-bold text-primary tracking-wide">
                   State of New Mexico &bull; Active &amp; Good Standing
                 </span>
               </div>
             </div>
 
-            <div className="space-y-5 text-[14px] leading-relaxed text-on-surface-variant">
-              <div className="bg-surface-container-low p-5 rounded-2xl space-y-2 border border-outline-variant/30">
+            <div className="space-y-4 sm:space-y-5 text-[13px] sm:text-[14px] leading-relaxed text-on-surface-variant">
+              <div className="bg-surface-container-low p-4 sm:p-5 rounded-lg sm:rounded-xl space-y-2 border border-outline-variant/30">
                 <h4 className="text-[15px] text-on-surface font-bold">
                   Corporate Registration Profile
                 </h4>

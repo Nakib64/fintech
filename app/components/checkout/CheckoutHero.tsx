@@ -15,7 +15,6 @@ export default function CheckoutHero() {
             <span className="text-[11px] sm:text-[12px] uppercase font-bold text-secondary-fixed-dim tracking-wider">
               Secure Stripe Rails
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           </div>
         </RevealOnScroll>
 
@@ -36,7 +35,7 @@ export default function CheckoutHero() {
 
         {/* Floating Trust Glass Pill */}
         <RevealOnScroll variant="scale" delay={240}>
-          <div className="mt-6 sm:mt-8 inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-5 px-3.5 sm:px-6 py-2.5 rounded-2xl sm:rounded-full bg-white/5 backdrop-blur-xl shadow-lg border border-white/10 max-w-full text-center">
+          <div className="mt-6 sm:mt-8 inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-5 px-3.5 sm:px-6 py-2.5 rounded-xl sm:rounded-full bg-white/5 backdrop-blur-xl shadow-lg border border-white/10 max-w-full text-center">
             <div className="flex items-center gap-1.5 sm:gap-2">
               <span className="material-symbols-outlined text-emerald-400 text-[16px] sm:text-[18px]">
                 lock

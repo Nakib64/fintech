@@ -21,7 +21,6 @@ export default function ContactPage() {
         <div className="flex flex-col w-full">
           <ProjectsHero />
           <IntakeSection />
-          <CalendarSync />
           <ProcurementFaq />
           <ProjectsCta />
         </div>

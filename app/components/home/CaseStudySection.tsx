@@ -56,8 +56,8 @@ export default function CaseStudySection() {
           {/* Bento Big 1: Studio */}
           <div className="md:col-span-7">
             <RevealOnScroll variant="up" delay={100} className="h-full">
-              <div className="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between h-full group hover:shadow-md transition-shadow">
-                <div className="aspect-[16/10] rounded-[1.25rem] overflow-hidden mb-6 relative">
+              <div className="bg-surface-container-lowest rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between h-full group hover:shadow-md transition-shadow">
+                <div className="aspect-[16/10] rounded-lg sm:rounded-xl overflow-hidden mb-4 sm:mb-6 relative">
                   <Image
                     src= "/hero-services.webp"
                     alt="Creative film editing studio workspace"
@@ -70,10 +70,10 @@ export default function CaseStudySection() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[22px] sm:text-[24px] font-bold text-on-surface tracking-tight mt-1">
+                  <h4 className="text-[20px] sm:text-[24px] font-bold text-on-surface tracking-tight mt-1">
                     Product Videos for Tech Brands
                   </h4>
-                  <p className="text-[14px] leading-[22px] text-on-surface-variant mt-2">
+                  <p className="text-[13px] sm:text-[14px] leading-[20px] sm:leading-[22px] text-on-surface-variant mt-2">
                     18 custom explainer videos generating over 2.4M views in the
                     first 60 days of launch.
                   </p>
@@ -86,8 +86,8 @@ export default function CaseStudySection() {
           <div className="md:col-span-5 flex flex-col gap-6">
             {/* Bento Card 2: Social Media Distribution */}
             <RevealOnScroll variant="up" delay={200}>
-              <div className="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between group hover:shadow-md transition-shadow">
-                <div className="aspect-[16/9] rounded-[1.25rem] overflow-hidden mb-4 relative">
+              <div className="bg-surface-container-lowest rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between group hover:shadow-md transition-shadow">
+                <div className="aspect-[16/9] rounded-lg sm:rounded-xl overflow-hidden mb-3 sm:mb-4 relative">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOJ8XUGEKiqUJ0NgkYM2af1nEWQyAW61Nc3bbxy9DNc_HtAe1Jo0oj_dJskpTztA4-y6jY_FKtXTKCBy8ZW0kQ2iy2IotLmKK5T_SgJWZqk0Qtz5ApmAb0OtXuUsvyDEuUmDG5CfYovmz-_vHxKA6Rs7FFHmdvtnBss2GiLQ2BIGtWyEFrier4O6QynyiSXNlvkJr46WMtF1wR9wJJP243SjIpDcsawn73DRqEh-jP"
                     alt="Digital marketing strategy session"
@@ -97,10 +97,10 @@ export default function CaseStudySection() {
                   />
                 </div>
                 <div>
-                  <h4 className="text-[18px] sm:text-[20px] font-bold text-on-surface mt-1">
+                  <h4 className="text-[17px] sm:text-[20px] font-bold text-on-surface mt-1">
                     Social Media Distribution
                   </h4>
-                  <p className="text-[13px] leading-[20px] text-on-surface-variant mt-1">
+                  <p className="text-[12px] sm:text-[13px] leading-[19px] sm:leading-[20px] text-on-surface-variant mt-1">
                     Scheduled posting, cross-platform adaptation, and active
                     community replies.
                   </p>
@@ -110,19 +110,19 @@ export default function CaseStudySection() {
 
             {/* Metric Highlight Box */}
             <RevealOnScroll variant="up" delay={300}>
-              <div className="bg-gradient-to-br from-primary-fixed to-secondary-fixed p-6 rounded-[2rem] flex items-center justify-between text-on-primary-fixed shadow-sm">
+              <div className="bg-gradient-to-br from-primary-fixed to-secondary-fixed p-4 sm:p-6 rounded-xl sm:rounded-2xl flex items-center justify-between text-on-primary-fixed shadow-sm">
                 <div>
-                  <span className="text-[11px] uppercase font-bold tracking-wider block opacity-90">
+                  <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wider block opacity-90">
                     Fast Delivery
                   </span>
-                  <h4 className="text-[32px] font-bold mt-1 tracking-tight">
+                  <h4 className="text-[26px] sm:text-[32px] font-bold mt-1 tracking-tight">
                     48 Hours
                   </h4>
-                  <p className="text-[13px] opacity-80 mt-1">
+                  <p className="text-[12px] sm:text-[13px] opacity-80 mt-1">
                     Average draft turnaround across all packages
                   </p>
                 </div>
-                <div className="w-14 h-14 rounded-full bg-surface-container-lowest/40 backdrop-blur-md flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-surface-container-lowest/40 backdrop-blur-md flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-primary text-[32px]">
                     bolt
                   </span>

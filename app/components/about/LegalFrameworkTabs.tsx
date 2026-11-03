@@ -68,11 +68,11 @@ export default function LegalFrameworkTabs() {
       </RevealOnScroll>
 
       {/* Tab Panels */}
-      <div className="rounded-[2rem] bg-surface-container-lowest p-6 md:p-12 shadow-sm border border-outline-variant/30">
+      <div className="rounded-xl sm:rounded-2xl bg-surface-container-lowest p-4 sm:p-6 md:p-12 shadow-sm border border-outline-variant/30">
         {/* 1. Terms of Service */}
         {activeTab === "tos" && (
           <div className="space-y-8 animate-fade-in">
-            <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 bg-surface-container-low/40 rounded-2xl p-6 border border-outline-variant/20">
+            <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 bg-surface-container-low/40 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-outline-variant/20">
               <div>
                 <span className="text-[12px] uppercase font-bold text-primary tracking-wider">
                   Client Terms
@@ -163,7 +163,7 @@ export default function LegalFrameworkTabs() {
         {/* 2. Privacy Policy */}
         {activeTab === "privacy" && (
           <div className="space-y-8 animate-fade-in">
-            <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 bg-surface-container-low/40 rounded-2xl p-6 border border-outline-variant/20">
+            <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 bg-surface-container-low/40 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-outline-variant/20">
               <div>
                 <span className="text-[12px] uppercase font-bold text-primary tracking-wider">
                   Your Privacy
@@ -252,7 +252,7 @@ export default function LegalFrameworkTabs() {
         {/* 3. Refund & Cancellation Policy */}
         {activeTab === "refund" && (
           <div className="space-y-8 animate-fade-in">
-            <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 bg-surface-container-low/40 rounded-2xl p-6 border border-outline-variant/20">
+            <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 bg-surface-container-low/40 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-outline-variant/20">
               <div>
                 <span className="text-[12px] uppercase font-bold text-primary tracking-wider">
                   Refunds &amp; Cancellations

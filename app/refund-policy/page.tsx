@@ -37,7 +37,7 @@ export default function RefundPolicyPage() {
         <section className="w-full py-16 md:py-20 bg-surface-container-lowest">
           <div className="max-w-[1000px] mx-auto px-5 md:px-margin text-on-surface leading-relaxed space-y-10">
             <RevealOnScroll variant="up">
-              <div className="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-2">
+              <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-2 break-words">
                 <h3 className="text-[17px] font-bold text-on-surface">Overview</h3>
                 <p className="text-[14px] text-on-surface-variant">
                   At <strong>ASHIVOX LLC</strong>, client satisfaction and trust are foundational to our operations. Because our services involve customized creative labor, bespoke video editing, and intellectual property transfers, our refund and cancellation policies are clearly defined below so you know your rights before beginning work.
@@ -116,7 +116,7 @@ export default function RefundPolicyPage() {
               <p className="text-[14px] text-on-surface-variant">
                 If you have questions regarding any transaction or invoice from ASHIVOX LLC, contact us directly before initiating a chargeback or payment dispute with your bank so we can resolve the matter quickly and amicably:
               </p>
-              <div className="p-5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px]">
+              <div className="p-4 sm:p-5 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px] break-words">
                 <p className="font-bold text-on-surface">ASHIVOX LLC — Billing Support</p>
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA</p>

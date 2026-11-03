@@ -37,7 +37,7 @@ export default function FulfillmentPolicyPage() {
         <section className="w-full py-16 md:py-20 bg-surface-container-lowest">
           <div className="max-w-[1000px] mx-auto px-5 md:px-margin text-on-surface leading-relaxed space-y-10">
             <RevealOnScroll variant="up">
-              <div className="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-2">
+              <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-2 break-words">
                 <h3 className="text-[17px] font-bold text-on-surface">Digital Delivery Model</h3>
                 <p className="text-[14px] text-on-surface-variant">
                   <strong>ASHIVOX LLC</strong> delivers 100% digital creative media services (including video editing, motion graphics, color grading, sound design, content writing, and social media production). Because there are no physical goods shipped, fulfillment is carried out electronically through secure cloud storage and collaborative review platforms.
@@ -60,7 +60,7 @@ export default function FulfillmentPolicyPage() {
                 Expected turnaround times depend on the selected package tier as outlined below:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                <div className="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+                <div className="p-4 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/20">
                   <h4 className="font-bold text-[15px] text-on-surface">Single Video Projects</h4>
                   <ul className="text-[13px] text-on-surface-variant mt-2 space-y-1">
                     <li>• <strong>Starter Tier:</strong> 2 to 3 business days for first cut.</li>
@@ -69,7 +69,7 @@ export default function FulfillmentPolicyPage() {
                     <li>• <strong>Studio Tier:</strong> 5 to 7 business days for initial master.</li>
                   </ul>
                 </div>
-                <div className="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+                <div className="p-4 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/20">
                   <h4 className="font-bold text-[15px] text-on-surface">Retainers &amp; Content Sprints</h4>
                   <ul className="text-[13px] text-on-surface-variant mt-2 space-y-1">
                     <li>• <strong>Content Writing:</strong> 2 to 4 business days per batch.</li>
@@ -108,7 +108,7 @@ export default function FulfillmentPolicyPage() {
               <p className="text-[14px] text-on-surface-variant">
                 If you have an urgent campaign launch or require priority 24-hour turnaround, please contact your assigned producer or our support desk:
               </p>
-              <div className="p-5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px]">
+              <div className="p-4 sm:p-5 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px] break-words">
                 <p className="font-bold text-on-surface">ASHIVOX LLC — Production Fulfillment</p>
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">1209 Mountain Road PL NE, Ste R, Albuquerque, NM 87110, USA</p>

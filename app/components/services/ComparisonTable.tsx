@@ -59,7 +59,7 @@ export default function ComparisonTable() {
 
         {/* Matrix Container */}
         <RevealOnScroll variant="up" delay={200}>
-          <div className="w-full overflow-x-auto rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-outline-variant/30 bg-surface-container-lowest">
+          <div className="w-full overflow-x-auto rounded-xl sm:rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-outline-variant/30 bg-surface-container-lowest">
             <table className="w-full text-left min-w-[700px]">
               <thead>
                 <tr className="bg-surface-container-low text-on-surface border-b border-outline-variant/20">

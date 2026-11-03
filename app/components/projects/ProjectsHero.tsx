@@ -15,7 +15,6 @@ export default function ProjectsHero() {
             <span className="text-[12px] uppercase font-bold text-secondary-fixed-dim tracking-wider">
               Contact Our Team
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim animate-pulse" />
           </div>
         </RevealOnScroll>
 

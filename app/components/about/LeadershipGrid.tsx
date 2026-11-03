@@ -58,9 +58,9 @@ export default function LeadershipGrid() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {leaders.map((leader, idx) => (
           <RevealOnScroll key={leader.name} variant="up" delay={idx * 150}>
-            <div className="rounded-[2rem] bg-surface-container-lowest p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between group hover:shadow-md transition-all h-full">
+            <div className="rounded-xl sm:rounded-2xl bg-surface-container-lowest p-4 sm:p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between group hover:shadow-md transition-all h-full">
               <div>
-                <div className="relative overflow-hidden rounded-[1.25rem] mb-6 h-72 w-full bg-surface-container">
+                <div className="relative overflow-hidden rounded-lg sm:rounded-xl mb-4 sm:mb-6 h-60 sm:h-72 w-full bg-surface-container">
                   <Image
                     src={leader.image}
                     alt={leader.name}
@@ -68,23 +68,23 @@ export default function LeadershipGrid() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute bottom-3 left-3 px-3.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface text-[11px] uppercase font-bold tracking-wider shadow-sm">
+                  <div className="absolute bottom-3 left-3 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface text-[10px] sm:text-[11px] uppercase font-bold tracking-wider shadow-sm">
                     {leader.tag}
                   </div>
                 </div>
 
-                <h3 className="text-[22px] font-bold text-on-surface">
+                <h3 className="text-[18px] sm:text-[22px] font-bold text-on-surface">
                   {leader.name}
                 </h3>
-                <p className="text-[13px] text-primary font-semibold mt-0.5">
+                <p className="text-[12px] sm:text-[13px] text-primary font-semibold mt-0.5">
                   {leader.role}
                 </p>
-                <p className="text-[13px] leading-[22px] text-on-surface-variant mt-3">
+                <p className="text-[12px] sm:text-[13px] leading-[20px] sm:leading-[22px] text-on-surface-variant mt-2 sm:mt-3">
                   {leader.desc}
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 flex items-center justify-between border-t border-outline-variant/20">
+              <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 flex items-center justify-between border-t border-outline-variant/20">
                 <span className="text-[12px] font-medium text-outline">
                   {leader.badge}
                 </span>

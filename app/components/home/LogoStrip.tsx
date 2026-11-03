@@ -1,7 +1,7 @@
 import RevealOnScroll from "../RevealOnScroll";
 
 const sectors = [
-  { icon: "terminal", name: "SaaS & Tech" },
+  { icon: "terminal", name: "SaaS & Technologies" },
   { icon: "storefront", name: "E-Commerce Brands" },
   { icon: "podcasts", name: "Creators & Media" },
   { icon: "account_balance", name: "Fintech & Services" },
@@ -19,11 +19,11 @@ export default function LogoStrip() {
         </RevealOnScroll>
 
         <RevealOnScroll variant="up" delay={150}>
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 mt-6 opacity-75 hover:opacity-100 transition-opacity duration-300">
+          <div className="grid grid-cols-2 md:grid-cols-5 items-center justify-center sm:justify-between gap-6 sm:gap-8 mt-6 opacity-75 hover:opacity-100 transition-opacity duration-300">
             {sectors.map((sec, i) => (
               <div
                 key={sec.name}
-                className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-surface-container-low border border-outline-variant/30"
+                className="flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/30"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <span className="material-symbols-outlined text-primary text-[22px]">

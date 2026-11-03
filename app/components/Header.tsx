@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
+  { href: "/", label: "Home"},
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/checkout", label: "Checkout" },
@@ -145,7 +146,7 @@ export default function Header() {
         <div
           ref={drawerRef}
           className="md:hidden absolute top-[calc(100%+8px)] right-4 w-[min(calc(100vw-2rem),280px)] 
-          rounded-2xl bg-gradient-to-r from-[#160430]/95 to-[#2d0a74] border border-primary/30 shadow-[0_20px_50px_rgba(18,3,41,0.95)] 
+          rounded-xl bg-gradient-to-r from-[#160430]/95 to-[#2d0a74] border border-primary/30 shadow-[0_20px_50px_rgba(18,3,41,0.95)] 
           p-4 flex flex-col gap-2 z-50 animate-scale-in"
         >
           <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[11px] font-bold uppercase tracking-wider text-primary-fixed-dim">
@@ -183,7 +184,6 @@ export default function Header() {
               className="w-full py-2.5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-white text-[13px] font-bold flex items-center justify-center gap-1 shadow-md"
             >
               <span>Purchase Plan</span>
-              <span>↗</span>
             </Link>
           </div>
         </div>

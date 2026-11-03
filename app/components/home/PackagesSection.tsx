@@ -286,7 +286,7 @@ export default function PackagesSection() {
     serviceTabs.find((tab) => tab.id === activeTab) || serviceTabs[0];
 
   return (
-    <section className="w-full bg-background py-space-xl relative" id="packages">
+    <section className="w-full bg-background py-space-xl  relative" id="packages">
       {/* Subtle Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-primary/5 blur-[150px] pointer-events-none rounded-full" />
 
@@ -311,7 +311,7 @@ export default function PackagesSection() {
         </div>
 
         {/* Tab Selector - Styled exactly after the reference pill tab bar */}
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 p-2">
           <RevealOnScroll variant="fade" delay={200}>
             <div className="inline-flex items-center gap-1.5 p-1.5 rounded-full bg-surface-container-low border border-outline-variant/30 shadow-inner">
               {serviceTabs.map((tab) => {
@@ -364,65 +364,65 @@ export default function PackagesSection() {
               >
                 {pkg.featured ? (
                   /* Featured Card with Radiant Gradient Border & Glow */
-                  <div className="h-full p-[2.5px] rounded-[2rem] bg-gradient-to-b from-[#b060ff] via-[#8525e8] to-[#5914a8] shadow-[0_20px_50px_rgba(112,21,226,0.25)] hover:shadow-[0_24px_60px_rgba(112,21,226,0.38)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col relative group">
+                  <div className="h-full p-[2px] rounded-xl sm:rounded-2xl bg-gradient-to-b from-[#b060ff] via-[#8525e8] to-[#5914a8] shadow-[0_20px_50px_rgba(112,21,226,0.25)] hover:shadow-[0_24px_60px_rgba(112,21,226,0.38)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col relative group">
                     {/* Floating Top Badge */}
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-[#b060ff] text-white text-[11px] uppercase font-extrabold tracking-wider shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 sm:px-4 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-primary to-[#b060ff] text-white text-[10px] sm:text-[11px] uppercase font-extrabold tracking-wider shadow-lg flex items-center gap-1.5 whitespace-nowrap">
                       <span>MOST POPULAR</span>
                     </div>
 
-                    <div className="h-full rounded-[1.85rem] bg-gradient-to-b from-surface-container-lowest via-surface-container-lowest to-surface-container-low/40 p-6 sm:p-7 flex flex-col justify-between">
+                    <div className="h-full rounded-[10px] sm:rounded-[14px] bg-gradient-to-b from-surface-container-lowest via-surface-container-lowest to-surface-container-low/40 p-4 sm:p-6 lg:p-7 flex flex-col justify-between">
                       <div>
                         {/* Header */}
                         <div className="flex items-center justify-between mb-2">
-                          <h3 className="text-[22px] font-extrabold text-on-surface">
+                          <h3 className="text-[19px] sm:text-[22px] font-extrabold text-on-surface">
                             {pkg.title}
                           </h3>
-                          <span className="text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                          <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-extrabold px-2 sm:px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                             Recommended
                           </span>
                         </div>
-                        <p className="text-[13px] text-on-surface-variant leading-relaxed min-h-[38px]">
+                        <p className="text-[12px] sm:text-[13px] text-on-surface-variant leading-relaxed min-h-[36px] sm:min-h-[38px]">
                           {pkg.subtitle}
                         </p>
 
                         {/* Price Tag */}
-                        <div className="my-5">
+                        <div className="my-4 sm:my-5">
                           <div className="flex items-baseline gap-1">
-                            <span className="text-[38px] font-black text-on-surface tracking-tight">
+                            <span className="text-[28px] sm:text-[36px] font-black text-on-surface tracking-tight">
                               {pkg.price}
                             </span>
-                            <span className="text-[13px] text-primary font-bold">
+                            <span className="text-[12px] sm:text-[13px] text-primary font-bold">
                               {pkg.cycle} USD
                             </span>
                           </div>
                         </div>
 
-                        {/* Delivery & Revisions Dual Pill Box (as seen in reference image) */}
-                        <div className="grid grid-cols-2 gap-2.5 mb-6">
-                          <div className="p-2.5 rounded-xl bg-primary-fixed/25 border border-primary/20 text-center">
-                            <span className="block text-[10px] uppercase font-bold tracking-wider text-primary">
+                        {/* Delivery & Revisions Dual Pill Box */}
+                        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 mb-5 sm:mb-6">
+                          <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-primary-fixed/25 border border-primary/20 text-center">
+                            <span className="block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-primary">
                               DELIVERY
                             </span>
-                            <span className="text-[12px] font-bold text-on-surface">
+                            <span className="text-[11px] sm:text-[12px] font-bold text-on-surface truncate block">
                               [{pkg.delivery}]
                             </span>
                           </div>
-                          <div className="p-2.5 rounded-xl bg-primary-fixed/25 border border-primary/20 text-center">
-                            <span className="block text-[10px] uppercase font-bold tracking-wider text-primary">
+                          <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-primary-fixed/25 border border-primary/20 text-center">
+                            <span className="block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-primary">
                               REVISIONS
                             </span>
-                            <span className="text-[12px] font-bold text-on-surface">
+                            <span className="text-[11px] sm:text-[12px] font-bold text-on-surface truncate block">
                               [{pkg.revisions}]
                             </span>
                           </div>
                         </div>
 
                         {/* Features List */}
-                        <ul className="space-y-2.5 text-[13px] text-on-surface">
+                        <ul className="space-y-2 sm:space-y-2.5 text-[12px] sm:text-[13px] text-on-surface">
                           {pkg.features.map((feature) => (
-                            <li key={feature} className="flex items-start gap-2.5">
-                              <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                                <span className="material-symbols-outlined text-[13px] font-bold">
+                            <li key={feature} className="flex items-start gap-2 sm:gap-2.5">
+                              <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                                <span className="material-symbols-outlined text-[11px] sm:text-[13px] font-bold">
                                   check
                                 </span>
                               </span>
@@ -435,13 +435,13 @@ export default function PackagesSection() {
                       </div>
 
                       {/* CTA Button */}
-                      <div className="mt-7 pt-4 border-t border-outline-variant/30">
+                      <div className="mt-5 sm:mt-7 pt-3.5 sm:pt-4 border-t border-outline-variant/30">
                         <Link
                           href={checkoutUrl}
-                          className="w-full py-3.5 rounded-full text-white text-[14px] font-extrabold bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] shadow-[0_8px_24px_rgba(138,63,252,0.4)] hover:shadow-[0_12px_32px_rgba(138,63,252,0.6)] transition-all flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer"
+                          className="w-full py-3 sm:py-3.5 rounded-lg sm:rounded-full text-white text-[13px] sm:text-[14px] font-extrabold bg-gradient-to-r from-primary via-primary-container to-[#b060ff] hover:from-[#8b24e6] hover:to-[#a44cf8] shadow-[0_8px_24px_rgba(138,63,252,0.4)] hover:shadow-[0_12px_32px_rgba(138,63,252,0.6)] transition-all flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer"
                         >
                           <span>{pkg.cta}</span>
-                          <span className="material-symbols-outlined text-[17px] transition-transform group-hover:translate-x-0.5">
+                          <span className="material-symbols-outlined text-[16px] sm:text-[17px] transition-transform group-hover:translate-x-0.5">
                             arrow_forward
                           </span>
                         </Link>
@@ -450,56 +450,56 @@ export default function PackagesSection() {
                   </div>
                 ) : (
                   /* Standard Card */
-                  <div className="h-full rounded-[2rem] p-6 sm:p-7 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/40 shadow-sm hover:shadow-[0_16px_40px_rgba(112,21,226,0.12)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between group">
+                  <div className="h-full rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-7 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/40 shadow-sm hover:shadow-[0_16px_40px_rgba(112,21,226,0.12)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between group">
                     <div>
                       {/* Header */}
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-[22px] font-extrabold text-on-surface">
+                        <h3 className="text-[19px] sm:text-[22px] font-extrabold text-on-surface">
                           {pkg.title}
                         </h3>
                       </div>
-                      <p className="text-[13px] text-on-surface-variant leading-relaxed min-h-[38px]">
+                      <p className="text-[12px] sm:text-[13px] text-on-surface-variant leading-relaxed min-h-[36px] sm:min-h-[38px]">
                         {pkg.subtitle}
                       </p>
 
                       {/* Price Tag */}
-                      <div className="my-5">
+                      <div className="my-4 sm:my-5">
                         <div className="flex items-baseline gap-1">
-                          <span className="text-[38px] font-black text-on-surface tracking-tight">
+                          <span className="text-[28px] sm:text-[36px] font-black text-on-surface tracking-tight">
                             {pkg.price}
                           </span>
-                          <span className="text-[13px] text-on-surface-variant font-semibold">
+                          <span className="text-[12px] sm:text-[13px] text-on-surface-variant font-semibold">
                             {pkg.cycle} USD
                           </span>
                         </div>
                       </div>
 
                       {/* Delivery & Revisions Dual Pill Box */}
-                      <div className="grid grid-cols-2 gap-2.5 mb-6">
-                        <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-center">
-                          <span className="block text-[10px] uppercase font-bold tracking-wider text-on-surface-variant">
+                      <div className="grid grid-cols-2 gap-2 sm:gap-2.5 mb-5 sm:mb-6">
+                        <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/20 text-center">
+                          <span className="block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-on-surface-variant">
                             DELIVERY
                           </span>
-                          <span className="text-[12px] font-bold text-on-surface">
+                          <span className="text-[11px] sm:text-[12px] font-bold text-on-surface truncate block">
                             [{pkg.delivery}]
                           </span>
                         </div>
-                        <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-center">
-                          <span className="block text-[10px] uppercase font-bold tracking-wider text-on-surface-variant">
+                        <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/20 text-center">
+                          <span className="block text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-on-surface-variant">
                             REVISIONS
                           </span>
-                          <span className="text-[12px] font-bold text-on-surface">
+                          <span className="text-[11px] sm:text-[12px] font-bold text-on-surface truncate block">
                             [{pkg.revisions}]
                           </span>
                         </div>
                       </div>
 
                       {/* Features List */}
-                      <ul className="space-y-2.5 text-[13px] text-on-surface">
+                      <ul className="space-y-2 sm:space-y-2.5 text-[12px] sm:text-[13px] text-on-surface">
                         {pkg.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2.5">
-                            <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
-                              <span className="material-symbols-outlined text-[13px] font-bold">
+                          <li key={feature} className="flex items-start gap-2 sm:gap-2.5">
+                            <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                              <span className="material-symbols-outlined text-[11px] sm:text-[13px] font-bold">
                                 check
                               </span>
                             </span>
@@ -512,13 +512,13 @@ export default function PackagesSection() {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="mt-7 pt-4 border-t border-outline-variant/20">
+                    <div className="mt-5 sm:mt-7 pt-3.5 sm:pt-4 border-t border-outline-variant/20">
                       <Link
                         href={checkoutUrl}
-                        className="w-full py-3.5 rounded-full text-on-surface text-[14px] font-bold bg-surface-container-low hover:bg-primary hover:text-white border border-outline-variant/30 hover:border-transparent transition-all flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer shadow-sm hover:shadow-[0_6px_20px_rgba(112,21,226,0.25)]"
+                        className="w-full py-3 sm:py-3.5 rounded-lg sm:rounded-full text-on-surface text-[13px] sm:text-[14px] font-bold bg-surface-container-low hover:bg-primary hover:text-white border border-outline-variant/30 hover:border-transparent transition-all flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer shadow-sm hover:shadow-[0_6px_20px_rgba(112,21,226,0.25)]"
                       >
                         <span>{pkg.cta}</span>
-                        <span className="material-symbols-outlined text-[17px] transition-transform group-hover:translate-x-0.5">
+                        <span className="material-symbols-outlined text-[16px] sm:text-[17px] transition-transform group-hover:translate-x-0.5">
                           arrow_forward
                         </span>
                       </Link>

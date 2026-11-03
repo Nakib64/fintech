@@ -119,8 +119,8 @@ export default function HeroSection() {
           style={{ transitionDelay: "450ms" }}
         >
           {/* Main Showcase Image Frame with Bold Purple Border */}
-          <div className="p-1.5 sm:p-2.5 rounded-[1.75rem] sm:rounded-[2.25rem] bg-[#9333ea] shadow-[0_20px_60px_rgba(112,21,226,0.5),0_0_40px_rgba(192,132,252,0.35)]">
-            <div className="rounded-[1.4rem] sm:rounded-[1.85rem] overflow-hidden bg-[#110526] relative aspect-[16/9] shadow-2xl">
+          <div className="p-1.5 sm:p-2.5 rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#9333ea] shadow-[0_20px_60px_rgba(112,21,226,0.5),0_0_40px_rgba(192,132,252,0.35)]">
+            <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden bg-[#110526] relative aspect-[16/9] shadow-2xl">
               <Image
                 src="/hero-services.webp"
                 alt="ASHIVOX Creative Studio - Video Editing, Content Writing & Social Media Management"
@@ -134,7 +134,7 @@ export default function HeroSection() {
           </div>
 
           {/* Layered Lavender Shadow Shelf beneath Card */}
-          <div className="w-[88%] sm:w-[92%] h-4 sm:h-6 mx-auto -mt-2 sm:-mt-3 rounded-b-[1.5rem] sm:rounded-b-[2rem] bg-[#e9d5ff] opacity-80 border-b border-x border-[#c084fc]/40 shadow-sm" />
+          <div className="w-[88%] sm:w-[92%] h-4 sm:h-6 mx-auto -mt-2 sm:-mt-3 rounded-b-lg sm:rounded-b-xl md:rounded-b-2xl bg-[#e9d5ff] opacity-80 border-b border-x border-[#c084fc]/40 shadow-sm" />
         </div>
       </div>
     </section>

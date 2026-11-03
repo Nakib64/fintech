@@ -37,7 +37,7 @@ export default function TermsPage() {
         <section className="w-full py-16 md:py-20 bg-surface-container-lowest">
           <div className="max-w-[1000px] mx-auto px-5 md:px-margin text-on-surface leading-relaxed space-y-10">
             <RevealOnScroll variant="up">
-              <div className="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-2">
+              <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-2 break-words">
                 <h3 className="text-[17px] font-bold text-on-surface">Contracting Entity</h3>
                 <p className="text-[14px] text-on-surface-variant">
                   These Terms of Service (&quot;Terms&quot;, &quot;Agreement&quot;) constitute a legally binding agreement between you (&quot;Client&quot;, &quot;you&quot;, &quot;your&quot;) and <strong>ASHIVOX LLC</strong> (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, &quot;our&quot;), a limited liability company organized and existing under the laws of the State of New Mexico, United States.
@@ -129,7 +129,7 @@ export default function TermsPage() {
               <p className="text-[14px] text-on-surface-variant">
                 Formal legal notices should be addressed to:
               </p>
-              <div className="p-5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px]">
+              <div className="p-4 sm:p-5 rounded-lg sm:rounded-xl bg-surface-container-low border border-outline-variant/30 text-[14px] break-words">
                 <p className="font-bold text-on-surface">ASHIVOX LLC</p>
                 <p className="text-on-surface-variant mt-1">Business Registration #: 0008132694</p>
                 <p className="text-on-surface-variant">Attn: Legal Department</p>
