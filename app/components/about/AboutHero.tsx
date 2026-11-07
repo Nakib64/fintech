@@ -21,7 +21,7 @@ export default function AboutHero() {
           <div className="lg:col-span-7 space-y-4">
             <RevealOnScroll variant="up" delay={80}>
               <h1 className="text-[36px] sm:text-[48px] md:text-[56px] leading-[1.1] font-bold text-white tracking-tight">
-                Your TrustedDigital Partner for Premium Services
+                Your Trusted Digital Partner for Premium Services
               </h1>
             </RevealOnScroll>
             <RevealOnScroll variant="up" delay={160}>
