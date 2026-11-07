@@ -21,14 +21,13 @@ export default function AboutHero() {
           <div className="lg:col-span-7 space-y-4">
             <RevealOnScroll variant="up" delay={80}>
               <h1 className="text-[36px] sm:text-[48px] md:text-[56px] leading-[1.1] font-bold text-white tracking-tight">
-                Built on Trust &amp; Transparency
+                Your TrustedDigital Partner for Premium Services
               </h1>
             </RevealOnScroll>
             <RevealOnScroll variant="up" delay={160}>
               <p className="text-[16px] md:text-[18px] text-secondary-fixed-dim/90 max-w-2xl leading-relaxed">
-                ASHIVOX LLC is a registered US company. We deliver
-                premium video production with 100% intellectual property
-                ownership, clear contracts, and dependable delivery.
+                ASHIVOX LLC is a registered US company. We deliver premium video production, engaging content writing, and expert social media management. Built on trust and transparency, we ensure 100% intellectual 
+                property ownership, clear contracts, and dependable delivery
               </p>
             </RevealOnScroll>
           </div>
