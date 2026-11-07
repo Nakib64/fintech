@@ -13,7 +13,7 @@ export default function CheckoutHero() {
         <RevealOnScroll variant="up">
           <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md shadow-sm mb-4 sm:mb-6 border border-white/10">
             <span className="text-[11px] sm:text-[12px] uppercase font-bold text-secondary-fixed-dim tracking-wider">
-              Secure Stripe Rails
+              Secure Payoneer Rails
             </span>
           </div>
         </RevealOnScroll>

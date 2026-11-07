@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
 import { Plan } from "../../lib/plans";
+import { PayoneerLogo, VisaLogo, MastercardLogo, AmexLogo, PaymentBadge } from "../PaymentLogos";
 
 interface OrderSummaryProps {
   selectedPlan: Plan;
@@ -128,33 +129,22 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
       {/* Security & Compliance Architecture */}
       <RevealOnScroll variant="right" delay={150}>
         <div className="bg-surface-container-low rounded-md sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-outline-variant/30 space-y-3.5 sm:space-y-4 w-full max-w-full overflow-hidden">
-          <span className="text-[11px] sm:text-[12px] uppercase tracking-wider font-bold text-on-surface block">
-            Payment Security &amp; Compliance
-          </span>
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
-            <div className="p-3 sm:p-4 bg-surface-container-lowest rounded-md sm:rounded-xl border border-outline-variant/20">
-              <div className="flex items-center gap-1.5 text-primary mb-1">
-                <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
-                  security
-                </span>
-                <span className="text-[11px] sm:text-[12px] font-bold">256-Bit SSL</span>
-              </div>
-              <p className="text-[11px] sm:text-[12px] text-outline">
-                Encrypted checkout
-              </p>
-            </div>
-            <div className="p-3 sm:p-4 bg-surface-container-lowest rounded-md border border-outline-variant/20">
-              <div className="flex items-center gap-1.5 text-primary mb-1">
-                <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
-                  shield
-                </span>
-                <span className="text-[11px] sm:text-[12px] font-bold">PCI Compliant</span>
-              </div>
-              <p className="text-[11px] sm:text-[12px] text-outline">
-                Tokenized processing
-              </p>
-            </div>
+          
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <PaymentBadge className="px-2 py-1" title="Payoneer">
+              <PayoneerLogo className="h-3 w-auto" />
+            </PaymentBadge>
+            <PaymentBadge className="px-2 py-1" title="Visa">
+              <VisaLogo className="h-2.5 w-auto" />
+            </PaymentBadge>
+            <PaymentBadge className="px-2 py-1" title="Mastercard">
+              <MastercardLogo className="h-3 w-auto" />
+            </PaymentBadge>
+            <PaymentBadge className="px-2 py-1" title="American Express">
+              <AmexLogo className="h-3 w-auto" />
+            </PaymentBadge>
           </div>
+          
 
           {/* Direct Compliance Links to Dedicated Pages */}
           <div className="pt-2 border-t border-outline-variant/20 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-on-surface-variant text-[11.5px] sm:text-[12.5px]">
@@ -193,27 +183,7 @@ export default function OrderSummary({ selectedPlan }: OrderSummaryProps) {
         </div>
       </RevealOnScroll>
 
-      {/* Support Guarantee Card */}
-      <RevealOnScroll variant="right" delay={250}>
-        <div className="bg-surface-container-lowest rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-sm border border-outline-variant/30 flex items-start sm:items-center gap-3 sm:gap-4 w-full max-w-full overflow-hidden">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-            <span className="material-symbols-outlined text-[20px] sm:text-[22px]">
-              support_agent
-            </span>
-          </div>
-          <div className="space-y-0.5 text-[12px] sm:text-[13px] min-w-0 flex-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-bold text-on-surface">
-                Dedicated Creative Producer
-              </span>
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            </div>
-            <p className="text-outline text-[11px] sm:text-[12px]">
-              Assigned within 24 business hours to guide your project kickoff.
-            </p>
-          </div>
-        </div>
-      </RevealOnScroll>
+    
     </div>
   );
 }

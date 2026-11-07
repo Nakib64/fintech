@@ -162,7 +162,7 @@ export default function Footer() {
                 Billing &amp; Payment Rails
               </span>
               <p className="text-[13px] leading-[22px] text-white/70">
-                Cards and bank transfers processed securely via Stripe and Wise with 256-bit institutional encryption and transparent USD billing.
+                Cards, digital wallets, and balances processed securely via Payoneer, Stripe, and Wise with 256-bit institutional encryption and transparent USD billing.
               </p>
               <div className="mt-2">
                 <AcceptedPaymentMethods />

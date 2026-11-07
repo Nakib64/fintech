@@ -131,6 +131,40 @@ export function WiseLogo({ className = "h-4 w-auto" }: { className?: string }) {
   );
 }
 
+export function PayoneerLogo({ className = "h-4 w-auto" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 110 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Payoneer"
+    >
+      <defs>
+        <linearGradient id="payoneerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF4800" />
+          <stop offset="50%" stopColor="#FF1844" />
+          <stop offset="100%" stopColor="#7E1CFC" />
+        </linearGradient>
+      </defs>
+      {/* Payoneer Circle Mark */}
+      <circle cx="12" cy="12" r="9" stroke="url(#payoneerGradient)" strokeWidth="3.5" fill="none" />
+      {/* Payoneer Wordmark */}
+      <text
+        x="27"
+        y="16.5"
+        fill="currentColor"
+        fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        fontSize="14.5"
+        fontWeight="800"
+        letterSpacing="-0.3px"
+      >
+        payoneer
+      </text>
+    </svg>
+  );
+}
+
 export function AchWireLogo({ className = "h-4 w-auto" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-1 font-bold tracking-wider text-[11px] ${className}`}>
@@ -168,6 +202,9 @@ export function PaymentBadge({
 export function AcceptedPaymentMethods({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-1.5 sm:gap-2 ${className}`}>
+      <PaymentBadge title="Payoneer">
+        <PayoneerLogo className="h-3.5 sm:h-4 w-auto text-black" />
+      </PaymentBadge>
       <PaymentBadge title="Visa">
         <VisaLogo className="h-3 sm:h-3.5 w-auto" />
       </PaymentBadge>
@@ -176,9 +213,6 @@ export function AcceptedPaymentMethods({ className = "" }: { className?: string 
       </PaymentBadge>
       <PaymentBadge title="American Express">
         <AmexLogo className="h-3.5 sm:h-4 w-auto" />
-      </PaymentBadge>
-      <PaymentBadge title="Stripe">
-        <StripeLogo className="h-3.5 sm:h-4 w-auto" />
       </PaymentBadge>
       <PaymentBadge title="Apple Pay">
         <ApplePayLogo className="h-3 sm:h-3.5 w-auto text-black" />

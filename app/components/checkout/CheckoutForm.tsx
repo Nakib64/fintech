@@ -3,16 +3,22 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
-import LottieDoneModal from "../LottieDoneModal";
 import { Plan } from "../../lib/plans";
+import {
+  PayoneerLogo,
+  VisaLogo,
+  MastercardLogo,
+  AmexLogo,
+  ApplePayLogo,
+  GooglePayLogo,
+  PaymentBadge,
+} from "../PaymentLogos";
 
 interface CheckoutFormProps {
   selectedPlan: Plan;
   onPlanChange: (plan: Plan) => void;
   allPlans: Plan[];
 }
-
-type PaymentMethod = "invoice" | "wire";
 
 export default function CheckoutForm({
   selectedPlan,
@@ -28,15 +34,9 @@ export default function CheckoutForm({
   const [company, setCompany] = useState("");
   const [country, setCountry] = useState("United States");
   const [address, setAddress] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("invoice");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [formError, setFormError] = useState("");
-
-  // Processing & Confirmation States
   const [isProcessing, setIsProcessing] = useState(false);
-  const [orderPlaced, setOrderPlaced] = useState(false);
-  const [orderId, setOrderId] = useState("");
-  const [emailStatusMessage, setEmailStatusMessage] = useState("");
 
   const isMonthly = selectedPlan.cycle === "/mo";
 
@@ -82,7 +82,7 @@ export default function CheckoutForm({
     setIsProcessing(true);
 
     try {
-      const res = await fetch("/api/checkout", {
+      const res = await fetch("/api/checkout/payoneer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -91,60 +91,32 @@ export default function CheckoutForm({
           company,
           country,
           address,
+          planId: selectedPlan.id,
           planName: selectedPlan.name,
           planPrice: selectedPlan.price,
+          planNumericPrice: selectedPlan.numericPrice,
           planCycle: selectedPlan.cycle,
-          paymentMethod,
         }),
       });
 
       const data = await res.json();
 
-      if (res.ok && data.success) {
-        setOrderId(data.orderId);
-        setEmailStatusMessage(
-          `Official commercial invoice #${data.orderId} dispatched to ${email}.`
-        );
-        setOrderPlaced(true);
+      if (res.ok && data.success && data.redirectUrl) {
+        // Redirect directly to Payoneer Hosted Checkout (or test success page)
+        window.location.href = data.redirectUrl;
       } else {
-        setFormError(data.error || "Failed to process order. Please try again.");
+        setFormError(data.error || "Failed to initialize Payoneer Checkout. Please try again.");
+        setIsProcessing(false);
       }
     } catch (err) {
-      console.error("Order submission error:", err);
-      // Fallback in case of network issue
-      const fallbackId = `ASH-${Math.floor(10000 + Math.random() * 90000)}`;
-      setOrderId(fallbackId);
-      setEmailStatusMessage(`Order #${fallbackId} registered for ${email}.`);
-      setOrderPlaced(true);
-    } finally {
+      console.error("Payoneer checkout error:", err);
+      setFormError("Failed to connect to Payoneer payment server. Please try again.");
       setIsProcessing(false);
     }
   };
 
-  const handleModalClose = () => {
-    setOrderPlaced(false);
-    setFullName("");
-    setEmail("");
-    setCompany("");
-    setAddress("");
-    setTermsAccepted(false);
-  };
-
-  // ── Standard Order Form ──
   return (
     <div className="flex flex-col gap-6 w-full max-w-full">
-      {/* ── Confirmation Modal ── */}
-      <LottieDoneModal
-        isOpen={orderPlaced}
-        onClose={handleModalClose}
-        title="Confirmation Sent!"
-        subtitle="Your order request has been received."
-        orderId={orderId}
-        email={email}
-        message="Our creative executive team is reviewing your requirements and will reach out to you shortly (within 24 business hours) to confirm project scope and kick off onboarding."
-        buttonText="Got it, Thanks!"
-      />
-
       {/* ── 1. Plan Selector Dropdown Card ── */}
       <RevealOnScroll variant="up" className="relative z-50 w-full max-w-full">
         <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-outline-variant/30 space-y-3 relative z-50 w-full max-w-full overflow-visible">
@@ -205,8 +177,9 @@ export default function CheckoutForm({
                 </div>
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
                   <span
-                    className={`material-symbols-outlined text-[18px] sm:text-[20px] transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""
-                      }`}
+                    className={`material-symbols-outlined text-[18px] sm:text-[20px] transition-transform duration-300 ${
+                      dropdownOpen ? "rotate-180" : ""
+                    }`}
                   >
                     expand_more
                   </span>
@@ -235,19 +208,21 @@ export default function CheckoutForm({
                           onPlanChange(plan);
                           setDropdownOpen(false);
                         }}
-                        className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer text-left gap-2 ${isSelected
+                        className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer text-left gap-2 ${
+                          isSelected
                             ? "bg-primary/10 border border-primary/30 shadow-inner"
                             : "hover:bg-surface-container-low"
-                          }`}
+                        }`}
                         role="option"
                         aria-selected={isSelected}
                       >
                         <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
                           <div
-                            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center shrink-0 ${isSelected
+                            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                              isSelected
                                 ? "bg-primary text-white"
                                 : "bg-surface-container-low text-primary"
-                              }`}
+                            }`}
                           >
                             <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
                               {plan.icon || "star"}
@@ -256,39 +231,37 @@ export default function CheckoutForm({
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                               <span
-                                className={`text-[13px] sm:text-[14px] font-bold truncate ${isSelected
+                                className={`text-[13px] sm:text-[14px] font-bold truncate ${
+                                  isSelected
                                     ? "text-primary"
                                     : "text-on-surface"
-                                  }`}
+                                }`}
                               >
                                 {plan.name}
                               </span>
                               {plan.badge && (
-                                <span className="px-1.5 py-0.5 rounded-full bg-surface-container-low text-[9px] sm:text-[10px] text-outline font-semibold shrink-0">
+                                <span className="px-1.5 py-0.5 rounded-full bg-primary-fixed text-[9px] text-on-primary-fixed font-bold shrink-0">
                                   {plan.badge}
                                 </span>
                               )}
                             </div>
-                            <span className="text-[10.5px] sm:text-[11px] text-on-surface-variant block truncate">
+                            <span className="text-[11px] text-on-surface-variant block truncate">
                               {plan.desc}
                             </span>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 ml-1 sm:ml-2">
-                          <div className="text-right">
-                            <span className="text-[13px] sm:text-[15px] font-bold text-on-surface block leading-tight">
-                              {plan.price}
-                            </span>
-                            <span className="text-[10px] sm:text-[11px] text-outline block">
-                              {plan.cycle} USD
-                            </span>
-                          </div>
-                          {isSelected && (
-                            <span className="material-symbols-outlined text-[16px] sm:text-[18px] text-primary shrink-0">
-                              check_circle
-                            </span>
-                          )}
+                        <div className="text-right shrink-0 ml-2">
+                          <span
+                            className={`text-[13px] sm:text-[14px] font-extrabold block ${
+                              isSelected ? "text-primary" : "text-on-surface"
+                            }`}
+                          >
+                            {plan.price}
+                          </span>
+                          <span className="text-[10px] text-outline block">
+                            {plan.cycle} USD
+                          </span>
                         </div>
                       </button>
                     );
@@ -300,8 +273,8 @@ export default function CheckoutForm({
         </div>
       </RevealOnScroll>
 
-      {/* ── 2. Client Billing & Contact Information Form ── */}
-      <RevealOnScroll variant="up" delay={80} className="relative z-10 w-full max-w-full">
+      {/* ── 2. Client Billing Details & Form ── */}
+      <RevealOnScroll variant="up" delay={80}>
         <form onSubmit={handleCheckout} className="space-y-6 w-full max-w-full">
           <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm space-y-5 sm:space-y-6 border border-outline-variant/30 w-full max-w-full overflow-hidden">
             <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20">
@@ -311,20 +284,20 @@ export default function CheckoutForm({
                     person
                   </span>
                 </div>
-                <h2 className="text-[16px] sm:text-[20px] font-bold text-on-surface">
-                  Client &amp; Billing Details
+                <h2 className="text-[16px] sm:text-[20px] font-bold text-on-surface leading-tight">
+                  Client &amp; Billing Information
                 </h2>
               </div>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-outline shrink-0">
-                Step 1 of 2
+              <span className="text-[11px] sm:text-[12px] font-semibold text-primary">
+                Required for Onboarding
               </span>
             </div>
 
-            <div className="space-y-3.5 sm:space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="w-full">
                   <label className="block text-[12px] sm:text-[13px] font-semibold text-on-surface-variant mb-1">
-                    Full Name <span className="text-red-500">*</span>
+                    Full Legal Name *
                   </label>
                   <input
                     required
@@ -337,7 +310,7 @@ export default function CheckoutForm({
                 </div>
                 <div className="w-full">
                   <label className="block text-[12px] sm:text-[13px] font-semibold text-on-surface-variant mb-1">
-                    Work Email <span className="text-red-500">*</span>
+                    Work Email Address *
                   </label>
                   <input
                     required
@@ -350,14 +323,14 @@ export default function CheckoutForm({
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="w-full">
                   <label className="block text-[12px] sm:text-[13px] font-semibold text-on-surface-variant mb-1">
                     Company / Organization (Optional)
                   </label>
                   <input
                     className="w-full max-w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-surface-container-lowest text-[13px] sm:text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 box-border"
-                    placeholder="e.g. Acme Media Corp"
+                    placeholder="Brand or Agency Name"
                     type="text"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
@@ -365,18 +338,21 @@ export default function CheckoutForm({
                 </div>
                 <div className="w-full">
                   <label className="block text-[12px] sm:text-[13px] font-semibold text-on-surface-variant mb-1">
-                    Country / Region
+                    Billing Country
                   </label>
                   <select
-                    className="w-full max-w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-surface-container-lowest text-[13px] sm:text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 cursor-pointer box-border"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
+                    className="w-full max-w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-surface-container-lowest text-[13px] sm:text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 box-border"
                   >
                     <option value="United States">United States</option>
                     <option value="United Kingdom">United Kingdom</option>
                     <option value="Canada">Canada</option>
                     <option value="Australia">Australia</option>
                     <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Singapore">Singapore</option>
                     <option value="Other International">Other International</option>
                   </select>
                 </div>
@@ -384,7 +360,7 @@ export default function CheckoutForm({
 
               <div className="w-full">
                 <label className="block text-[12px] sm:text-[13px] font-semibold text-on-surface-variant mb-1">
-                  Billing Address (Optional for Invoicing)
+                  Billing Street Address (Optional)
                 </label>
                 <input
                   className="w-full max-w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl bg-surface-container-lowest text-[13px] sm:text-[14px] text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 box-border"
@@ -394,92 +370,26 @@ export default function CheckoutForm({
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
-            </div>
-          </div>
 
-          {/* ── 3. Compliant Commercial Payment Rails ── */}
-          <div className="bg-surface-container-low rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm space-y-5 sm:space-y-6 border border-outline-variant/30 w-full max-w-full overflow-hidden">
-            <div className="flex items-center justify-between pb-2 border-b border-outline-variant/20 gap-2">
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
-                  <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
-                    receipt_long
-                  </span>
-                </div>
-                <h2 className="text-[16px] sm:text-[20px] font-bold text-on-surface leading-tight">
-                  Payment &amp; Invoicing Preference
-                </h2>
+               <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <PaymentBadge className="px-2 py-1" title="Visa">
+                  <VisaLogo className="h-3 w-auto" />
+                </PaymentBadge>
+                <PaymentBadge className="px-2 py-1" title="Mastercard">
+                  <MastercardLogo className="h-3.5 w-auto" />
+                </PaymentBadge>
+                <PaymentBadge className="px-2 py-1" title="American Express">
+                  <AmexLogo className="h-3.5 w-auto" />
+                </PaymentBadge>
+                <PaymentBadge className="px-2 py-1 text-black" title="Apple Pay">
+                  <ApplePayLogo className="h-3 w-auto" />
+                </PaymentBadge>
+                <PaymentBadge className="px-2 py-1" title="Google Pay">
+                  <GooglePayLogo className="h-3.5 w-auto" />
+                </PaymentBadge>
               </div>
-              <div className="flex items-center gap-1.5 shrink-0">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[10px] sm:text-[11px] font-semibold text-on-surface-variant whitespace-nowrap">
-                  Commercial Rails
-                </span>
-              </div>
-            </div>
 
-            {/* Payment Method Radio Options */}
-            <div className="space-y-2.5 sm:space-y-3">
-              <label
-                onClick={() => setPaymentMethod("invoice")}
-                className={`flex items-start gap-2.5 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer ${paymentMethod === "invoice"
-                    ? "border-primary bg-primary/5 shadow-sm"
-                    : "border-outline-variant/30 bg-surface-container-lowest hover:border-primary/40"
-                  }`}
-              >
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  checked={paymentMethod === "invoice"}
-                  onChange={() => setPaymentMethod("invoice")}
-                  className="mt-1 text-primary focus:ring-primary shrink-0 cursor-pointer"
-                />
-                <div className="flex-1 min-w-0">
-                  <span className="text-[13.5px] sm:text-[15px] font-bold text-on-surface block leading-snug">
-                    Electronic Invoice with Card &amp; Digital Pay (Stripe &amp; Wise Link)
-                  </span>
-                </div>
-              </label>
-
-              <label
-                onClick={() => setPaymentMethod("wire")}
-                className={`flex items-start gap-2.5 sm:gap-3.5 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer ${paymentMethod === "wire"
-                    ? "border-primary bg-primary/5 shadow-sm"
-                    : "border-outline-variant/30 bg-surface-container-lowest hover:border-primary/40"
-                  }`}
-              >
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  checked={paymentMethod === "wire"}
-                  onChange={() => setPaymentMethod("wire")}
-                  className="mt-1 text-primary focus:ring-primary shrink-0 cursor-pointer"
-                />
-                <div className="flex-1 min-w-0">
-                  <span className="text-[13.5px] sm:text-[15px] font-bold text-on-surface block leading-snug">
-                    Direct US ACH &amp; Domestic / International Bank Wire
-                  </span>
-                </div>
-              </label>
-            </div>
-
-            {/* ── Subscription Disclosure (if applicable) ── */}
-            {isMonthly && (
-              <div className="p-3.5 sm:p-4 rounded-xl bg-surface-container border border-outline-variant/30 space-y-1 text-[12px] sm:text-[13px] break-words">
-                <div className="flex items-center gap-1.5 font-bold text-primary">
-                  <span className="material-symbols-outlined text-[16px] sm:text-[18px] shrink-0">
-                    autorenew
-                  </span>
-                  <span>Subscription &amp; Renewal Terms</span>
-                </div>
-                <p className="text-on-surface-variant leading-relaxed">
-                  By subscribing, you authorize ASHIVOX LLC to invoice your selected payment method <strong>{selectedPlan.price} USD every 30 days</strong> until cancelled. Cancel anytime with thirty (30) days notice via <a href="mailto:support@ashivox.net" className="text-primary underline">support@ashivox.net</a>. No cancellation fees apply.
-                </p>
-              </div>
-            )}
-
-            {/* ── Mandatory Policy Agreement Checkbox ── */}
-            <div className="pt-1">
+<div className="pt-1">
               <label className="flex items-start gap-2.5 sm:gap-3 cursor-pointer">
                 <input
                   type="checkbox"
@@ -506,7 +416,7 @@ export default function CheckoutForm({
               </label>
             </div>
 
-            {formError && (
+                  {formError && (
               <div className="p-3 rounded-xl bg-red-50 text-red-700 text-[12px] sm:text-[13px] font-medium border border-red-200">
                 {formError}
               </div>
@@ -525,27 +435,33 @@ export default function CheckoutForm({
                       progress_activity
                     </span>
                     <span className="whitespace-nowrap truncate">
-                      Submitting Order Request...
+                      Opening Payoneer Checkout...
                     </span>
                   </>
                 ) : (
                   <>
-                    {/* Mobile screen (< sm): crisp single line */}
                     <span className="sm:hidden whitespace-nowrap">
-                      Submit Order • {selectedPlan.price} USD
+                      Pay with Card • {selectedPlan.price} USD
                     </span>
-                    {/* Desktop / Tablet (sm+): full descriptive text */}
                     <span className="hidden sm:inline whitespace-nowrap">
-                      Submit Order Request ({selectedPlan.price} USD)
+                      Proceed to Payoneer Checkout ({selectedPlan.price} USD)
                     </span>
                     <span className="material-symbols-outlined text-[18px] sm:text-[20px] shrink-0">
-                      send
+                      arrow_forward
                     </span>
                   </>
                 )}
               </button>
+
+              <p className="text-center text-[11.5px] sm:text-[12px] text-outline mt-3">
+                Encrypted with 256-Bit SSL &bull; Instant Confirmation Email &bull; 14-Day Evaluation Window
+              </p>
+            </div>
+
             </div>
           </div>
+
+         
         </form>
       </RevealOnScroll>
     </div>

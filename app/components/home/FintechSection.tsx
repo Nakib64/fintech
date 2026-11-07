@@ -5,6 +5,7 @@ import Link from "next/link";
 import RevealOnScroll from "../RevealOnScroll";
 import { ALL_PLANS, Plan } from "../../lib/plans";
 import {
+  PayoneerLogo,
   StripeLogo,
   VisaLogo,
   MastercardLogo,
@@ -66,8 +67,8 @@ export default function FintechSection() {
             </RevealOnScroll>
             <RevealOnScroll variant="up" delay={160}>
               <p className="text-[15px] leading-[24px] text-secondary-fixed max-w-xl">
-                Pay with credit cards, ACH bank transfer, Apple Pay, or Google
-                Pay. All payments are encrypted, tokenized, and secured by Stripe and Wise.
+                Pay with Payoneer, credit cards, ACH bank transfer, Apple Pay, or Google
+                Pay. All payments are encrypted, tokenized, and secured under PCI-DSS Level 1 standards.
               </p>
             </RevealOnScroll>
           </div>
@@ -82,23 +83,26 @@ export default function FintechSection() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="h-9 sm:h-10 px-2.5 sm:px-3 rounded-lg sm:rounded-xl bg-white flex items-center justify-center shadow-sm shrink-0">
-                      <StripeLogo className="h-4 sm:h-5 w-auto" />
+                      <PayoneerLogo className="h-4 sm:h-4.5 w-auto" />
                     </div>
                     <div>
                       <h4 className="text-[15px] sm:text-[17px] font-bold text-on-primary">
-                        Stripe 256-Bit Hosted Rails
+                        Payoneer Checkout &amp; 3D Secure Rails
                       </h4>
                       <span className="text-[11px] sm:text-[12px] font-medium text-primary-fixed">
-                        Instant 3D Secure Verification
+                        Instant Global Card &amp; Balance Settlement
                       </span>
                     </div>
                   </div>
                 </div>
                 <p className="text-[12px] sm:text-[13px] leading-[19px] sm:leading-[20px] text-secondary-fixed mt-1">
-                  Card details are processed with end-to-end tokenization directly on Stripe PCI-DSS Level 1 infrastructure. Accepts Visa, Mastercard, AMEX, Apple Pay, and Google Pay.
+                  Card details and balances are processed with end-to-end tokenization directly on Payoneer PCI-DSS Level 1 infrastructure. Accepts Visa, Mastercard, AMEX, Apple Pay, and Google Pay.
                 </p>
                 {/* Visual Card Badges */}
                 <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-2 border-t border-white/10">
+                  <PaymentBadge title="Payoneer">
+                    <PayoneerLogo className="h-3.5 w-auto" />
+                  </PaymentBadge>
                   <PaymentBadge title="Visa">
                     <VisaLogo className="h-3 w-auto" />
                   </PaymentBadge>

@@ -6,7 +6,7 @@ import CheckoutContainer from "../components/checkout/CheckoutContainer";
 import CheckoutHero from "../components/checkout/CheckoutHero";
 
 export const metadata: Metadata = {
-  title: "Stripe Checkout & Merchant Settlement | ASHIVOX LLC",
+  title: "Payoneer Checkout & Merchant Settlement | ASHIVOX LLC",
   description:
     "Institutional settlement rails, tokenized 3D Secure checkout, and automated merchant invoicing by ASHIVOX LLC.",
 };
